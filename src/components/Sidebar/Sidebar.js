@@ -28,11 +28,6 @@ const Sidebar = ({ hideSidebar }) => {
         <p>Quick Search</p>
       </NavLink>
 
-      <NavLink to="/new" exact activeClassName="nav--active">
-        <MdAdd />
-        <p>New</p>
-      </NavLink>
-
       <NavLink to="/staffs" exact activeClassName="nav--active">
         <RiAdminLine />
         <p>Staffs</p>
