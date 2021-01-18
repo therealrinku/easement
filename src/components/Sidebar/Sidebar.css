@@ -2,10 +2,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 20%;
+  width: 17%;
   height: 100%;
   background: white;
-  border-right: solid 1px rgba(0, 0, 0, 0.3);
+  border-right: solid 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   font-family: arial;
