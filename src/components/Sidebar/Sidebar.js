@@ -30,7 +30,7 @@ const Sidebar = () => {
 
       <NavLink to="/new" activeClassName="nav--active">
         <MdAdd />
-        <p>Add Student</p>
+        <p>New</p>
       </NavLink>
 
       <NavLink to="/staffs" activeClassName="nav--active">
