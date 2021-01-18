@@ -1,11 +1,14 @@
 import { GiHamburgerMenu } from "react-icons/all";
 import "./Topbar.css";
 
-const Topbar = () => {
+const Topbar = ({ toggleSidebar, sideBarIsClosed }) => {
   return (
-    <div className="topbar">
+    <div
+      className="topbar"
+      style={sideBarIsClosed ? { left: "0", width: "100%" } : null}
+    >
       <section>
-        <button>
+        <button onClick={toggleSidebar}>
           <GiHamburgerMenu />
         </button>
       </section>

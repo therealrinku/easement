@@ -13,9 +13,9 @@ import {
 } from "react-icons/all";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ hideSidebar }) => {
   return (
-    <div className="sidebar">
+    <div className="sidebar" style={hideSidebar ? { display: "none" } : null}>
       <h4>Easement</h4>
 
       <NavLink to="/" exact activeClassName="nav--active">
