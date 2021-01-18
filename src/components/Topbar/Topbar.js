@@ -14,7 +14,7 @@ const Topbar = ({ toggleSidebar, sideBarIsClosed }) => {
       </section>
 
       <section>
-        <p>testing atm</p>
+        <p>Hamburger School Pte</p>
       </section>
     </div>
   );

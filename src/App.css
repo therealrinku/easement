@@ -4,4 +4,8 @@
 
 .app {
   font-family: arial;
+  background: #fafafa;
+  min-height: 97vh;
+  margin: 0;
+  width: 100%;
 }
