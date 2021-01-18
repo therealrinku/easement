@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Topbar from "./components/Topbar/Topbar";
 import "./App.css";
-import Students from "./pages/Students/Students";
-import Fees from "./pages/Fees/Fees";
+import StudentsPage from "./pages/StudentsPage";
+import FeesPage from "./pages/FeesPage";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -22,8 +22,8 @@ const App = () => {
           className="main"
           style={showSidebar ? { marginLeft: "17.5%" } : null}
         >
-          <Route path="/students" exact component={Students} />
-          <Route path="/fees" exact component={Fees} />
+          <Route path="/students" exact component={StudentsPage} />
+          <Route path="/fees" exact component={FeesPage} />
         </div>
       </BrowserRouter>
     </div>

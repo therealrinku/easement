@@ -1,23 +1,23 @@
 import { Tooltip } from "@material-ui/core";
 import { MdEdit } from "react-icons/all";
-import Filters from "../../components/Filters/Filters";
+import Filters from "../components/Filters/Filters";
 
-const Students = () => {
+const FeesPage = () => {
   const sortedStudents = [
-    { id: 1, name: "rinku", class: 1, rollNo: 10 },
-    { id: 1, name: "olivia", class: 1, rollNo: 11 },
+    { id: 1, name: "rinku", class: 1, fees: 24240 },
+    { id: 2, name: "olivia", class: 1, fees: 42341 },
   ];
 
   return (
     <div className="page">
-      <h4>Students</h4>
+      <h4>Fees</h4>
       <Filters />
       <table className="table">
         <thead>
           <th>S.N~{sortedStudents.length}</th>
           <th>Name</th>
           <th>Class</th>
-          <th>RollNo</th>
+          <th>Fees</th>
         </thead>
         <tbody>
           {sortedStudents.map((student, i) => {
@@ -47,7 +47,7 @@ const Students = () => {
                   </div>
                 </td>
                 <td>{student.class}</td>
-                <td>{student.rollNo}</td>
+                <td>${student.fees}</td>
               </tr>
             );
           })}
@@ -57,4 +57,4 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default FeesPage;
