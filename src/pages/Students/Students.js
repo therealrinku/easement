@@ -1,7 +1,6 @@
 import { Tooltip } from "@material-ui/core";
 import { MdEdit } from "react-icons/all";
 import Filters from "../../components/Filters/Filters";
-import "./Students.css";
 
 const Students = () => {
   const sortedStudents = [
@@ -10,7 +9,7 @@ const Students = () => {
   ];
 
   return (
-    <div className="students--page">
+    <div className="page">
       <h4>Students</h4>
       <Filters />
       <table className="table">

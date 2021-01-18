@@ -9,7 +9,7 @@ const Fees = () => {
   ];
 
   return (
-    <div className="students--page">
+    <div className="page">
       <h4>Fees</h4>
       <Filters />
       <table className="table">
