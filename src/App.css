@@ -1,0 +1,7 @@
+.app button:hover {
+  cursor: pointer;
+}
+
+.app {
+  font-family: arial;
+}
