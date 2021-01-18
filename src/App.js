@@ -5,10 +5,12 @@ import Topbar from "./components/Topbar/Topbar";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Route path="/" component={Sidebar} />
-      <Route path="/" component={Topbar} />
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <Sidebar />
+        <Topbar />
+      </BrowserRouter>
+    </div>
   );
 };
 
