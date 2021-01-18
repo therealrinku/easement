@@ -1,0 +1,24 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 17%;
+  width: 83%;
+  height: 50px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+  border-left: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.topbar button {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 20px;
+}
+
+.topbar p {
+  padding-right: 20px;
+}
