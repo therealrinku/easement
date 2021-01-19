@@ -18,6 +18,11 @@
   margin: 0 15px;
 }
 
+.page span {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
 .main {
   padding-top: 60px;
 }
@@ -48,4 +53,34 @@
 .table tr:last-child,
 .table td:first-child {
   border-bottom-left-radius: 10px;
+}
+
+.new--form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.new--form label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.new--form input,
+.new--form button {
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.new--form button {
+  margin-top: 10px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.new--form button:hover {
+  background: rgba(0, 0, 0, 0.06);
 }
