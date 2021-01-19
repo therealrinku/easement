@@ -5,6 +5,7 @@ import Topbar from "./components/Topbar/Topbar";
 import "./App.css";
 import StudentsPage from "./pages/StudentsPage";
 import FeesPage from "./pages/FeesPage";
+import ResultsPage from "./pages/ResultsPage";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -24,6 +25,7 @@ const App = () => {
         >
           <Route path="/students" exact component={StudentsPage} />
           <Route path="/fees" exact component={FeesPage} />
+          <Route path="/results" exact component={ResultsPage} />
         </div>
       </BrowserRouter>
     </div>
