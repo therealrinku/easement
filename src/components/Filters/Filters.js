@@ -10,7 +10,7 @@ const Filters = () => {
     <div className="filters">
       <form>
         <HiOutlineSearch />
-        <input type="text" placeholder="Search student" />
+        <input type="text" placeholder="Search here" />
       </form>
 
       <div>
