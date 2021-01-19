@@ -12,6 +12,7 @@ const StudentsPage = () => {
     <div className="page">
       <h4>Students</h4>
       <Filters />
+
       <table className="table">
         <thead>
           <th>S.N~{sortedStudents.length}</th>

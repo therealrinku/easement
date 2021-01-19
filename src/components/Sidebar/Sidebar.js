@@ -2,7 +2,6 @@ import "./Sidebar.css";
 
 import {
   HiOutlineSearch,
-  MdAdd,
   FiUsers,
   MdAttachMoney,
   MdShowChart,
@@ -10,6 +9,7 @@ import {
   VscHome,
   AiOutlineDelete,
   RiAdminLine,
+  AiOutlineUserAdd,
 } from "react-icons/all";
 import { NavLink } from "react-router-dom";
 
@@ -26,6 +26,11 @@ const Sidebar = ({ hideSidebar }) => {
       <NavLink to="/search" exact activeClassName="nav--active">
         <HiOutlineSearch />
         <p>Quick Search</p>
+      </NavLink>
+
+      <NavLink to="/new" exact activeClassName="nav--active">
+        <AiOutlineUserAdd />
+        <p>New</p>
       </NavLink>
 
       <NavLink to="/staffs" exact activeClassName="nav--active">
