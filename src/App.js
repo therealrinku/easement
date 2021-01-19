@@ -8,6 +8,7 @@ import FeesPage from "./pages/FeesPage";
 import ResultsPage from "./pages/ResultsPage";
 import TrashPage from "./pages/TrashPage";
 import StaffsPage from "./pages/StaffsPage";
+import AddPage from "./pages/AddPage";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/results" exact component={ResultsPage} />
           <Route path="/trash" exact component={TrashPage} />
           <Route path="/staffs" exact component={StaffsPage} />
+          <Route path="/new" exact component={AddPage} />
         </div>
       </BrowserRouter>
     </div>
