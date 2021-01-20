@@ -23,9 +23,9 @@ const AddStudentForm = () => {
         onChange={(e) => setClass(e.target.value)}
       />
 
-      <label htmlFor="number">Rollno</label>
+      <label htmlFor="rollno">Rollno</label>
       <input
-        type="text"
+        type="number"
         id="rollno"
         value={rollNo}
         onChange={(e) => setRollNo(e.target.value)}
