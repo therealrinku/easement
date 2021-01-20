@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Topbar from "./components/Topbar/Topbar";
+import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
 import "./App.css";
 import StudentsPage from "./pages/StudentsPage";
 import FeesPage from "./pages/FeesPage";
