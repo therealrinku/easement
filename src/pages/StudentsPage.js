@@ -1,12 +1,19 @@
 import { Tooltip } from "@material-ui/core";
+import { useEffect, useState } from "react";
 import { MdEdit } from "react-icons/all";
 import Filters from "../components/Filters";
+import db from "../firebase/db";
 
 const StudentsPage = () => {
-  const sortedStudents = [
-    { id: 1, name: "rinku", class: 1, rollNo: 10 },
-    { id: 1, name: "olivia", class: 1, rollNo: 11 },
-  ];
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    db.collection("test")
+      .doc("students")
+      .onSnapshot((doc) => {
+        setStudents(doc.data().students);
+      });
+  }, []);
 
   return (
     <div className="page">
@@ -15,15 +22,15 @@ const StudentsPage = () => {
 
       <table className="table">
         <thead>
-          <th>S.N~{sortedStudents.length}</th>
+          <th>S.N~{students.length}</th>
           <th>Name</th>
           <th>Class</th>
           <th>RollNo</th>
         </thead>
         <tbody>
-          {sortedStudents.map((student, i) => {
+          {students.map((student, i) => {
             return (
-              <tr key={student.id}>
+              <tr key={i}>
                 <td>{i + 1}</td>
                 <td
                   style={{
