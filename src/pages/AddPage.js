@@ -20,24 +20,6 @@ const AddPage = () => {
         defaultChecked
       />
       <span>Student</span>
-      <form className="new--form">
-        <label htmlFor="name">
-          {radioValue === "staff" ? "Staff Name" : "Student Name"}
-        </label>
-        <input type="text" id="name" />
-
-        <label htmlFor="class">
-          {radioValue === "staff" ? "Role" : "Class"}
-        </label>
-        <input type="text" id="class" />
-
-        <label htmlFor="rollno">
-          {radioValue === "staff" ? "Salary" : "Rollno"}
-        </label>
-        <input type="text" id="class" />
-
-        <button>Submit</button>
-      </form>
     </div>
   );
 };
