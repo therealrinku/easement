@@ -1,4 +1,6 @@
 import { useState } from "react";
+import AddStaffForm from "../components/AddStaffForm";
+import AddStudentForm from "../components/AddStudentForm";
 
 const AddPage = () => {
   const [radioValue, setRadioValue] = useState("student");
@@ -20,6 +22,8 @@ const AddPage = () => {
         defaultChecked
       />
       <span>Student</span>
+
+      {radioValue === "staff" ? <AddStaffForm /> : <AddStudentForm />}
     </div>
   );
 };
