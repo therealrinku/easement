@@ -1,5 +1,3 @@
-import "./Sidebar.css";
-
 import {
   HiOutlineSearch,
   FiUsers,

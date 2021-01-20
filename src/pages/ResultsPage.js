@@ -1,6 +1,6 @@
 import { Tooltip } from "@material-ui/core";
 import { MdEdit } from "react-icons/all";
-import Filters from "../components/Filters/Filters";
+import Filters from "../components/Filters";
 
 const ResultsPage = () => {
   const sortedStudents = [

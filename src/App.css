@@ -84,3 +84,138 @@
 .new--form button:hover {
   background: rgba(0, 0, 0, 0.06);
 }
+
+/* styles for filters.js */
+.filters {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.filters div {
+  position: relative;
+  width: 120px;
+  margin: 0 1.2px 0 10px;
+}
+
+.filters form {
+  display: flex;
+  align-items: center;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.filters form input {
+  border: none;
+  outline: none;
+}
+
+.filters button {
+  padding: 7px;
+  background: inherit;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.filters button span {
+  margin-left: 5px;
+}
+
+.filters .options {
+  position: absolute;
+  background: white;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 3px;
+}
+
+.filters .options button {
+  border: none;
+  border-radius: 0px;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  padding: 12px 4px;
+}
+
+.filters .options button:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.filters .options button:last-child {
+  border: none;
+}
+
+/*sidebar.js */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 17%;
+  height: 100%;
+  background: white;
+  border-right: solid 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar h4 {
+  padding-left: 10px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+  padding: 6px 10px;
+}
+
+.sidebar a p {
+  margin-left: 5px;
+}
+
+.sidebar a:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.sidebar .nav--active {
+  border-right: solid 4px rgba(173, 216, 230, 1);
+  background: rgba(173, 216, 230, 0.4);
+}
+
+/* topbar.js */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 17%;
+  width: 83%;
+  height: 50px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+  border-left: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.topbar button {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 22px;
+  padding-left: 20px;
+}
+
+.topbar p {
+  padding-right: 20px;
+  font-size: 15px;
+  font-style: italic;
+}
