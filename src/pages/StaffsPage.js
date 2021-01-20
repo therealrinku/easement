@@ -1,12 +1,19 @@
 import { Tooltip } from "@material-ui/core";
+import { useEffect, useState } from "react";
 import { MdEdit } from "react-icons/all";
 import Filters from "../components/Filters";
+import db from "../firebase/db";
 
 const StaffsPage = () => {
-  const sortedStudents = [
-    { id: 1, name: "Rinku", role: "Science Teacher" },
-    { id: 2, name: "Sandip", role: "Math Teacher" },
-  ];
+  const [staffs, setStaffs] = useState([]);
+
+  useEffect(() => {
+    db.collection("test")
+      .doc("staffs")
+      .onSnapshot((doc) => {
+        setStaffs(doc.data().staffs);
+      });
+  }, []);
 
   return (
     <div className="page">
@@ -14,14 +21,15 @@ const StaffsPage = () => {
       <Filters />
       <table className="table">
         <thead>
-          <th>S.N~{sortedStudents.length}</th>
+          <th>S.N~{staffs.length}</th>
           <th>Name</th>
           <th>Role</th>
+          <th>Salary</th>
         </thead>
         <tbody>
-          {sortedStudents.map((student, i) => {
+          {staffs.map((staff, i) => {
             return (
-              <tr key={student.id}>
+              <tr key={i}>
                 <td>{i + 1}</td>
                 <td
                   style={{
@@ -30,9 +38,9 @@ const StaffsPage = () => {
                     border: "none",
                   }}
                 >
-                  <p>{student.name}</p>
+                  <p>{staff.name}</p>
                   <div>
-                    <Tooltip title={`Edit ${student.name}`}>
+                    <Tooltip title={`Edit ${staff.name}`}>
                       <button
                         style={{
                           border: "none",
@@ -45,7 +53,8 @@ const StaffsPage = () => {
                     </Tooltip>
                   </div>
                 </td>
-                <td>{student.role}</td>
+                <td>{staff.role}</td>
+                <td>{staff.salary}</td>
               </tr>
             );
           })}
