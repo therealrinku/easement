@@ -110,6 +110,7 @@
 .filters form input {
   border: none;
   outline: none;
+  padding-left: 8px;
 }
 
 .filters button {
