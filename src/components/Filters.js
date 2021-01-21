@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BiCaretDown, HiOutlineSearch } from "react-icons/all";
 
-const Filters = () => {
+const Filters = ({ searchQuery, setSearchQuery }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [showSortOptions, setShowSortOptions] = useState(false);
 
@@ -9,7 +9,12 @@ const Filters = () => {
     <div className="filters">
       <form>
         <HiOutlineSearch />
-        <input type="text" placeholder="Search here" />
+        <input
+          type="text"
+          placeholder="Search here"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </form>
 
       <div>
