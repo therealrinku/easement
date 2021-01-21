@@ -1,7 +1,7 @@
 import db from "../firebase/db";
 
 const getData = async (username, dataType) => {
-  await db
+  return db
     .collection(username)
     .doc(dataType)
     .onSnapshot((doc) => {
