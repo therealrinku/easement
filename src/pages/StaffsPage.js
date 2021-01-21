@@ -13,11 +13,14 @@ const StaffsPage = () => {
       <Filters />
       <table className="table">
         <thead>
-          <th>S.N~{staffs.length}</th>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Salary</th>
+          <tr>
+            <th>S.N~{staffs.length}</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Salary</th>
+          </tr>
         </thead>
+
         <tbody>
           {staffs.map((staff, i) => {
             return (

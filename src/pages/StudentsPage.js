@@ -14,11 +14,14 @@ const StudentsPage = () => {
 
       <table className="table">
         <thead>
-          <th>S.N~{students.length}</th>
-          <th>Name</th>
-          <th>Class</th>
-          <th>RollNo</th>
+          <tr>
+            <th>S.N~{students.length}</th>
+            <th>Name</th>
+            <th>Class</th>
+            <th>RollNo</th>
+          </tr>
         </thead>
+
         <tbody>
           {students.map((student, i) => {
             return (
