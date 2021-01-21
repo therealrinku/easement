@@ -1,3 +1,5 @@
+import db from "../firebase/db";
+
 const getData = async (username, dataType) => {
   await db
     .collection(username)
