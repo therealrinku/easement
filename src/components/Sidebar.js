@@ -1,5 +1,4 @@
 import {
-  HiOutlineSearch,
   FiUsers,
   MdAttachMoney,
   MdShowChart,
@@ -19,11 +18,6 @@ const Sidebar = ({ hideSidebar }) => {
       <NavLink to="/" exact activeClassName="nav--active">
         <VscHome />
         <p>Home</p>
-      </NavLink>
-
-      <NavLink to="/search" exact activeClassName="nav--active">
-        <HiOutlineSearch />
-        <p>Quick Search</p>
       </NavLink>
 
       <NavLink to="/new" exact activeClassName="nav--active">
