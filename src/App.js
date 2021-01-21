@@ -9,6 +9,7 @@ import TrashPage from "./pages/TrashPage";
 import StaffsPage from "./pages/StaffsPage";
 import AddPage from "./pages/AddPage";
 import getData from "./functions/getData";
+import Context from "./context/Context";
 import "./App.css";
 
 const App = () => {
@@ -27,25 +28,27 @@ const App = () => {
 
   return (
     <div className="app">
-      <BrowserRouter>
-        <Sidebar hideSidebar={!showSidebar} />
-        <Topbar
-          toggleSidebar={() => setShowSidebar((prev) => !prev)}
-          sideBarIsClosed={!showSidebar}
-        />
+      <Context.Provider value={{ students, staffs }}>
+        <BrowserRouter>
+          <Sidebar hideSidebar={!showSidebar} />
+          <Topbar
+            toggleSidebar={() => setShowSidebar((prev) => !prev)}
+            sideBarIsClosed={!showSidebar}
+          />
 
-        <div
-          className="main"
-          style={showSidebar ? { marginLeft: "17.5%" } : null}
-        >
-          <Route path="/students" exact component={StudentsPage} />
-          <Route path="/fees" exact component={FeesPage} />
-          <Route path="/results" exact component={ResultsPage} />
-          <Route path="/trash" exact component={TrashPage} />
-          <Route path="/staffs" exact component={StaffsPage} />
-          <Route path="/new" exact component={AddPage} />
-        </div>
-      </BrowserRouter>
+          <div
+            className="main"
+            style={showSidebar ? { marginLeft: "17.5%" } : null}
+          >
+            <Route path="/students" exact component={StudentsPage} />
+            <Route path="/fees" exact component={FeesPage} />
+            <Route path="/results" exact component={ResultsPage} />
+            <Route path="/trash" exact component={TrashPage} />
+            <Route path="/staffs" exact component={StaffsPage} />
+            <Route path="/new" exact component={AddPage} />
+          </div>
+        </BrowserRouter>
+      </Context.Provider>
     </div>
   );
 };
