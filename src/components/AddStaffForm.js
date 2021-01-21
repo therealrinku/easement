@@ -1,6 +1,6 @@
 import { useState } from "react";
 import db from "../firebase/db";
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 const AddStaffForm = () => {
   const [name, setName] = useState("");
