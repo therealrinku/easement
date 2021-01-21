@@ -18,12 +18,8 @@ const App = () => {
   const [staffs, setStaffs] = useState([]);
 
   useEffect(() => {
-    getData("test", "students").then((res) => {
-      setStudents(res.data);
-    });
-    getData("test", "staffs").then((res) => {
-      setStaffs(res.data);
-    });
+    getData("test", "students", setStudents);
+    getData("test", "staffs", setStaffs);
   }, []);
 
   return (

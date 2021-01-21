@@ -1,19 +1,11 @@
 import { Tooltip } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { MdEdit } from "react-icons/all";
 import Filters from "../components/Filters";
-import db from "../firebase/db";
+import Context from "../context/Context";
 
 const StudentsPage = () => {
-  const [students, setStudents] = useState([]);
-
-  useEffect(() => {
-    db.collection("test")
-      .doc("students")
-      .onSnapshot((doc) => {
-        setStudents(doc.data().students);
-      });
-  }, []);
+  const { students } = useContext(Context);
 
   return (
     <div className="page">
