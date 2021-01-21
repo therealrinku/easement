@@ -1,17 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
-import "./App.css";
 import StudentsPage from "./pages/StudentsPage";
 import FeesPage from "./pages/FeesPage";
 import ResultsPage from "./pages/ResultsPage";
 import TrashPage from "./pages/TrashPage";
 import StaffsPage from "./pages/StaffsPage";
 import AddPage from "./pages/AddPage";
+import getData from "./functions/getData";
+import "./App.css";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
+  const [students, setStudents] = useState([]);
+  const [staffs, setStaffs] = useState([]);
+
+  useEffect(() => {
+    getData("test", "students").then((res) => {
+      setStudents(res.data);
+    });
+    getData("test", "staffs").then((res) => {
+      setStaffs(res.data);
+    });
+  }, []);
 
   return (
     <div className="app">
