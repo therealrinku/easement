@@ -1,6 +1,5 @@
 import { useState } from "react";
-import db from "../firebase/db";
-import firebase from "firebase/app";
+import addPerson from "../functions/addData";
 
 const AddStaffForm = () => {
   const [name, setName] = useState("");
@@ -9,21 +8,7 @@ const AddStaffForm = () => {
 
   const AddStaff = (e) => {
     e.preventDefault();
-
-    db.collection("test")
-      .doc("staffs")
-      .update({
-        staffs: firebase.firestore.FieldValue.arrayUnion({
-          name,
-          role,
-          salary,
-        }),
-      })
-      .then(() => {
-        setName("");
-        setRole("");
-        setSalary("");
-      });
+    addPerson("test", "staffs", { name, role, salary });
   };
 
   return (
