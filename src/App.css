@@ -16,7 +16,7 @@
   border: solid 1px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin: 0 15px;
-  margin-bottom:40px;
+  margin-bottom: 40px;
 }
 
 .page span {
@@ -136,6 +136,8 @@
   width: 100%;
   box-sizing: border-box;
   margin-top: 3px;
+  border-radius: 5px;
+  padding: 01px;
 }
 
 .filters .options button {
