@@ -1,18 +1,30 @@
 import { useState } from "react";
 import addPerson from "../functions/addData";
+import Alert from "./Alert";
 
 const AddStaffForm = () => {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [salary, setSalary] = useState("");
+  const [msg, setMsg] = useState("");
 
   const AddStaff = (e) => {
     e.preventDefault();
-    addPerson("test", "staffs", { name, role, salary });
+    addPerson("test", "staffs", { name, role, salary }).then((res) => {
+      if (res === "done") {
+        setMsg("Succesfully created a new staff.");
+        setName("");
+        setRole("");
+        setSalary("");
+      } else {
+        setMsg(res);
+      }
+    });
   };
 
   return (
     <form className="new--form" onSubmit={AddStaff}>
+      {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Staff Name</label>
       <input
         type="text"
