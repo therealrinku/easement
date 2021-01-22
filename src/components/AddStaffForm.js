@@ -20,6 +20,10 @@ const AddStaffForm = () => {
         setMsg(res);
       }
     });
+
+    setTimeout(() => {
+      setMsg("");
+    }, 3000);
   };
 
   return (
