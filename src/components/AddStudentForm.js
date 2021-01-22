@@ -1,12 +1,18 @@
 import { useState } from "react";
+import addPerson from "../functions/addData";
 
 const AddStudentForm = () => {
   const [name, setName] = useState("");
   const [CLASS, setClass] = useState("");
   const [rollNo, setRollNo] = useState("");
 
+  const AddStudent = (e) => {
+    e.preventDefault();
+    addPerson("test", "students", { name, class: CLASS, rollNo });
+  };
+
   return (
-    <form className="new--form">
+    <form className="new--form" onSubmit={AddStudent}>
       <label htmlFor="name">Student Name</label>
       <input
         type="text"
