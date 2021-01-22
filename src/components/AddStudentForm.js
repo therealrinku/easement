@@ -1,33 +1,12 @@
 import { useState } from "react";
-import db from "../firebase/db";
-import firebase from "firebase/app";
 
 const AddStudentForm = () => {
   const [name, setName] = useState("");
   const [CLASS, setClass] = useState("");
   const [rollNo, setRollNo] = useState("");
 
-  const AddStudent = (e) => {
-    e.preventDefault();
-
-    db.collection("test")
-      .doc("students")
-      .update({
-        students: firebase.firestore.FieldValue.arrayUnion({
-          name,
-          class: CLASS,
-          rollNo,
-        }),
-      })
-      .then(() => {
-        setName("");
-        setClass("");
-        setRollNo("");
-      });
-  };
-
   return (
-    <form className="new--form" onSubmit={AddStudent}>
+    <form className="new--form">
       <label htmlFor="name">Student Name</label>
       <input
         type="text"
