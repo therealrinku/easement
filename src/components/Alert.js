@@ -1,14 +1,16 @@
 import { MdDone, VscError } from "react-icons/all";
 
-const Alert = ({ error }) => {
+const Alert = ({ msg }) => {
   return (
     <div className="alert">
-      <section style={error ? { display: "none" } : null}>
+      <section style={msg.includes("Succesfully") ? { display: "none" } : null}>
         <MdDone />
         <p>Successfully done!</p>
       </section>
 
-      <section style={!error ? { display: "none" } : null}>
+      <section
+        style={!msg.includes("Succesfully") ? { display: "none" } : null}
+      >
         <VscError />
         <p>{error}</p>
       </section>
