@@ -22,6 +22,10 @@ const AddStudentForm = () => {
         }
       }
     );
+
+    setTimeout(() => {
+      setMsg("");
+    }, 3000);
   };
 
   return (
