@@ -1,12 +1,11 @@
-import { Tooltip } from "@material-ui/core";
 import { useContext, useState } from "react";
-import { MdEdit } from "react-icons/all";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
 
 const StudentsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { students } = useContext(Context);
+
   const filteredStudents = students.filter((student) => {
     return student.name
       .toLowerCase()
@@ -41,19 +40,6 @@ const StudentsPage = () => {
                   }}
                 >
                   <p>{student.name}</p>
-                  <div>
-                    <Tooltip title={`Edit ${student.name}`}>
-                      <button
-                        style={{
-                          border: "none",
-                          background: "none",
-                          outline: "none",
-                        }}
-                      >
-                        <MdEdit />
-                      </button>
-                    </Tooltip>
-                  </div>
                 </td>
                 <td>{student.class}</td>
                 <td>{student.rollNo}</td>
