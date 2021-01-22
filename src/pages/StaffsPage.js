@@ -1,6 +1,4 @@
-import { Tooltip } from "@material-ui/core";
 import { useContext, useState } from "react";
-import { MdEdit } from "react-icons/all";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
 
@@ -38,19 +36,6 @@ const StaffsPage = () => {
                   }}
                 >
                   <p>{staff.name}</p>
-                  <div>
-                    <Tooltip title={`Edit ${staff.name}`}>
-                      <button
-                        style={{
-                          border: "none",
-                          background: "none",
-                          outline: "none",
-                        }}
-                      >
-                        <MdEdit />
-                      </button>
-                    </Tooltip>
-                  </div>
                 </td>
                 <td>{staff.role}</td>
                 <td>{staff.salary}</td>
