@@ -12,7 +12,7 @@ const Alert = ({ msg }) => {
         style={!msg.includes("Succesfully") ? { display: "none" } : null}
       >
         <VscError />
-        <p>{error}</p>
+        <p>{msg}</p>
       </section>
     </div>
   );
