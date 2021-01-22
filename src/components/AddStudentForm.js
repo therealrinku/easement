@@ -1,5 +1,6 @@
 import { useState } from "react";
 import addPerson from "../functions/addData";
+import Alert from "./Alert";
 
 const AddStudentForm = () => {
   const [name, setName] = useState("");
@@ -11,8 +12,11 @@ const AddStudentForm = () => {
     e.preventDefault();
     addPerson("test", "students", { name, class: CLASS, rollNo }).then(
       (res) => {
-        if (res !== "done") {
+        if (res === "done") {
           setMsg("Succesfully created a new student.");
+          setName("");
+          setClass("");
+          setRollNo("");
         } else {
           setMsg(res);
         }
@@ -22,6 +26,7 @@ const AddStudentForm = () => {
 
   return (
     <form className="new--form" onSubmit={AddStudent}>
+      {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Student Name</label>
       <input
         type="text"
