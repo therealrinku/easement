@@ -21,6 +21,7 @@ const EditOrDeletePage = () => {
         value="student"
         onChange={(e) => setRadioValue(e.target.value)}
         defaultChecked
+        style={{ marginBottom: "20px" }}
       />
       <span>Student</span>
       <Filters
