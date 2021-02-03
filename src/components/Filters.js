@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BiCaretDown, HiOutlineSearch } from "react-icons/all";
 
-const Filters = ({ searchQuery, setSearchQuery }) => {
+const Filters = ({ searchQuery, setSearchQuery, onlySearchBox }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [showSortOptions, setShowSortOptions] = useState(false);
 
@@ -17,7 +17,7 @@ const Filters = ({ searchQuery, setSearchQuery }) => {
         />
       </form>
 
-      <div>
+      <div style={onlySearchBox ? { display: "none" } : null}>
         <button onClick={() => setShowFilterOptions((prev) => !prev)}>
           <BiCaretDown />
           <span>Filter by</span>
@@ -36,7 +36,7 @@ const Filters = ({ searchQuery, setSearchQuery }) => {
         </section>
       </div>
 
-      <div>
+      <div style={onlySearchBox ? { display: "none" } : null}>
         <button onClick={() => setShowSortOptions((prev) => !prev)}>
           <BiCaretDown />
           <span>Sort by</span>

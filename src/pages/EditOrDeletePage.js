@@ -23,7 +23,11 @@ const EditOrDeletePage = () => {
         defaultChecked
       />
       <span>Student</span>
-      <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Filters
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onlySearchBox={true}
+      />
     </div>
   );
 };
