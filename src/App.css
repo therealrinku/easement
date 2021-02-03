@@ -246,3 +246,19 @@
 .alert section p {
   margin-left: 4px;
 }
+
+/*user */
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user b {
+  font-size: 15px;
+  margin-right: 4px;
+}
+
+.user p {
+  margin-right: 4px;
+}
