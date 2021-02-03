@@ -1,4 +1,6 @@
 import { useContext, useState } from "react";
+import { AiOutlineDelete } from "react-icons/ai";
+import { GrEdit } from "react-icons/gr";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
 
@@ -52,6 +54,13 @@ const EditOrDeletePage = () => {
               <p style={radioValue !== "student" ? { display: "none" } : null}>
                 Rollno:{person.rollNo}
               </p>
+              <button>
+                <GrEdit />
+              </button>
+
+              <button>
+                <AiOutlineDelete />
+              </button>
             </div>
           );
         })}

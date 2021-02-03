@@ -259,3 +259,9 @@
   font-size: 14px;
   margin-right: 4px;
 }
+
+.user button {
+  outline: none;
+  border: none;
+  background: inherit;
+}
