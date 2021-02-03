@@ -4,7 +4,7 @@ const backdropStyles = {
   left: 0,
   width: "100%",
   height: "100vh",
-  background: "rgba(0,0,0,0.7)",
+  background: "rgba(0,0,0,0.1)",
   zIndex: "2",
 };
 
