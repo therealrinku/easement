@@ -4,7 +4,6 @@ import {
   MdShowChart,
   BsGear,
   VscHome,
-  AiOutlineDelete,
   RiAdminLine,
   AiOutlineUserAdd,
   RiEdit2Line,
@@ -49,11 +48,6 @@ const Sidebar = ({ hideSidebar }) => {
       <NavLink to="/results" exact activeClassName="nav--active">
         <MdShowChart />
         <p>Results</p>
-      </NavLink>
-
-      <NavLink to="/trash" exact activeClassName="nav--active">
-        <AiOutlineDelete />
-        <p>Trash</p>
       </NavLink>
 
       <NavLink to="/settings" exact activeClassName="nav--active">
