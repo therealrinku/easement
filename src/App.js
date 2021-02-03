@@ -5,7 +5,6 @@ import Topbar from "./components/Topbar";
 import StudentsPage from "./pages/StudentsPage";
 import FeesPage from "./pages/FeesPage";
 import ResultsPage from "./pages/ResultsPage";
-import TrashPage from "./pages/TrashPage";
 import StaffsPage from "./pages/StaffsPage";
 import AddPage from "./pages/AddPage";
 import getData from "./functions/getData";
