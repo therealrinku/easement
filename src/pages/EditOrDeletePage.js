@@ -40,43 +40,19 @@ const EditOrDeletePage = () => {
         onlySearchBox={true}
       />
 
-      <table className="table">
-        <thead>
-          <tr>
-            <th>S.N~{filteredPeople.length}</th>
-            <th>Name</th>
-            <th style={radioValue !== "student" ? { display: "none" } : null}>
-              Class
-            </th>
-            <th>{radioValue === "student" ? "RollNo" : "Role"}</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {filteredPeople.map((person, i) => {
-            return (
-              <tr key={i}>
-                <td>{i + 1}</td>
-                <td
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    border: "none",
-                  }}
-                >
-                  <p>{person.name}</p>
-                </td>
-                <td
-                  style={radioValue !== "student" ? { display: "none" } : null}
-                >
-                  {person.class}
-                </td>
-                <td>{person.rollNo || person.role}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="users--view">
+        {filteredPeople.map((person, i) => {
+          return (
+            <div className="user" key={i}>
+              <b>{person.name}</b>
+              <p>{person.class || person.role}</p>
+              <p style={radioValue !== "student" ? { display: "none" } : null}>
+                {person.rollNo}
+              </p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
