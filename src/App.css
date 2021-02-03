@@ -254,11 +254,8 @@
   align-items: center;
 }
 
-.user b {
-  font-size: 15px;
-  margin-right: 4px;
-}
-
+.user b,
 .user p {
+  font-size: 14px;
   margin-right: 4px;
 }
