@@ -9,4 +9,4 @@ const setData = async (username, dataType, updatedData) => {
     });
 };
 
-export default getData;
+export default setData;

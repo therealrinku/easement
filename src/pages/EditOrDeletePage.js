@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Filters from "../components/Filters";
 import UserView from "../components/UserView";
 import Context from "../context/Context";
+import setData from "../functions/setData";
 
 const EditOrDeletePage = () => {
   const [radioValue, setRadioValue] = useState("student");
@@ -20,7 +21,18 @@ const EditOrDeletePage = () => {
     document.body.style.overflow = "auto";
   }, []);
 
-  const deletePerson = () => {};
+  const deletePerson = (userIndex) => {
+    const updatedData = (radioValue === "student" ? students : staffs).filter(
+      (_person, i) => {
+        return i !== userIndex;
+      }
+    );
+    setData(
+      "test",
+      radioValue === "student" ? "students" : "staffs",
+      updatedData
+    );
+  };
 
   return (
     <div className="page">
@@ -52,6 +64,7 @@ const EditOrDeletePage = () => {
           return (
             <UserView
               key={i}
+              index={i}
               name={person.name}
               CLASS={person.class}
               rollNo={person.rollNo}

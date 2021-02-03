@@ -5,7 +5,15 @@ import Backdrop from "../components/Backdrop";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import { Fragment, useState } from "react";
 
-const UserView = ({ radioValue, name, CLASS, role, rollNo, deletePerson }) => {
+const UserView = ({
+  radioValue,
+  name,
+  CLASS,
+  role,
+  index,
+  rollNo,
+  deletePerson,
+}) => {
   const [showDeleteConfirmPopup, setShowDeleteConfirmPopup] = useState(false);
 
   const toggleModal = () => {
@@ -16,6 +24,11 @@ const UserView = ({ radioValue, name, CLASS, role, rollNo, deletePerson }) => {
     }
 
     setShowDeleteConfirmPopup((prev) => !prev);
+  };
+
+  const Delete = (index) => {
+    toggleModal();
+    deletePerson(index);
   };
 
   return (
@@ -47,7 +60,7 @@ const UserView = ({ radioValue, name, CLASS, role, rollNo, deletePerson }) => {
             <Backdrop show={showDeleteConfirmPopup} toggle={toggleModal} />
             <DeleteConfirmPopup
               name={name}
-              Delete={deletePerson}
+              Delete={() => Delete(index)}
               toggle={toggleModal}
             />
           </Fragment>
