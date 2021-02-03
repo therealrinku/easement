@@ -1,3 +1,4 @@
+import { Tooltip } from "@material-ui/core";
 import { useContext, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { GrEdit } from "react-icons/gr";
@@ -54,13 +55,18 @@ const EditOrDeletePage = () => {
               <p style={radioValue !== "student" ? { display: "none" } : null}>
                 Rollno:{person.rollNo}
               </p>
-              <button>
-                <GrEdit />
-              </button>
 
-              <button>
-                <AiOutlineDelete />
-              </button>
+              <Tooltip title={`Edit ${person.name}`} arrow>
+                <button>
+                  <GrEdit />
+                </button>
+              </Tooltip>
+
+              <Tooltip title={`Delete ${person.name}`} arrow>
+                <button>
+                  <AiOutlineDelete />
+                </button>
+              </Tooltip>
             </div>
           );
         })}
