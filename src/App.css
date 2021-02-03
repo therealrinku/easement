@@ -280,7 +280,7 @@
   z-index: 4;
 }
 
-.delete--confirmation--popup h4 {
+.delete--confirmation--popup p {
   padding: 20px;
   font-size: 14px;
 }

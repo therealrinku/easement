@@ -1,7 +1,9 @@
 const DeleteConfirmPopup = ({ name, Delete, toggle }) => {
   return (
     <div className="delete--confirmation--popup">
-      <h4>Do you sure want to delete {name}?</h4>
+      <p>
+        Do you sure want to delete <b>{name}</b>?
+      </p>
 
       <section>
         <button onClick={Delete}>Delete</button>
