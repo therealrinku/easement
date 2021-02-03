@@ -45,9 +45,12 @@ const EditOrDeletePage = () => {
           return (
             <div className="user" key={i}>
               <b>{person.name}</b>
-              <p>{person.class || person.role}</p>
+              <p>
+                {radioValue === "student" ? "Class:" : "Role:"}
+                {person.class || person.role}
+              </p>
               <p style={radioValue !== "student" ? { display: "none" } : null}>
-                {person.rollNo}
+                Rollno:{person.rollNo}
               </p>
             </div>
           );
