@@ -5,7 +5,7 @@ const Alert = ({ msg }) => {
     <div className="alert">
       <section>
         {msg.includes("created") ? <MdDone /> : <VscError />}
-        <p>{msg}</p>
+        <p style={!msg.includes("created")?{color:"red"}:null}>{msg}</p>
       </section>
     </div>
   );
