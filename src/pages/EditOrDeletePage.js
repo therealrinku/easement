@@ -3,6 +3,8 @@ import Filters from "../components/Filters";
 
 const EditOrDeletePage = () => {
   const [radioValue, setRadioValue] = useState("student");
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className="page">
       <h4>Edit/Delete</h4>
@@ -21,7 +23,7 @@ const EditOrDeletePage = () => {
         defaultChecked
       />
       <span>Student</span>
-      <Filters />
+      <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
     </div>
   );
 };
