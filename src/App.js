@@ -40,7 +40,6 @@ const App = () => {
             <Route path="/students" exact component={StudentsPage} />
             <Route path="/fees" exact component={FeesPage} />
             <Route path="/results" exact component={ResultsPage} />
-            <Route path="/trash" exact component={TrashPage} />
             <Route path="/staffs" exact component={StaffsPage} />
             <Route path="/new" exact component={AddPage} />
             <Route path="/editordelete" exact component={EditOrDeletePage} />
