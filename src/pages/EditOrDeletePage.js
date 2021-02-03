@@ -1,12 +1,7 @@
-import { Tooltip } from "@material-ui/core";
 import { useContext, useEffect, useState } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
-import { GrEdit } from "react-icons/gr";
 import Filters from "../components/Filters";
+import UserView from "../components/UserView";
 import Context from "../context/Context";
-import Backdrop from "../components/Backdrop";
-import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
-import { Fragment } from "react";
 
 const EditOrDeletePage = () => {
   const [radioValue, setRadioValue] = useState("student");
@@ -66,42 +61,17 @@ const EditOrDeletePage = () => {
       <div className="users--view">
         {filteredPeople.map((person, i) => {
           return (
-            <div className="user" key={i}>
-              <b>{person.name}</b>
-              <p>
-                {radioValue === "student" ? "Class:" : "Role:"}
-                {person.class || person.role}
-              </p>
-              <p style={radioValue !== "student" ? { display: "none" } : null}>
-                Rollno:{person.rollNo}
-              </p>
-
-              <Tooltip title={`Edit ${person.name}`} arrow>
-                <button>
-                  <GrEdit />
-                </button>
-              </Tooltip>
-
-              <Tooltip title={`Delete ${person.name}`} arrow>
-                <button onClick={toggleModal}>
-                  <AiOutlineDelete />
-                </button>
-              </Tooltip>
-
-              {showDeleteConfirmPopup ? (
-                <Fragment>
-                  <Backdrop
-                    show={showDeleteConfirmPopup}
-                    toggle={toggleModal}
-                  />
-                  <DeleteConfirmPopup
-                    name={person.name}
-                    Delete={deletePerson}
-                    toggle={toggleModal}
-                  />
-                </Fragment>
-              ) : null}
-            </div>
+            <UserView
+              key={i}
+              name={person.name}
+              CLASS={person.class}
+              rollNo={person.rollNo}
+              radioValue={radioValue}
+              toggleModal={toggleModal}
+              showDeleteConfirmPopup={showDeleteConfirmPopup}
+              role={person.role}
+              deletePerson={deletePerson}
+            />
           );
         })}
       </div>
