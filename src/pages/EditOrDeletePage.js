@@ -69,6 +69,7 @@ const EditOrDeletePage = () => {
               CLASS={person.class}
               rollNo={person.rollNo}
               radioValue={radioValue}
+              salary={person.salary}
               role={person.role}
               deletePerson={deletePerson}
             />
