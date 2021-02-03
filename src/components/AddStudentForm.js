@@ -16,18 +16,26 @@ const AddStudentForm = () => {
     if (name.trim().length >= 3 && name.trim().length <= 60) {
       if (CLASS !== "") {
         if (rollNo > 0) {
-          addPerson("test", "students", { name, class: CLASS, rollNo }).then(
-            (res) => {
-              if (res === "done") {
-                setMsg("Succesfully created a new student.");
-                setName("");
-                setClass("");
-                setRollNo("");
-              } else {
-                setMsg(res);
+          if (
+            students.findIndex(
+              (student) => student.class === CLASS && student.rollNo === rollNo
+            ) < 0
+          ) {
+            addPerson("test", "students", { name, class: CLASS, rollNo }).then(
+              (res) => {
+                if (res === "done") {
+                  setMsg("Succesfully created a new student.");
+                  setName("");
+                  setClass("");
+                  setRollNo("");
+                } else {
+                  setMsg(res);
+                }
               }
-            }
-          );
+            );
+          } else {
+            setMsg(`Rollno ${rollNo} already taken in class ${CLASS}.`);
+          }
         } else {
           setMsg("Rollno cannot be empty or below 1.");
         }
@@ -40,7 +48,7 @@ const AddStudentForm = () => {
 
     setTimeout(() => {
       setMsg("");
-    }, 3000);
+    }, 4000);
   };
 
   return (
