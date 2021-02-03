@@ -7,7 +7,6 @@ const EditOrDeletePage = () => {
   const [radioValue, setRadioValue] = useState("student");
   const [searchQuery, setSearchQuery] = useState("");
   const { students, staffs } = useContext(Context);
-  const [showDeleteConfirmPopup, setShowDeleteConfirmPopup] = useState(false);
 
   const filteredPeople = (radioValue === "student" ? students : staffs).filter(
     (person) => {
@@ -16,16 +15,6 @@ const EditOrDeletePage = () => {
         .includes(searchQuery.trim().toLowerCase());
     }
   );
-
-  const toggleModal = () => {
-    if (document.body.style.overflow === "hidden") {
-      document.body.style.overflow = "auto";
-    } else {
-      document.body.style.overflow = "hidden";
-    }
-
-    setShowDeleteConfirmPopup((prev) => !prev);
-  };
 
   useEffect(() => {
     document.body.style.overflow = "auto";
@@ -67,8 +56,6 @@ const EditOrDeletePage = () => {
               CLASS={person.class}
               rollNo={person.rollNo}
               radioValue={radioValue}
-              toggleModal={toggleModal}
-              showDeleteConfirmPopup={showDeleteConfirmPopup}
               role={person.role}
               deletePerson={deletePerson}
             />
