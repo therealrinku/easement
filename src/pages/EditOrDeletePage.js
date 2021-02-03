@@ -95,7 +95,7 @@ const EditOrDeletePage = () => {
                     toggle={toggleModal}
                   />
                   <DeleteConfirmPopup
-                    delete={deletePerson}
+                    Delete={deletePerson}
                     toggle={toggleModal}
                   />
                 </Fragment>
