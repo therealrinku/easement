@@ -11,6 +11,7 @@ import AddPage from "./pages/AddPage";
 import getData from "./functions/getData";
 import Context from "./context/Context";
 import "./App.css";
+import EditOrDeletePage from "./pages/EditOrDeletePage";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/trash" exact component={TrashPage} />
             <Route path="/staffs" exact component={StaffsPage} />
             <Route path="/new" exact component={AddPage} />
+            <Route path="/editordelete" exact component={EditOrDeletePage} />
           </div>
         </BrowserRouter>
       </Context.Provider>
