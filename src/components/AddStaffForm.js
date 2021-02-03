@@ -10,20 +10,33 @@ const AddStaffForm = () => {
 
   const AddStaff = (e) => {
     e.preventDefault();
-    addPerson("test", "staffs", { name, role, salary }).then((res) => {
-      if (res === "done") {
-        setMsg("Succesfully created a new staff.");
-        setName("");
-        setRole("");
-        setSalary("");
+
+    if (name.trim().length >= 3 && name.trim().length <= 60) {
+      if (role.trim().length >= 3 && role.trim().length <= 50) {
+        if (salary > 0 && salary !== "") {
+          addPerson("test", "staffs", { name, role, salary }).then((res) => {
+            if (res === "done") {
+              setMsg("Succesfully created a new staff.");
+              setName("");
+              setRole("");
+              setSalary("");
+            } else {
+              setMsg(res);
+            }
+          });
+        } else {
+          setMsg("Salary cannot be empty or 0.");
+        }
       } else {
-        setMsg(res);
+        setMsg("Role must be between 3 and 50 characters.");
       }
-    });
+    } else {
+      setMsg("Name must be between 3 and 60 characters.");
+    }
 
     setTimeout(() => {
       setMsg("");
-    }, 3000);
+    }, 4000);
   };
 
   return (
