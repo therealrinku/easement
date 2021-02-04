@@ -78,7 +78,7 @@ const AddStudentForm = () => {
         onChange={(e) => setRollNo(e.target.value)}
       />
 
-      <button>Submit</button>
+      <button className="submit--btn">Submit</button>
     </form>
   );
 };

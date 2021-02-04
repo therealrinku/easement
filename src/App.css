@@ -75,22 +75,20 @@
 .new--form button,
 .edit--form input,
 .edit--form button {
-  border: solid 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
 }
 
+.new--form input,
+.edit--form input {
+  border: solid 1px rgba(0, 0, 0, 0.2);
+}
+
 .new--form button,
 .edit--form button {
   margin-top: 10px;
-  background: rgba(0, 0, 0, 0.03);
   outline: none;
-}
-
-.new--form button:hover,
-.edit--form button:hover {
-  background: rgba(0, 0, 0, 0.06);
 }
 
 .edit--form {
@@ -320,4 +318,11 @@
 .delete--confirmation--popup button:last-child {
   border-left: solid 1px rgba(0, 0, 0, 0.2);
   color: black;
+}
+
+/* submit btn*/
+.submit--btn {
+  background: rgb(54, 197, 245);
+  color: white;
+  border: none;
 }

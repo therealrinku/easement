@@ -66,7 +66,7 @@ const AddStaffForm = () => {
         onChange={(e) => setSalary(e.target.value)}
       />
 
-      <button>Submit</button>
+      <button className="submit--btn">Submit</button>
     </form>
   );
 };

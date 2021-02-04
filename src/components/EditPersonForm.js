@@ -122,7 +122,7 @@ const EditPersonForm = ({
             onChange={(e) => setSalary(e.target.value)}
           />
 
-          <button>Update</button>
+          <button className="submit--btn">Update</button>
           <button onClick={toggle} type="button">
             Cancel
           </button>
@@ -154,7 +154,7 @@ const EditPersonForm = ({
             onChange={(e) => setRollNo(e.target.value)}
           />
 
-          <button>Update</button>
+          <button className="submit--btn">Update</button>
           <button onClick={toggle} type="button">
             Cancel
           </button>
