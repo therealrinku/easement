@@ -5,7 +5,7 @@ const getData = async (username, dataType, nextFunction) => {
     .collection(username)
     .doc(dataType)
     .onSnapshot((doc) => {
-      nextFunction(doc.data()[dataType]);
+      nextFunction(doc.data()[dataType] || []);
     });
 };
 
