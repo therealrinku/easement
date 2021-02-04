@@ -5,7 +5,7 @@ import {
   BsGear,
   VscHome,
   RiAdminLine,
-  AiOutlineUserAdd,
+  RiAddCircleLine,
   RiEdit2Line,
 } from "react-icons/all";
 import { NavLink } from "react-router-dom";
@@ -21,7 +21,7 @@ const Sidebar = ({ hideSidebar }) => {
       </NavLink>
 
       <NavLink to="/new" exact activeClassName="nav--active">
-        <AiOutlineUserAdd />
+        <RiAddCircleLine />
         <p>New</p>
       </NavLink>
 
