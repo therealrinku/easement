@@ -21,6 +21,11 @@ const UserView = ({
 
   const toggleEditForm = () => {
     setShowEditForm((prev) => !prev);
+    if (document.body.style.overflow === "hidden") {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
   };
 
   const toggleModal = () => {
@@ -51,6 +56,7 @@ const UserView = ({
             RollNo={rollNo}
             Role={role}
             Salary={salary}
+            index={index}
           />
         </Fragment>
       ) : (

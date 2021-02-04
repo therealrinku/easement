@@ -255,6 +255,7 @@
   border-radius: 5px;
   padding: 10px;
   min-width: 200px;
+  z-index: 4;
 }
 
 .alert section {
