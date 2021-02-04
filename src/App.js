@@ -16,15 +16,17 @@ const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [students, setStudents] = useState([]);
   const [staffs, setStaffs] = useState([]);
+  const [classes, setClasses] = useState([]);
 
   useEffect(() => {
     getData("test", "students", setStudents);
     getData("test", "staffs", setStaffs);
+    getData("test", "classes", setClasses);
   }, []);
 
   return (
     <div className="app">
-      <Context.Provider value={{ students, staffs }}>
+      <Context.Provider value={{ students, staffs, classes }}>
         <BrowserRouter>
           <Sidebar hideSidebar={!showSidebar} />
           <Topbar
