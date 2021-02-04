@@ -1,5 +1,6 @@
-import { useState } from "react";
-import addPerson from "../functions/addData";
+import { useContext, useState } from "react";
+import Context from "../context/Context";
+import setData from "../functions/setData";
 import Alert from "./Alert";
 
 const AddStaffForm = () => {
@@ -7,6 +8,7 @@ const AddStaffForm = () => {
   const [role, setRole] = useState("");
   const [salary, setSalary] = useState("");
   const [msg, setMsg] = useState("");
+  const { staffs } = useContext(Context);
 
   const AddStaff = (e) => {
     e.preventDefault();
@@ -14,16 +16,18 @@ const AddStaffForm = () => {
     if (name.trim().length >= 3 && name.trim().length <= 60) {
       if (role.trim().length >= 3 && role.trim().length <= 50) {
         if (salary > 0 && salary !== "") {
-          addPerson("test", "staffs", { name, role, salary }).then((res) => {
-            if (res === "done") {
-              setMsg("Succesfully created a new staff.");
-              setName("");
-              setRole("");
-              setSalary("");
-            } else {
-              setMsg(res);
+          setData("test", "staffs", [...staffs, { name, role, salary }]).then(
+            (res) => {
+              if (res === "done") {
+                setMsg("Succesfully created a new staff.");
+                setName("");
+                setRole("");
+                setSalary("");
+              } else {
+                setMsg(res);
+              }
             }
-          });
+          );
         } else {
           setMsg("Salary cannot be empty or 0.");
         }

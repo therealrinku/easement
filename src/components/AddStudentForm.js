@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import addPerson from "../functions/addData";
+import setData from "../functions/setData";
 import Alert from "./Alert";
 import Context from "../context/Context";
 
@@ -21,18 +21,19 @@ const AddStudentForm = () => {
               (student) => student.class === CLASS && student.rollNo === rollNo
             ) < 0
           ) {
-            addPerson("test", "students", { name, class: CLASS, rollNo }).then(
-              (res) => {
-                if (res === "done") {
-                  setMsg("Succesfully created a new student.");
-                  setName("");
-                  setClass("");
-                  setRollNo("");
-                } else {
-                  setMsg(res);
-                }
+            setData("test", "students", [
+              ...students,
+              { name, class: CLASS, rollNo },
+            ]).then((res) => {
+              if (res === "done") {
+                setMsg("Succesfully created a new student.");
+                setName("");
+                setClass("");
+                setRollNo("");
+              } else {
+                setMsg(res);
               }
-            );
+            });
           } else {
             setMsg(`Rollno ${rollNo} already taken in class ${CLASS}.`);
           }
