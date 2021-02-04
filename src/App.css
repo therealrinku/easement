@@ -81,8 +81,20 @@
 }
 
 .new--form input,
+.new--form .show--class-options-button,
 .edit--form input {
   border: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.new--form .show--class-options-button {
+  display: flex;
+  align-items: center;
+  background: inherit;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .new--form button,
@@ -102,6 +114,41 @@
   border-radius: 5px;
   width: 400px;
   padding: 20px 40px;
+}
+
+.new--form .class--options {
+  position: absolute;
+  width: inherit;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  height: 240px;
+  overflow-y: auto;
+  margin-top: -10px;
+  border-top: none;
+  width: 514px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.new--form .class--options button:first-child {
+  border-top: none;
+}
+
+.new--form .class--options button {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  background: none;
+  margin: 0;
+  border-top: solid 1px rgba(0, 0, 0, 0.2);
+  padding: 12px 0;
+}
+
+.new--form .class--options button:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* styles for filters.js */

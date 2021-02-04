@@ -2,13 +2,20 @@ import { useContext, useState } from "react";
 import setData from "../functions/setData";
 import Alert from "./Alert";
 import Context from "../context/Context";
+import { BiCaretDown } from "react-icons/all";
 
 const AddStudentForm = () => {
   const [name, setName] = useState("");
   const [CLASS, setClass] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [msg, setMsg] = useState("");
-  const { students } = useContext(Context);
+  const [showClassOptions, setShowClassOptions] = useState(false);
+  const { students, classes } = useContext(Context);
+
+  const changeClass = (className) => {
+    setClass(className);
+    setShowClassOptions((prev) => !prev);
+  };
 
   const AddStudent = (e) => {
     e.preventDefault();
@@ -64,12 +71,41 @@ const AddStudentForm = () => {
       />
 
       <label htmlFor="class">Class</label>
-      <input
-        type="text"
-        id="class"
-        value={CLASS}
-        onChange={(e) => setClass(e.target.value)}
-      />
+      <div className="classes--options">
+        <button
+          className="show--class-options-button"
+          type="button"
+          onClick={() => setShowClassOptions((prev) => !prev)}
+          style={
+            !showClassOptions
+              ? {
+                  borderBottomRightRadius: "5px",
+                  borderBottomLeftRadius: "5px",
+                }
+              : null
+          }
+        >
+          <p>{CLASS ? CLASS : "Select Class from here"}</p>
+          <BiCaretDown />
+        </button>
+
+        <section
+          className="class--options"
+          style={!showClassOptions ? { display: "none" } : null}
+        >
+          {classes.map((className, i) => {
+            return (
+              <button
+                key={i}
+                onClick={() => changeClass(className)}
+                type="button"
+              >
+                {className}
+              </button>
+            );
+          })}
+        </section>
+      </div>
 
       <label htmlFor="rollno">Rollno</label>
       <input
