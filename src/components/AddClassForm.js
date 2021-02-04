@@ -17,6 +17,10 @@ const AddClassForm = () => {
     } else {
       setMsg("Class Name cannot be empty.");
     }
+
+    setTimeout(() => {
+      setMsg("");
+    }, 4000);
   };
 
   return (
