@@ -28,7 +28,6 @@ const AddPage = () => {
         name="type"
         value="class"
         onChange={(e) => setRadioValue(e.target.value)}
-        defaultChecked
       />
       <span>Class</span>
 
