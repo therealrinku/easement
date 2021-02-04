@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddClassForm from "../components/AddClassForm";
 import AddStaffForm from "../components/AddStaffForm";
 import AddStudentForm from "../components/AddStudentForm";
 
@@ -31,7 +32,13 @@ const AddPage = () => {
       />
       <span>Class</span>
 
-      {radioValue === "staff" ? <AddStaffForm /> : <AddStudentForm />}
+      {radioValue === "staff" ? (
+        <AddStaffForm />
+      ) : radioValue === "class" ? (
+        <AddClassForm />
+      ) : (
+        <AddStudentForm />
+      )}
     </div>
   );
 };
