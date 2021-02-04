@@ -12,12 +12,16 @@ const AddClassForm = () => {
     e.preventDefault();
 
     if (className.trim() !== "") {
-      setData("test", "classes", [...classes, className]).then((res) => {
-        if (res === "done") {
-          setClassName("");
-          setMsg(`Successfully created a new class.`);
-        } else setMsg(res);
-      });
+      if (classes.findIndex((cls) => cls === className) < 0) {
+        setData("test", "classes", [...classes, className]).then((res) => {
+          if (res === "done") {
+            setClassName("");
+            setMsg(`Successfully created a new class.`);
+          } else setMsg(res);
+        });
+      } else {
+        setMsg(`${className} already exists.`);
+      }
     } else {
       setMsg("Class Name cannot be empty.");
     }
