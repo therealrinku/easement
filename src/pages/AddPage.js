@@ -6,7 +6,7 @@ const AddPage = () => {
   const [radioValue, setRadioValue] = useState("student");
   return (
     <div className="page">
-      <h4>Add New Staff or Student</h4>
+      <h4>Create New</h4>
       <input
         type="radio"
         name="type"
@@ -22,6 +22,14 @@ const AddPage = () => {
         defaultChecked
       />
       <span>Student</span>
+      <input
+        type="radio"
+        name="type"
+        value="class"
+        onChange={(e) => setRadioValue(e.target.value)}
+        defaultChecked
+      />
+      <span>Class</span>
 
       {radioValue === "staff" ? <AddStaffForm /> : <AddStudentForm />}
     </div>
