@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Alert from "./Alert";
-import addData from "../functions/addData";
+import setData from "../functions/setData";
+import Context from "../context/Context";
 
 const AddClassForm = () => {
   const [msg, setMsg] = useState("");
   const [className, setClassName] = useState("");
+  const { classes } = useContext(Context);
 
   const AddClass = (e) => {
     e.preventDefault();
 
     if (className.trim() !== "") {
-      addData("test", "classes", className).then((res) => {
-        if (res === "done") setMsg(`Successfully added a new class.`);
-        else setMsg(res);
+      setData("test", "classes", [...classes, className]).then((res) => {
+        if (res === "done") {
+          setClassName("");
+          setMsg(`Successfully created a new class.`);
+        } else setMsg(res);
       });
     } else {
       setMsg("Class Name cannot be empty.");
