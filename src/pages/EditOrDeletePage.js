@@ -7,13 +7,12 @@ import setData from "../functions/setData";
 const EditOrDeletePage = () => {
   const [radioValue, setRadioValue] = useState("student");
   const [searchQuery, setSearchQuery] = useState("");
-  const { students, staffs } = useContext(Context);
+  const { students, staffs,classes } = useContext(Context);
 
-  const filteredPeople = (radioValue === "student" ? students : staffs).filter(
+  const filteredPeople = (radioValue === "student" ? students :radioValue==="class"?classes: staffs).filter(
     (person) => {
-      return person.name
-        .toLowerCase()
-        .includes(searchQuery.trim().toLowerCase());
+      return radioValue!=="class"?person.name.toLowerCase():person
+        .includes(searchQuery?.trim().toLowerCase());
     }
   );
 
@@ -73,7 +72,7 @@ const EditOrDeletePage = () => {
             <UserView
               key={i}
               index={i}
-              name={person.name}
+              name={radioValue!=="class"?person.name:person}
               CLASS={person.class}
               rollNo={person.rollNo}
               radioValue={radioValue}

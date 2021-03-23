@@ -62,7 +62,7 @@ const UserView = ({
       ) : (
         <div className="user">
           <b>{name}</b>
-          <p>
+          <p style={radioValue==="class"?{display:"none"}:null}>
             {radioValue === "student" ? "Class:" : "Role:"}
             {CLASS || role}
           </p>
