@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
-import setData from "../functions/setData";
 import Alert from "./Alert";
 import Context from "../context/Context";
 import { BiCaretDown } from "react-icons/all";
 
 const AddStudentForm = () => {
   const [name, setName] = useState("");
-  const [CLASS, setClass] = useState("");
+  const [CLASS, setClass] = useState("test");
   const [rollNo, setRollNo] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -18,39 +17,22 @@ const AddStudentForm = () => {
 
   const AddStudent = (e) => {
     e.preventDefault();
+    //checking data is valid or not
+    const formDataLengthIsValid = {
+      name: name.trim().length > 0,
+      class: CLASS.trim().length > 0,
+      rollNo: rollNo.trim().length > 0,
+      guardianName: guardianName.trim().length > 0,
+      phoneNumber: phoneNumber.trim().length > 0,
+      address: address.trim().length > 0,
+    };
 
-    if (name.trim().length >= 3 && name.trim().length <= 60) {
-      if (CLASS !== "") {
-        if (rollNo > 0) {
-          if (
-            students.findIndex(
-              (student) => student.class === CLASS && student.rollNo === rollNo
-            ) < 0
-          ) {
-            setData("test", "students", [
-              ...students,
-              { name, class: CLASS, rollNo },
-            ]).then((res) => {
-              if (res === "done") {
-                setMsg("Succesfully created a new student.");
-                setName("");
-                setClass("");
-                setRollNo("");
-              } else {
-                setMsg(res);
-              }
-            });
-          } else {
-            setMsg(`Rollno ${rollNo} already taken in class ${CLASS}.`);
-          }
-        } else {
-          setMsg("Rollno cannot be empty or below 1.");
-        }
-      } else {
-        setMsg("Class cannot be empty.");
-      }
-    } else {
-      setMsg("Name must be between 3 and 60 charcters.");
+    let formIsValid = true;
+    for (let e in formDataLengthIsValid) {
+      formIsValid = formIsValid && formDataLengthIsValid[e];
+    }
+
+    if (formIsValid) {
     }
 
     setTimeout(() => {
