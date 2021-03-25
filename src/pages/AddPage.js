@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,Fragment } from "react";
 import AddClassForm from "../components/AddClassForm";
 import AddStaffForm from "../components/AddStaffForm";
 import AddStudentForm from "../components/AddStudentForm";
@@ -6,7 +6,7 @@ import AddStudentForm from "../components/AddStudentForm";
 const AddPage = () => {
   const [radioValue, setRadioValue] = useState("student");
   return (
-    <div className="page">
+    <Fragment>
       <h4>Create New</h4>
       <input
         type="radio"
@@ -38,7 +38,7 @@ const AddPage = () => {
       ) : (
         <AddStudentForm />
       )}
-    </div>
+    </Fragment>
   );
 };
 
