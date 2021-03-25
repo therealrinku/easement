@@ -1,14 +1,15 @@
 import { useState } from "react";
 import Alert from "./Alert";
 import { BiCaretDown } from "react-icons/all";
+import { addStudent } from "../actions/studentActions";
 
 const AddStudentForm = () => {
-  const [name, setName] = useState("");
-  const [CLASS, setClass] = useState("test");
-  const [rollNo, setRollNo] = useState("");
-  const [address, setAddress] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [guardianName, setGuardianName] = useState("");
+  const [studentName, setStudentName] = useState("");
+  const [studentClassName, setStudentClassName] = useState("test");
+  const [studentRollNo, setStudentRollNo] = useState("");
+  const [studentAddress, setStudentAddress] = useState("");
+  const [studentPhoneNumber, setStudentPhoneNumber] = useState("");
+  const [studentGuardianName, setStudentGuardianName] = useState("");
 
   const [msg, setMsg] = useState("");
   const [showClassOptions, setShowClassOptions] = useState(false);
@@ -17,12 +18,12 @@ const AddStudentForm = () => {
     e.preventDefault();
     //checking data is valid or not
     const formDataLengthIsValid = {
-      name: name.trim().length > 0,
-      class: CLASS.trim().length > 0,
-      rollNo: rollNo.trim().length > 0,
-      guardianName: guardianName.trim().length > 0,
-      phoneNumber: phoneNumber.trim().length > 0,
-      address: address.trim().length > 0,
+      studentName: studentName.trim().length > 0,
+      studentClassName: studentClassName.trim().length > 0,
+      studentRollNo: studentRollNo.trim().length > 0,
+      studentGuardianName: studentGuardianName.trim().length > 0,
+      studentPhoneNumber: studentPhoneNumber.trim().length > 0,
+      studentAddress: studentAddress.trim().length > 0,
     };
 
     let formIsValid = true;
@@ -31,6 +32,15 @@ const AddStudentForm = () => {
     }
 
     if (formIsValid) {
+      addStudent({
+        studentName,
+        studentClassName,
+        studentRollNo,
+        studentGuardianName,
+        studentPhoneNumber,
+        studentAddress,
+        studentLinkedUsername: "test",
+      });
     }
 
     setTimeout(() => {
@@ -45,8 +55,8 @@ const AddStudentForm = () => {
       <input
         type="text"
         id="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={studentName}
+        onChange={(e) => setStudentName(e.target.value)}
       />
 
       <label htmlFor="class">Class</label>
@@ -64,7 +74,9 @@ const AddStudentForm = () => {
               : null
           }
         >
-          <p>{CLASS ? CLASS : "Select Class from here"}</p>
+          <p>
+            {studentClassName ? studentClassName : "Select Class from here"}
+          </p>
           <BiCaretDown />
         </button>
 
@@ -90,32 +102,32 @@ const AddStudentForm = () => {
       <input
         type="number"
         id="rollno"
-        value={rollNo}
-        onChange={(e) => setRollNo(e.target.value)}
+        value={studentRollNo}
+        onChange={(e) => setStudentRollNo(e.target.value)}
       />
 
       <label htmlFor="guardian_name">Guardian Name</label>
       <input
         type="text"
         id="guardian_name"
-        value={guardianName}
-        onChange={(e) => setGuardianName(e.target.value)}
+        value={studentGuardianName}
+        onChange={(e) => setStudentGuardianName(e.target.value)}
       />
 
       <label htmlFor="contact_number">Contact Number</label>
       <input
         type="number"
         id="contact_number"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        value={studentPhoneNumber}
+        onChange={(e) => setStudentPhoneNumber(e.target.value)}
       />
 
       <label htmlFor="address">Address</label>
       <input
         type="text"
         id="address"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
+        value={studentAddress}
+        onChange={(e) => setStudentAddress(e.target.value)}
       />
 
       <button className="submit--btn">Submit</button>

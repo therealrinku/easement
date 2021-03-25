@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Alert from "./Alert";
-import setData from "../functions/setData";
+import setData from "../actions/setData";
 import Context from "../context/Context";
 
 const AddClassForm = () => {

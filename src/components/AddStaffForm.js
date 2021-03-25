@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Context from "../context/Context";
-import setData from "../functions/setData";
+import setData from "../actions/setData";
 import Alert from "./Alert";
 
 const AddStaffForm = () => {
