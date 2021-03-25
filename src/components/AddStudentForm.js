@@ -8,6 +8,10 @@ const AddStudentForm = () => {
   const [name, setName] = useState("");
   const [CLASS, setClass] = useState("");
   const [rollNo, setRollNo] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [guardianName, setGuardianName] = useState("");
+
   const [msg, setMsg] = useState("");
   const [showClassOptions, setShowClassOptions] = useState(false);
   const { students, classes } = useContext(Context);
@@ -89,7 +93,7 @@ const AddStudentForm = () => {
           <BiCaretDown />
         </button>
 
-        <section
+        {/*<section
           className="class--options"
           style={!showClassOptions ? { display: "none" } : null}
         >
@@ -104,7 +108,7 @@ const AddStudentForm = () => {
               </button>
             );
           })}
-        </section>
+        </section>*/}
       </div>
 
       <label htmlFor="rollno">Rollno</label>
@@ -113,6 +117,30 @@ const AddStudentForm = () => {
         id="rollno"
         value={rollNo}
         onChange={(e) => setRollNo(e.target.value)}
+      />
+
+      <label htmlFor="guardian_name">Guardian Name</label>
+      <input
+        type="text"
+        id="guardian_name"
+        value={guardianName}
+        onChange={(e) => setGuardianName(e.target.value)}
+      />
+
+      <label htmlFor="contact_number">Contact Number</label>
+      <input
+        type="number"
+        id="contact_number"
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
+      />
+
+      <label htmlFor="address">Address</label>
+      <input
+        type="text"
+        id="address"
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
       />
 
       <button className="submit--btn">Submit</button>
