@@ -13,7 +13,6 @@ const AddStudentForm = () => {
 
   const [msg, setMsg] = useState("");
   const [showClassOptions, setShowClassOptions] = useState(false);
-  const { students, classes } = useContext(Context);
 
   const AddStudent = (e) => {
     e.preventDefault();
