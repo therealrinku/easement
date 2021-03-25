@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Alert from "./Alert";
-import Context from "../context/Context";
 import { BiCaretDown } from "react-icons/all";
 
 const AddStudentForm = () => {
