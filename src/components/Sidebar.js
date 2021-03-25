@@ -6,7 +6,6 @@ import {
   VscHome,
   RiAdminLine,
   RiAddCircleLine,
-  RiEdit2Line,
 } from "react-icons/all";
 import { NavLink } from "react-router-dom";
 import "../styles/Sidebar.css";
@@ -24,11 +23,6 @@ const Sidebar = ({ hideSidebar }) => {
       <NavLink to="/new" exact activeClassName="nav--active">
         <RiAddCircleLine />
         <p>New</p>
-      </NavLink>
-
-      <NavLink to="/editordelete" exact activeClassName="nav--active">
-        <RiEdit2Line />
-        <p>Edit/Delete</p>
       </NavLink>
 
       <NavLink to="/staffs" exact activeClassName="nav--active">
