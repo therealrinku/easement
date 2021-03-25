@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BiCaretDown, HiOutlineSearch } from "react-icons/all";
+import "../styles/Filters.css";
 
 const Filters = ({ searchQuery, setSearchQuery, onlySearchBox }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);

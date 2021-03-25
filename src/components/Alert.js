@@ -1,4 +1,5 @@
 import { FcCheckmark, FcCancel } from "react-icons/all";
+import "../styles/Alert.css";
 
 const Alert = ({ msg }) => {
   return (

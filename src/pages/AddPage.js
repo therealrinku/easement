@@ -1,7 +1,8 @@
-import { useState,Fragment } from "react";
+import { useState, Fragment } from "react";
 import AddClassForm from "../components/AddClassForm";
 import AddStaffForm from "../components/AddStaffForm";
 import AddStudentForm from "../components/AddStudentForm";
+import "../styles/Form.css";
 
 const AddPage = () => {
   const [radioValue, setRadioValue] = useState("student");

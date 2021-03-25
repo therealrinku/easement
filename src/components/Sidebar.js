@@ -9,6 +9,7 @@ import {
   RiEdit2Line,
 } from "react-icons/all";
 import { NavLink } from "react-router-dom";
+import "../styles/Sidebar.css";
 
 const Sidebar = ({ hideSidebar }) => {
   return (

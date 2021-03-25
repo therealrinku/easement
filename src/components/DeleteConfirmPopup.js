@@ -1,3 +1,5 @@
+import "../styles/DeletePopup.css";
+
 const DeleteConfirmPopup = ({ name, Delete, toggle }) => {
   return (
     <div className="delete--confirmation--popup">

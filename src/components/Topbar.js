@@ -1,4 +1,5 @@
 import { GiHamburgerMenu } from "react-icons/all";
+import "../styles/Topbar.css";
 
 const Topbar = ({ toggleSidebar, sideBarIsClosed }) => {
   return (
