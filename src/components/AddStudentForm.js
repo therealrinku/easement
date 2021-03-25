@@ -39,7 +39,7 @@ const AddStudentForm = () => {
         studentGuardianName,
         studentPhoneNumber,
         studentAddress,
-        studentLinkedUsername: "test",
+        linkedUsername: "test",
       }).then((res) => {
         setMsg(res);
         if (res.includes("created")) {
