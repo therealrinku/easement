@@ -40,7 +40,12 @@ const AddStudentForm = () => {
         studentPhoneNumber,
         studentAddress,
         studentLinkedUsername: "test",
-      }).then((res) => setMsg(res));
+      }).then((res) => {
+        setMsg(res);
+        if (res.includes("created")) {
+          window.location.reload();
+        }
+      });
     } else {
       setMsg("Any input field cannot be empty.");
     }
