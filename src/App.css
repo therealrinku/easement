@@ -10,6 +10,11 @@
   width: 100%;
 }
 
+.app span {
+  font-size: 15px;
+  margin-right: 5px;
+}
+
 .page {
   background: white;
   padding: 25px;
