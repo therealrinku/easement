@@ -1,4 +1,5 @@
 import { Tooltip } from "@material-ui/core";
+import { Fragment } from "react";
 import { MdEdit } from "react-icons/all";
 import Filters from "../components/Filters";
 
@@ -9,7 +10,7 @@ const ResultsPage = () => {
   ];
 
   return (
-    <div className="page">
+    <Fragment>
       <h4>Results</h4>
       <Filters />
       <table className="table">
@@ -53,7 +54,7 @@ const ResultsPage = () => {
           })}
         </tbody>
       </table>
-    </div>
+    </Fragment>
   );
 };
 

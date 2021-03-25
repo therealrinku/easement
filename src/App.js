@@ -10,7 +10,6 @@ import AddPage from "./pages/AddPage";
 import getData from "./functions/getData";
 import Context from "./context/Context";
 import EditOrDeletePage from "./pages/EditOrDeletePage";
-
 import "./App.css";
 
 const App = () => {

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState,Fragment } from "react";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
 
@@ -10,7 +10,7 @@ const StaffsPage = () => {
   });
 
   return (
-    <div className="page">
+    <Fragment>
       <h4>Staffs</h4>
       <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <table className="table">
@@ -44,7 +44,7 @@ const StaffsPage = () => {
           })}
         </tbody>
       </table>
-    </div>
+    </Fragment>
   );
 };
 

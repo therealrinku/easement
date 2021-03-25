@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState,Fragment } from "react";
 import Filters from "../components/Filters";
 import UserView from "../components/UserView";
 import Context from "../context/Context";
@@ -34,7 +34,7 @@ const EditOrDeletePage = () => {
   };
 
   return (
-    <div className="page">
+    <Fragment>
       <h4>Edit/Delete</h4>
       <input
         type="radio"
@@ -83,7 +83,7 @@ const EditOrDeletePage = () => {
           );
         })}
       </div>
-    </div>
+    </Fragment>
   );
 };
 
