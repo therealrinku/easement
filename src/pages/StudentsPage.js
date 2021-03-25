@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { useContext, useState } from "react";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
@@ -13,7 +14,7 @@ const StudentsPage = () => {
   });
 
   return (
-    <div className="page">
+    <Fragment>
       <h4>Students</h4>
       <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
@@ -48,7 +49,7 @@ const StudentsPage = () => {
           })}
         </tbody>
       </table>
-    </div>
+    </Fragment>
   );
 };
 

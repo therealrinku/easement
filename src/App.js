@@ -9,8 +9,9 @@ import StaffsPage from "./pages/StaffsPage";
 import AddPage from "./pages/AddPage";
 import getData from "./functions/getData";
 import Context from "./context/Context";
-import "./App.css";
 import EditOrDeletePage from "./pages/EditOrDeletePage";
+
+import "./App.css";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -35,7 +36,7 @@ const App = () => {
           />
 
           <div
-            className="main"
+            className="page"
             style={showSidebar ? { marginLeft: "17.5%" } : null}
           >
             <Route path="/students" exact component={StudentsPage} />
