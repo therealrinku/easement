@@ -5,7 +5,7 @@ import { addStudent } from "../actions/studentActions";
 
 const AddStudentForm = () => {
   const [studentName, setStudentName] = useState("");
-  const [studentClassName, setStudentClassName] = useState("test");
+  const [studentClassName, setStudentClassName] = useState("class 8");
   const [studentRollNo, setStudentRollNo] = useState("");
   const [studentAddress, setStudentAddress] = useState("");
   const [studentPhoneNumber, setStudentPhoneNumber] = useState("");
@@ -40,7 +40,9 @@ const AddStudentForm = () => {
         studentPhoneNumber,
         studentAddress,
         studentLinkedUsername: "test",
-      });
+      }).then((res) => setMsg(res));
+    } else {
+      setMsg("Any input field cannot be empty.");
     }
 
     setTimeout(() => {
