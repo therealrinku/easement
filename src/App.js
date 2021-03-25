@@ -9,7 +9,6 @@ import StaffsPage from "./pages/StaffsPage";
 import AddPage from "./pages/AddPage";
 import getData from "./functions/getData";
 import Context from "./context/Context";
-import EditOrDeletePage from "./pages/EditOrDeletePage";
 import "./App.css";
 
 const App = () => {
@@ -43,7 +42,6 @@ const App = () => {
             <Route path="/results" exact component={ResultsPage} />
             <Route path="/staffs" exact component={StaffsPage} />
             <Route path="/new" exact component={AddPage} />
-            <Route path="/editordelete" exact component={EditOrDeletePage} />
           </div>
         </BrowserRouter>
       </Context.Provider>
