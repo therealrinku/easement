@@ -16,11 +16,6 @@ const AddStudentForm = () => {
   const [showClassOptions, setShowClassOptions] = useState(false);
   const { students, classes } = useContext(Context);
 
-  const changeClass = (className) => {
-    setClass(className);
-    setShowClassOptions((prev) => !prev);
-  };
-
   const AddStudent = (e) => {
     e.preventDefault();
 
