@@ -19,8 +19,9 @@ const App = () => {
 
   useEffect(() => {
     getData("test", "students", setStudents);
-    getData("test", "staffs", setStaffs);
-    getData("test", "classes", setClasses);
+    console.log(students);
+    //getData("test", "staffs", setStaffs);
+    //getData("test", "classes", setClasses);
   }, []);
 
   return (

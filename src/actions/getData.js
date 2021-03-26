@@ -2,10 +2,10 @@ import db from "../firebase/db";
 
 const getData = async (username, dataType, nextFunction) => {
   return db
-    .collection(username)
-    .doc(dataType)
-    .onSnapshot((doc) => {
-      nextFunction(doc.data()?.[dataType] || []);
+    .collection(dataType)
+    .where("linkedUsername", "==", username)
+    .onSnapshot((snap) => {
+      nextFunction(snap.docs.map((doc) => doc.data()));
     });
 };
 
