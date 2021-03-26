@@ -1,3 +1,7 @@
+.app button {
+  outline: none;
+}
+
 .app button:hover {
   cursor: pointer;
 }
