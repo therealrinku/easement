@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Alert from "./Alert";
-import setData from "../actions/setData";
+import { addClass } from "../actions/classActions";
 import Context from "../context/Context";
 
 const AddClassForm = () => {
@@ -12,12 +12,14 @@ const AddClassForm = () => {
     e.preventDefault();
 
     if (className.trim() !== "") {
+      //checking if same class name exists
       if (classes.findIndex((cls) => cls === className) < 0) {
-        setData("test", "classes", [...classes, className]).then((res) => {
-          if (res === "done") {
+        addClass({ className }).then((res) => {
+          setMsg(res);
+          if (res.includes("created")) {
+            //clearing state
             setClassName("");
-            setMsg(`Successfully created a new class.`);
-          } else setMsg(res);
+          }
         });
       } else {
         setMsg(`${className} already exists.`);
