@@ -1,4 +1,4 @@
-import { useContext, useState,Fragment } from "react";
+import { useContext, useState, Fragment } from "react";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
 
@@ -6,7 +6,9 @@ const StaffsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { staffs } = useContext(Context);
   const filteredStaffs = staffs.filter((staff) => {
-    return staff.name.toLowerCase().includes(searchQuery.trim().toLowerCase());
+    return staff.staffName
+      .toLowerCase()
+      .includes(searchQuery.trim().toLowerCase());
   });
 
   return (
@@ -35,10 +37,10 @@ const StaffsPage = () => {
                     border: "none",
                   }}
                 >
-                  <p>{staff.name}</p>
+                  <p>{staff.staffName}</p>
                 </td>
-                <td>{staff.role}</td>
-                <td>{staff.salary}</td>
+                <td>{staff.staffRole}</td>
+                <td>{staff.staffSalary}</td>
               </tr>
             );
           })}
