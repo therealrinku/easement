@@ -43,7 +43,13 @@ const AddStudentForm = () => {
       }).then((res) => {
         setMsg(res);
         if (res.includes("created")) {
-          window.location.reload();
+          //clearing state
+          setStudentName("");
+          setStudentPhoneNumber("");
+          setStudentGuardianName("");
+          setStudentRollNo("");
+          setStudentClassName("");
+          setStudentAddress("");
         }
       });
     } else {

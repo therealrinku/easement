@@ -33,7 +33,10 @@ const AddStaffForm = () => {
       }).then((res) => {
         setMsg(res);
         if (res.includes("created")) {
-          window.location.reload();
+          //clearing state
+          setStaffName("");
+          setStaffRole("");
+          setStaffSalary("");
         }
       });
     } else {
