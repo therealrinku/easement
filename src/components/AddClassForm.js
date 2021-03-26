@@ -14,7 +14,7 @@ const AddClassForm = () => {
     if (className.trim() !== "") {
       //checking if same class name exists
       if (classes.findIndex((cls) => cls === className) < 0) {
-        addClass({ className }).then((res) => {
+        addClass({ className, linkedUsername: "test" }).then((res) => {
           setMsg(res);
           if (res.includes("created")) {
             //clearing state
