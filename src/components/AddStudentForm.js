@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Alert from "./Alert";
 import { BiCaretDown } from "react-icons/all";
 import { addStudent } from "../actions/studentActions";
+import Context from "../context/Context";
 
 const AddStudentForm = () => {
   const [studentName, setStudentName] = useState("");
@@ -13,6 +14,9 @@ const AddStudentForm = () => {
 
   const [msg, setMsg] = useState("");
   const [showClassOptions, setShowClassOptions] = useState(false);
+
+  //
+  const { students } = useContext(Context);
 
   const AddStudent = (e) => {
     e.preventDefault();
@@ -32,26 +36,37 @@ const AddStudentForm = () => {
     }
 
     if (formIsValid) {
-      addStudent({
-        studentName,
-        studentClassName,
-        studentRollNo,
-        studentGuardianName,
-        studentPhoneNumber,
-        studentAddress,
-        linkedUsername: "test",
-      }).then((res) => {
-        setMsg(res);
-        if (res.includes("created")) {
-          //clearing state
-          setStudentName("");
-          setStudentPhoneNumber("");
-          setStudentGuardianName("");
-          setStudentRollNo("");
-          setStudentClassName("");
-          setStudentAddress("");
-        }
-      });
+      //checking if student roll no is already taken
+      if (
+        students.findIndex(
+          (student) =>
+            student.studentClassName === studentClassName &&
+            student.studentRollNo === studentRollNo
+        ) < 0
+      ) {
+        addStudent({
+          studentName,
+          studentClassName,
+          studentRollNo,
+          studentGuardianName,
+          studentPhoneNumber,
+          studentAddress,
+          linkedUsername: "test",
+        }).then((res) => {
+          setMsg(res);
+          if (res.includes("created")) {
+            //clearing state
+            setStudentName("");
+            setStudentPhoneNumber("");
+            setStudentGuardianName("");
+            setStudentRollNo("");
+            setStudentClassName("");
+            setStudentAddress("");
+          }
+        });
+      } else {
+        setMsg(`Roll no ${studentRollNo} already taken in ${studentClassName}`);
+      }
     } else {
       setMsg("Any input field cannot be empty.");
     }
