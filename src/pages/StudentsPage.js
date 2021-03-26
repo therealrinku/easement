@@ -1,4 +1,4 @@
-import { useContext, useState ,Fragment} from "react";
+import { useContext, useState, Fragment } from "react";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
 
@@ -7,7 +7,7 @@ const StudentsPage = () => {
   const { students } = useContext(Context);
 
   const filteredStudents = students.filter((student) => {
-    return student.name
+    return student.studentName
       .toLowerCase()
       .includes(searchQuery.trim().toLowerCase());
   });
@@ -39,10 +39,10 @@ const StudentsPage = () => {
                     border: "none",
                   }}
                 >
-                  <p>{student.name}</p>
+                  <p>{student.studentName}</p>
                 </td>
-                <td>{student.class}</td>
-                <td>{student.rollNo}</td>
+                <td>{student.studentClassName}</td>
+                <td>{student.studentRollNo}</td>
               </tr>
             );
           })}
