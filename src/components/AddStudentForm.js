@@ -3,10 +3,11 @@ import Alert from "./Alert";
 import { BiCaretDown } from "react-icons/all";
 import { addStudent } from "../actions/studentActions";
 import Context from "../context/Context";
+import ClassesDropdown from "./ClassesDropdown";
 
 const AddStudentForm = () => {
   const [studentName, setStudentName] = useState("");
-  const [studentClassName, setStudentClassName] = useState("class 8");
+  const [studentClassName, setStudentClassName] = useState("");
   const [studentRollNo, setStudentRollNo] = useState("");
   const [studentAddress, setStudentAddress] = useState("");
   const [studentPhoneNumber, setStudentPhoneNumber] = useState("");
@@ -15,8 +16,14 @@ const AddStudentForm = () => {
   const [msg, setMsg] = useState("");
   const [showClassOptions, setShowClassOptions] = useState(false);
 
+  //update class name and toggle dropdown
+  const updateClassName = (className) => {
+    setStudentClassName(className);
+    setShowClassOptions(false);
+  };
+
   //
-  const { students } = useContext(Context);
+  const { students, classes } = useContext(Context);
 
   const AddStudent = (e) => {
     e.preventDefault();
@@ -108,22 +115,12 @@ const AddStudentForm = () => {
           <BiCaretDown />
         </button>
 
-        {/*<section
-          className="class--options"
-          style={!showClassOptions ? { display: "none" } : null}
-        >
-          {classes.map((className, i) => {
-            return (
-              <button
-                key={i}
-                onClick={() => changeClass(className)}
-                type="button"
-              >
-                {className}
-              </button>
-            );
-          })}
-        </section>*/}
+        {showClassOptions ? (
+          <ClassesDropdown
+            classes={classes}
+            updateClassName={updateClassName}
+          />
+        ) : null}
       </div>
 
       <label htmlFor="rollno">Rollno</label>
