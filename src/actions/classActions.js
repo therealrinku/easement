@@ -6,7 +6,7 @@ export const addClass = (data) => {
       .add({
         ...data,
       })
-      .then(() => resolve("Successfully created a new student."))
+      .then(() => resolve("Successfully created a new class."))
       .catch((err) => resolve(err.message));
   });
 };
