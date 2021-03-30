@@ -26,6 +26,12 @@
   padding: 10px;
   color: red;
   border: none;
+  border-bottom-left-radius: 5px;
+}
+
+.delete--confirmation--popup button:last-child {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 5px;
 }
 
 .delete--confirmation--popup button:hover {
