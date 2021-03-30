@@ -5,7 +5,11 @@ const getData = async (username, dataType, nextFunction) => {
     .collection(dataType)
     .where("linkedUsername", "==", username)
     .onSnapshot((snap) => {
-      nextFunction(snap.docs.map((doc) => doc.data()));
+      const data = [];
+      snap.docs.map((doc) => {
+        data.push({ id: doc.id, ...doc.data() });
+      });
+      nextFunction(data);
     });
 };
 
