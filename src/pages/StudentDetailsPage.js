@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getStudentDetails } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import Backdrop from "../components/Backdrop";
+import overflowToggler from "../utils/OverflowToggler";
 
 const StudentDetailsPage = () => {
   const [details, setDetails] = useState({});
@@ -14,6 +15,11 @@ const StudentDetailsPage = () => {
       setDetails(data);
     });
   }, [params.studentId]);
+
+  const toggleModal = (modalFunc) => {
+    overflowToggler();
+    modalFunc((prev) => !prev);
+  };
 
   return (
     <Fragment>
@@ -27,12 +33,15 @@ const StudentDetailsPage = () => {
       <p>Contact Number: {details.studentPhoneNumber}</p>
       <section className="control-buttons">
         <button>Edit</button>
-        <button onClick={() => setShowDeletePopup(true)}>Delete</button>
+        <button onClick={() => toggleModal(setShowDeletePopup)}>Delete</button>
       </section>
 
       {showDeletePopup ? (
         <Fragment>
-          <DeleteConfirmPopup />
+          <DeleteConfirmPopup
+            toggle={() => toggleModal(setShowDeletePopup)}
+            name={details.studentName}
+          />
           <Backdrop />
         </Fragment>
       ) : null}
