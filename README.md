@@ -8,4 +8,7 @@
 * Firebase database and hosting
 
 ### Features
-* ON progress
+* Add,update and delete students
+* Add,update and delete staffs
+* Automatic attendance system
+* Due calculator
