@@ -5,15 +5,12 @@ import { getStudentDetails } from "../actions/studentActions";
 const DetailsPage = () => {
   const [details, setDetails] = useState({});
   const params = useParams();
-  console.log(params.studentId);
 
   useEffect(() => {
     getStudentDetails(params.studentId).then((data) => {
       setDetails(data);
     });
   }, [params.studentId]);
-
-  console.log(details);
 
   return (
     <Fragment>
