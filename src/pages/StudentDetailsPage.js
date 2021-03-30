@@ -2,12 +2,14 @@ import { Fragment, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteStudent, getStudentDetails } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
+import EditPersonForm from "../components/EditPersonForm";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
 
 const StudentDetailsPage = () => {
   const [details, setDetails] = useState({});
   const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const [showEditPopup, setShowEditPopup] = useState(false);
   const params = useParams();
   const history = useHistory();
 
@@ -41,7 +43,7 @@ const StudentDetailsPage = () => {
       <p>Guardian Name: {details.studentGuardianName}</p>
       <p>Contact Number: {details.studentPhoneNumber}</p>
       <section className="control-buttons">
-        <button>Edit</button>
+        <button onClick={() => toggleModal(setShowEditPopup)}>Edit</button>
         <button onClick={() => toggleModal(setShowDeletePopup)}>Delete</button>
       </section>
 
@@ -53,6 +55,17 @@ const StudentDetailsPage = () => {
             Delete={deleteStudentConfirm}
           />
           <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
+        </Fragment>
+      ) : null}
+
+      {showEditPopup ? (
+        <Fragment>
+          <EditPersonForm
+            toggle={() => toggleModal(setShowEditPopup)}
+            name={details.studentName}
+            Delete={deleteStudentConfirm}
+          />
+          <Backdrop toggle={() => toggleModal(setShowEditPopup)} />
         </Fragment>
       ) : null}
     </Fragment>
