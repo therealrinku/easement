@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getStudentDetails } from "../actions/studentActions";
+import { useParams, useHistory } from "react-router-dom";
+import { deleteStudent, getStudentDetails } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
@@ -9,6 +9,7 @@ const StudentDetailsPage = () => {
   const [details, setDetails] = useState({});
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     getStudentDetails(params.studentId).then((data) => {
@@ -19,6 +20,14 @@ const StudentDetailsPage = () => {
   const toggleModal = (modalFunc) => {
     overflowToggler();
     modalFunc((prev) => !prev);
+  };
+
+  const deleteStudentConfirm = () => {
+    deleteStudent(params.studentId).then((res) => {
+      if (res === "done") {
+        history.goBack();
+      }
+    });
   };
 
   return (
@@ -41,6 +50,7 @@ const StudentDetailsPage = () => {
           <DeleteConfirmPopup
             toggle={() => toggleModal(setShowDeletePopup)}
             name={details.studentName}
+            Delete={deleteStudentConfirm}
           />
           <Backdrop />
         </Fragment>
