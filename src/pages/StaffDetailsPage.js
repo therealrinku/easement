@@ -20,7 +20,7 @@ const StaffDetailsPage = () => {
       <p>Role: {details.staffRole}</p>
       <p>Salary: {details.staffSalary}</p>
       <p>Address: {details.staffAddress}</p>
-      <p>Contact Number: {details.staffPhoneNumber}</p>
+      <p>Contact Number: {details.staffContactNumber}</p>
     </Fragment>
   );
 };
