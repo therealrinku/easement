@@ -1,9 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getStaffDetails } from "../actions/staffActions";
+import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
+import Backdrop from "../components/Backdrop";
+import overflowToggler from "../utils/OverflowToggler";
 
 const StaffDetailsPage = () => {
   const [details, setDetails] = useState({});
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
   const params = useParams();
 
   useEffect(() => {
@@ -11,6 +15,11 @@ const StaffDetailsPage = () => {
       setDetails(data);
     });
   }, [params.studentId]);
+
+  const toggleModal = (modalFunc) => {
+    overflowToggler();
+    modalFunc((prev) => !prev);
+  };
 
   return (
     <Fragment>
@@ -23,8 +32,18 @@ const StaffDetailsPage = () => {
       <p>Contact Number: {details.staffContactNumber}</p>
       <section className="control-buttons">
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => toggleModal(setShowDeletePopup)}>Delete</button>
       </section>
+
+      {showDeletePopup ? (
+        <Fragment>
+          <DeleteConfirmPopup
+            toggle={() => toggleModal(setShowDeletePopup)}
+            name={details.staffName}
+          />
+          <Backdrop />
+        </Fragment>
+      ) : null}
     </Fragment>
   );
 };
