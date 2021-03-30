@@ -21,6 +21,10 @@ const StaffDetailsPage = () => {
       <p>Salary: {details.staffSalary}</p>
       <p>Address: {details.staffAddress}</p>
       <p>Contact Number: {details.staffContactNumber}</p>
+      <section className="control-buttons">
+        <button>Edit</button>
+        <button>Delete</button>
+      </section>
     </Fragment>
   );
 };
