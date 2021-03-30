@@ -6,6 +6,7 @@ import StudentsPage from "./pages/StudentsPage";
 import FeesPage from "./pages/FeesPage";
 import ResultsPage from "./pages/ResultsPage";
 import StaffsPage from "./pages/StaffsPage";
+import StudentDetailsPage from "./pages/StudentDetailsPage";
 import AddPage from "./pages/AddPage";
 import getData from "./actions/getData";
 import Context from "./context/Context";
@@ -42,6 +43,10 @@ const App = () => {
             <Route path="/results" exact component={ResultsPage} />
             <Route path="/staffs" exact component={StaffsPage} />
             <Route path="/new" exact component={AddPage} />
+            <Route
+              path="/student/details/:studentId"
+              component={StudentDetailsPage}
+            />
           </div>
         </BrowserRouter>
       </Context.Provider>

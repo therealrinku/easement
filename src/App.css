@@ -6,6 +6,17 @@
   cursor: pointer;
 }
 
+.app .avatar--image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.app .avatar--image ~ p {
+  font-size: 15px;
+}
+
 .app {
   font-family: arial;
   background: #fafafa;
