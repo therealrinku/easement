@@ -52,7 +52,7 @@ const StudentDetailsPage = () => {
             name={details.studentName}
             Delete={deleteStudentConfirm}
           />
-          <Backdrop />
+          <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
         </Fragment>
       ) : null}
     </Fragment>
