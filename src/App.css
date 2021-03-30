@@ -17,6 +17,10 @@
   border-radius: 5px;
 }
 
+.app .control-buttons button:hover {
+  opacity: 0.9;
+}
+
 .app .control-buttons button:last-child {
   background: #fe2c55;
 }
