@@ -1,5 +1,15 @@
 import db from "../firebase/db";
 
+export const deleteStaff = (staffId) => {
+  return new Promise((resolve) => {
+    db.collection("staffs")
+      .doc(staffId)
+      .delete()
+      .then(resolve("done"))
+      .catch((err) => resolve(err.message));
+  });
+};
+
 export const addStaff = (data) => {
   return new Promise((resolve) => {
     db.collection("staffs")
