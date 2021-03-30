@@ -2,6 +2,25 @@
   outline: none;
 }
 
+.app .control-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.app .control-buttons button {
+  border: none;
+  background: inherit;
+  padding: 8px 20px;
+  background: #4682bf;
+  color: white;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.app .control-buttons button:last-child {
+  background: #fe2c55;
+}
+
 .app .link {
   color: black;
   text-decoration: none;

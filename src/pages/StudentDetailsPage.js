@@ -22,6 +22,10 @@ const StudentDetailsPage = () => {
       <p>Address: {details.studentAddress}</p>
       <p>Guardian Name: {details.studentGuardianName}</p>
       <p>Contact Number: {details.studentPhoneNumber}</p>
+      <section className="control-buttons">
+        <button>Edit</button>
+        <button>Delete</button>
+      </section>
     </Fragment>
   );
 };
