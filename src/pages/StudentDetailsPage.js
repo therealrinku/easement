@@ -1,9 +1,12 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getStudentDetails } from "../actions/studentActions";
+import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
+import Backdrop from "../components/Backdrop";
 
 const StudentDetailsPage = () => {
   const [details, setDetails] = useState({});
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
   const params = useParams();
 
   useEffect(() => {
@@ -24,8 +27,15 @@ const StudentDetailsPage = () => {
       <p>Contact Number: {details.studentPhoneNumber}</p>
       <section className="control-buttons">
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => setShowDeletePopup(true)}>Delete</button>
       </section>
+
+      {showDeletePopup ? (
+        <Fragment>
+          <DeleteConfirmPopup />
+          <Backdrop />
+        </Fragment>
+      ) : null}
     </Fragment>
   );
 };
