@@ -40,10 +40,7 @@ const StudentsPage = () => {
                     border: "none",
                   }}
                 >
-                  <Link
-                    to={`/student/details/${student.id}`}
-                    className="student-link"
-                  >
+                  <Link to={`/student/details/${student.id}`} className="link">
                     {student.studentName}
                   </Link>
                 </td>

@@ -2,12 +2,12 @@
   outline: none;
 }
 
-.app .student-link {
+.app .link {
   color: black;
   text-decoration: none;
 }
 
-.app .student-link:hover {
+.app .link:hover {
   text-decoration: underline;
 }
 

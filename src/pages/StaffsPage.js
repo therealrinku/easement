@@ -1,4 +1,5 @@
 import { useContext, useState, Fragment } from "react";
+import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
 
@@ -37,7 +38,9 @@ const StaffsPage = () => {
                     border: "none",
                   }}
                 >
-                  <p>{staff.staffName}</p>
+                  <Link to={`/staff/details/${staff.id}`} className="link">
+                    {staff.staffName}
+                  </Link>
                 </td>
                 <td>{staff.staffRole}</td>
                 <td>{staff.staffSalary}</td>
