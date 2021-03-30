@@ -7,6 +7,8 @@ const AddStaffForm = () => {
   const [staffName, setStaffName] = useState("");
   const [staffRole, setStaffRole] = useState("");
   const [staffSalary, setStaffSalary] = useState("");
+  const [staffAddress, setStaffAddress] = useState("");
+  const [staffContactNumber, setStaffContactNumber] = useState("");
   const [msg, setMsg] = useState("");
   const { staffs } = useContext(Context);
 
@@ -29,6 +31,8 @@ const AddStaffForm = () => {
         staffName,
         staffRole,
         staffSalary,
+        staffContactNumber,
+        staffAddress,
         linkedUsername: "test",
       }).then((res) => {
         setMsg(res);
@@ -37,6 +41,8 @@ const AddStaffForm = () => {
           setStaffName("");
           setStaffRole("");
           setStaffSalary("");
+          setStaffContactNumber("");
+          setStaffAddress("");
         }
       });
     } else {
@@ -73,6 +79,22 @@ const AddStaffForm = () => {
         id="salary"
         value={staffSalary}
         onChange={(e) => setStaffSalary(e.target.value)}
+      />
+
+      <label htmlFor="address">Address</label>
+      <input
+        type="text"
+        id="address"
+        value={staffAddress}
+        onChange={(e) => setStaffAddress(e.target.value)}
+      />
+
+      <label htmlFor="contact">Contact Number</label>
+      <input
+        type="number"
+        id="contact"
+        value={staffContactNumber}
+        onChange={(e) => setStaffContactNumber(e.target.value)}
       />
 
       <button className="submit--btn">Submit</button>
