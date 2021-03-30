@@ -25,6 +25,11 @@
 .delete--confirmation--popup button {
   padding: 10px;
   color: red;
+  border: none;
+}
+
+.delete--confirmation--popup button:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .delete--confirmation--popup button:last-child {
