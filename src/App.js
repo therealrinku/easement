@@ -11,6 +11,7 @@ import AddPage from "./pages/AddPage";
 import getData from "./actions/getData";
 import Context from "./context/Context";
 import "./App.css";
+import StaffDetailsPage from "./pages/StaffDetailsPage";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -46,6 +47,10 @@ const App = () => {
             <Route
               path="/student/details/:studentId"
               component={StudentDetailsPage}
+            />
+            <Route
+              path="/staff/details/:staffId"
+              component={StaffDetailsPage}
             />
           </div>
         </BrowserRouter>
