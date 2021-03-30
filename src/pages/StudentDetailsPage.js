@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import db from "../firebase/db";
+import { getStudentDetails } from "../actions/studentActions";
 
 const DetailsPage = () => {
   const [details, setDetails] = useState({});
@@ -8,12 +8,9 @@ const DetailsPage = () => {
   console.log(params.studentId);
 
   useEffect(() => {
-    db.collection("students")
-      .doc(params.studentId)
-      .get()
-      .then((doc) => {
-        setDetails(doc.data());
-      });
+    getStudentDetails(params.studentId).then((data) => {
+      setDetails(data);
+    });
   }, [params.studentId]);
 
   console.log(details);
