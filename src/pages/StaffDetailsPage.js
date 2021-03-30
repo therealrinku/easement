@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getStaffDetails } from "../actions/staffActions";
+import { useParams, useHistory } from "react-router-dom";
+import { deleteStaff, getStaffDetails } from "../actions/staffActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
@@ -9,6 +9,7 @@ const StaffDetailsPage = () => {
   const [details, setDetails] = useState({});
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     getStaffDetails(params.staffId).then((data) => {
@@ -19,6 +20,14 @@ const StaffDetailsPage = () => {
   const toggleModal = (modalFunc) => {
     overflowToggler();
     modalFunc((prev) => !prev);
+  };
+
+  const deleteStaffConfirm = () => {
+    deleteStaff(params.staffId).then((res) => {
+      if (res === "done") {
+        history.goBack();
+      }
+    });
   };
 
   return (
@@ -40,6 +49,7 @@ const StaffDetailsPage = () => {
           <DeleteConfirmPopup
             toggle={() => toggleModal(setShowDeletePopup)}
             name={details.staffName}
+            Delete={deleteStaffConfirm}
           />
           <Backdrop />
         </Fragment>
