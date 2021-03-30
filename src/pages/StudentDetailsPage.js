@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getStudentDetails } from "../actions/studentActions";
 
-const DetailsPage = () => {
+const StudentDetailsPage = () => {
   const [details, setDetails] = useState({});
   const params = useParams();
 
@@ -26,4 +26,4 @@ const DetailsPage = () => {
   );
 };
 
-export default DetailsPage;
+export default StudentDetailsPage;
