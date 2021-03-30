@@ -8,13 +8,8 @@ const backdropStyles = {
   zIndex: "2",
 };
 
-const Backdrop = ({ show, toggle }) => {
-  return (
-    <div
-      style={show ? backdropStyles : { display: "none" }}
-      onClick={toggle}
-    ></div>
-  );
+const Backdrop = ({ toggle }) => {
+  return <div style={backdropStyles} onClick={toggle}></div>;
 };
 
 export default Backdrop;
