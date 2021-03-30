@@ -16,12 +16,12 @@ const StudentDetailsPage = () => {
     <Fragment>
       <h4>Student Details</h4>
       <img src="https://bit.ly/3m1Ny2x" className="avatar--image" />
-      <p>Student Name: {details.studentName}</p>
-      <p>Student Class: {details.studentClassName}</p>
-      <p>Student Roll no: {details.studentRollNo}</p>
-      <p>Student Address: {details.studentAddress}</p>
-      <p>Student Guardian Name: {details.studentGuardianName}</p>
-      <p>Student Contact Number: {details.studentPhoneNumber}</p>
+      <p>Name: {details.studentName}</p>
+      <p>Class: {details.studentClassName}</p>
+      <p>Roll no: {details.studentRollNo}</p>
+      <p>Address: {details.studentAddress}</p>
+      <p>Guardian Name: {details.studentGuardianName}</p>
+      <p>Contact Number: {details.studentPhoneNumber}</p>
     </Fragment>
   );
 };
