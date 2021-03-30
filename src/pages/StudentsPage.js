@@ -1,4 +1,5 @@
 import { useContext, useState, Fragment } from "react";
+import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
 import Context from "../context/Context";
 
@@ -39,7 +40,9 @@ const StudentsPage = () => {
                     border: "none",
                   }}
                 >
-                  <p>{student.studentName}</p>
+                  <Link to={`/student/details/${student.id}`}>
+                    {student.studentName}
+                  </Link>
                 </td>
                 <td>{student.studentClassName}</td>
                 <td>{student.studentRollNo}</td>
