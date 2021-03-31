@@ -61,7 +61,6 @@ const StudentDetailsPage = () => {
 
       {showEditPopup ? (
         <Fragment>
-          <h4>Edit ${details.studentName}</h4>
           <AddStudentForm
             {...details}
             toggle={() => toggleModal(setShowEditPopup)}
