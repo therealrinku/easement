@@ -29,7 +29,8 @@
   border: solid 1px rgba(0, 0, 0, 0.2);
 }
 
-.new--form .show--class-options-button {
+.new--form .show--class-options-button,
+.edit--form .show--class-options-button {
   display: flex;
   align-items: center;
   background: inherit;
@@ -39,6 +40,7 @@
   border-radius: 5px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
+  border: solid 1px rgba(0, 0, 0, 0.2);
 }
 
 .edit--form {
@@ -59,8 +61,4 @@
   padding: 10px;
   border-radius: 5px;
   background: whitesmoke;
-}
-
-.edit--form h4 {
-  margin-bottom: -20px;
 }
