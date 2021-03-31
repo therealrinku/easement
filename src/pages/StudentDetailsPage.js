@@ -2,9 +2,9 @@ import { Fragment, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteStudent, getStudentDetails } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
-import EditStudentForm from "../components/EditStudentForm";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
+import AddStudentForm from "../components/AddStudentForm";
 
 const StudentDetailsPage = () => {
   const [details, setDetails] = useState({});
@@ -61,9 +61,11 @@ const StudentDetailsPage = () => {
 
       {showEditPopup ? (
         <Fragment>
-          <EditStudentForm
-            toggle={() => toggleModal(setShowEditPopup)}
+          <h4>Edit ${details.studentName}</h4>
+          <AddStudentForm
             {...details}
+            toggle={() => toggleModal(setShowEditPopup)}
+            Update={true}
           />
           <Backdrop toggle={() => toggleModal(setShowEditPopup)} />
         </Fragment>

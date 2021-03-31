@@ -94,7 +94,7 @@ const AddStudentForm = (props) => {
 
   return (
     <form
-      className="new--form"
+      className={props.Update ? "edit--form" : "new--form"}
       onSubmit={props.Update ? props.Update : AddStudent}
     >
       {msg ? <Alert msg={msg} /> : null}
