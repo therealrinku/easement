@@ -1,5 +1,17 @@
 import db from "../firebase/db";
 
+export const updateStudent = (studentId, updatedData) => {
+  return new Promise((resolve) => {
+    db.collection("students")
+      .doc(studentId)
+      .set({
+        ...updatedData,
+      })
+      .then(resolve("done"))
+      .catch((err) => resolve(err.message));
+  });
+};
+
 export const deleteStudent = (studentId) => {
   return new Promise((resolve) => {
     db.collection("students")
