@@ -25,6 +25,7 @@ const StudentDetailsPage = () => {
   };
 
   const deleteStudentConfirm = () => {
+    overflowToggler();
     deleteStudent(params.studentId).then((res) => {
       if (res === "done") {
         history.goBack();
