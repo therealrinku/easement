@@ -5,13 +5,22 @@ import { addStudent } from "../actions/studentActions";
 import Context from "../context/Context";
 import ClassesDropdown from "./ClassesDropdown";
 
-const AddStudentForm = () => {
-  const [studentName, setStudentName] = useState("");
-  const [studentClassName, setStudentClassName] = useState("");
-  const [studentRollNo, setStudentRollNo] = useState("");
-  const [studentAddress, setStudentAddress] = useState("");
-  const [studentPhoneNumber, setStudentPhoneNumber] = useState("");
-  const [studentGuardianName, setStudentGuardianName] = useState("");
+const AddStudentForm = (props) => {
+  //state for editing and adding student with checking if data is passed through props for update
+  const [studentName, setStudentName] = useState(props.studentName || "");
+  const [studentClassName, setStudentClassName] = useState(
+    props.studentClassName || ""
+  );
+  const [studentRollNo, setStudentRollNo] = useState(props.studentRollNo || "");
+  const [studentAddress, setStudentAddress] = useState(
+    props.studentAddress || ""
+  );
+  const [studentPhoneNumber, setStudentPhoneNumber] = useState(
+    props.studentPhoneNumber || ""
+  );
+  const [studentGuardianName, setStudentGuardianName] = useState(
+    props.studentGuardianName || ""
+  );
 
   const [msg, setMsg] = useState("");
   const [showClassOptions, setShowClassOptions] = useState(false);
