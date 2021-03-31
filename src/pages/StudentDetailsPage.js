@@ -63,6 +63,7 @@ const StudentDetailsPage = () => {
         <Fragment>
           <AddStudentForm
             {...details}
+            id={params.studentId}
             toggle={() => toggleModal(setShowEditPopup)}
             Update={true}
           />

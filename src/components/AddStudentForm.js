@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import Alert from "./Alert";
 import { BiCaretDown } from "react-icons/all";
-import { addStudent } from "../actions/studentActions";
+import { addStudent, updateStudent } from "../actions/studentActions";
 import Context from "../context/Context";
 import ClassesDropdown from "./ClassesDropdown";
 
@@ -57,29 +57,48 @@ const AddStudentForm = (props) => {
         students.findIndex(
           (student) =>
             student.studentClassName === studentClassName &&
-            student.studentRollNo === studentRollNo
+            student.studentRollNo === studentRollNo &&
+            student.studentRollNo!==props.studentRollNo
         ) < 0
       ) {
-        addStudent({
-          studentName,
-          studentClassName,
-          studentRollNo,
-          studentGuardianName,
-          studentPhoneNumber,
-          studentAddress,
-          linkedUsername: "test",
-        }).then((res) => {
-          setMsg(res);
-          if (res.includes("created")) {
-            //clearing state
-            setStudentName("");
-            setStudentPhoneNumber("");
-            setStudentGuardianName("");
-            setStudentRollNo("");
-            setStudentClassName("");
-            setStudentAddress("");
-          }
-        });
+        //checking if updating or adding
+        if (props.Update) {
+          updateStudent(props.id, {
+            studentName,
+            studentClassName,
+            studentRollNo,
+            studentGuardianName,
+            studentPhoneNumber,
+            studentAddress,
+            linkedUsername: "test",
+          }).then(res=>{
+            if(res==="done"){
+              props.toggle();
+            }
+          })
+        } else {
+          addStudent({
+            studentName,
+            studentClassName,
+            studentRollNo,
+            studentGuardianName,
+            studentPhoneNumber,
+            studentAddress,
+            linkedUsername: "test",
+          }).then((res) => {
+            setMsg(res);
+            if (res.includes("created") || res.includes("done")) {
+              if (props.Update) props.toggle();
+              //clearing state
+              setStudentName("");
+              setStudentPhoneNumber("");
+              setStudentGuardianName("");
+              setStudentRollNo("");
+              setStudentClassName("");
+              setStudentAddress("");
+            }
+          });
+        }
       } else {
         setMsg(`Roll no ${studentRollNo} already taken in ${studentClassName}`);
       }
@@ -95,7 +114,7 @@ const AddStudentForm = (props) => {
   return (
     <form
       className={props.Update ? "edit--form" : "new--form"}
-      onSubmit={props.Update ? props.Update : AddStudent}
+      onSubmit={AddStudent}
     >
       {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Student Name</label>
