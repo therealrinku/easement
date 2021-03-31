@@ -164,7 +164,9 @@ const AddStudentForm = (props) => {
         onChange={(e) => setStudentAddress(e.target.value)}
       />
 
-      <button className="submit--btn">Submit</button>
+      <button className="submit--btn">
+        {props.Update ? "Update" : "Submit"}
+      </button>
     </form>
   );
 };
