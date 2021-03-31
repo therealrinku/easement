@@ -64,7 +64,6 @@ const StudentDetailsPage = () => {
           <EditStudentForm
             toggle={() => toggleModal(setShowEditPopup)}
             {...details}
-            Delete={deleteStudentConfirm}
           />
           <Backdrop toggle={() => toggleModal(setShowEditPopup)} />
         </Fragment>
