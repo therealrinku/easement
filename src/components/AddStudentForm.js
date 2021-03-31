@@ -93,7 +93,10 @@ const AddStudentForm = (props) => {
   };
 
   return (
-    <form className="new--form" onSubmit={AddStudent}>
+    <form
+      className="new--form"
+      onSubmit={props.Update ? props.Update : AddStudent}
+    >
       {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Student Name</label>
       <input
