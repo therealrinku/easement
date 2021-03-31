@@ -54,6 +54,13 @@
   padding: 20px 40px;
 }
 
+.edit--form .cancel-btn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  background: whitesmoke;
+}
+
 .edit--form h4 {
   margin-bottom: -20px;
 }

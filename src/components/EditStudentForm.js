@@ -10,6 +10,9 @@ const EditStudentForm = (props) => {
     <div className="edit--form">
       <h4>Edit {props.studentName}</h4>
       <AddStudentForm {...props} Update={Update} />
+      <button className="cancel-btn" onClick={props.toggle}>
+        Cancel
+      </button>
     </div>
   );
 };
