@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteStudent, getStudentDetails } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
-import EditPersonForm from "../components/EditPersonForm";
+import EditStudentForm from "../components/EditStudentForm";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
 
@@ -61,7 +61,7 @@ const StudentDetailsPage = () => {
 
       {showEditPopup ? (
         <Fragment>
-          <EditPersonForm
+          <EditStudentForm
             toggle={() => toggleModal(setShowEditPopup)}
             name={details.studentName}
             Delete={deleteStudentConfirm}
