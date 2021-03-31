@@ -43,13 +43,17 @@
 
 .edit--form {
   position: fixed;
-  top: 50%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   z-index: 4;
   border: solid 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  width: 400px;
+  width: 350px;
   padding: 20px 40px;
+}
+
+.edit--form h4 {
+  margin-bottom: -20px;
 }
