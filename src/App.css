@@ -5,6 +5,7 @@
 .app .control-buttons {
   display: flex;
   flex-direction: row;
+  margin-top: 20px;
 }
 
 .app .control-buttons button {
@@ -103,4 +104,10 @@
   background: #4682bf;
   color: white;
   border: none;
+}
+
+.app .edit--field-btn {
+  border: none;
+  background: none;
+  margin-left: 5px;
 }
