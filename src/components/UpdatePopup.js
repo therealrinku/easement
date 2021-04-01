@@ -8,7 +8,11 @@ const UpdatePopup = ({ propertyName, propertyValue, toggle }) => {
       <h4>Edit {propertyName}</h4>
       <form>
         <input
-          type="text"
+          type={
+            propertyName.includes("Number") || propertyName.includes("RollNo")
+              ? "number"
+              : "text"
+          }
           value={val}
           onChange={(e) => setVal(e.target.value)}
         />
