@@ -4,7 +4,6 @@ import { deleteStudent, getStudentDetails } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
-import AddStudentForm from "../components/AddStudentForm";
 
 const StudentDetailsPage = () => {
   const [details, setDetails] = useState({});
@@ -61,12 +60,6 @@ const StudentDetailsPage = () => {
 
       {showEditPopup ? (
         <Fragment>
-          <AddStudentForm
-            {...details}
-            id={params.studentId}
-            toggle={() => toggleModal(setShowEditPopup)}
-            Update={true}
-          />
           <Backdrop toggle={() => toggleModal(setShowEditPopup)} />
         </Fragment>
       ) : null}

@@ -5,22 +5,14 @@ import { addStudent, updateStudent } from "../actions/studentActions";
 import Context from "../context/Context";
 import ClassesDropdown from "./ClassesDropdown";
 
-const AddStudentForm = (props) => {
+const AddStudentForm = () => {
   //state for editing and adding student with checking if data is passed through props for update
-  const [studentName, setStudentName] = useState(props.studentName || "");
-  const [studentClassName, setStudentClassName] = useState(
-    props.studentClassName || ""
-  );
-  const [studentRollNo, setStudentRollNo] = useState(props.studentRollNo || "");
-  const [studentAddress, setStudentAddress] = useState(
-    props.studentAddress || ""
-  );
-  const [studentPhoneNumber, setStudentPhoneNumber] = useState(
-    props.studentPhoneNumber || ""
-  );
-  const [studentGuardianName, setStudentGuardianName] = useState(
-    props.studentGuardianName || ""
-  );
+  const [studentName, setStudentName] = useState("");
+  const [studentClassName, setStudentClassName] = useState("");
+  const [studentRollNo, setStudentRollNo] = useState("");
+  const [studentAddress, setStudentAddress] = useState("");
+  const [studentPhoneNumber, setStudentPhoneNumber] = useState("");
+  const [studentGuardianName, setStudentGuardianName] = useState("");
 
   const [msg, setMsg] = useState("");
   const [showClassOptions, setShowClassOptions] = useState(false);
@@ -57,48 +49,30 @@ const AddStudentForm = (props) => {
         students.findIndex(
           (student) =>
             student.studentClassName === studentClassName &&
-            student.studentRollNo === studentRollNo &&
-            student.studentRollNo!==props.studentRollNo
+            student.studentRollNo === studentRollNo
         ) < 0
       ) {
         //checking if updating or adding
-        if (props.Update) {
-          updateStudent(props.id, {
-            studentName,
-            studentClassName,
-            studentRollNo,
-            studentGuardianName,
-            studentPhoneNumber,
-            studentAddress,
-            linkedUsername: "test",
-          }).then(res=>{
-            if(res==="done"){
-              props.toggle();
-            }
-          })
-        } else {
-          addStudent({
-            studentName,
-            studentClassName,
-            studentRollNo,
-            studentGuardianName,
-            studentPhoneNumber,
-            studentAddress,
-            linkedUsername: "test",
-          }).then((res) => {
-            setMsg(res);
-            if (res.includes("created") || res.includes("done")) {
-              if (props.Update) props.toggle();
-              //clearing state
-              setStudentName("");
-              setStudentPhoneNumber("");
-              setStudentGuardianName("");
-              setStudentRollNo("");
-              setStudentClassName("");
-              setStudentAddress("");
-            }
-          });
-        }
+        addStudent({
+          studentName,
+          studentClassName,
+          studentRollNo,
+          studentGuardianName,
+          studentPhoneNumber,
+          studentAddress,
+          linkedUsername: "test",
+        }).then((res) => {
+          setMsg(res);
+          if (res.includes("created")) {
+            //clearing state
+            setStudentName("");
+            setStudentPhoneNumber("");
+            setStudentGuardianName("");
+            setStudentRollNo("");
+            setStudentClassName("");
+            setStudentAddress("");
+          }
+        });
       } else {
         setMsg(`Roll no ${studentRollNo} already taken in ${studentClassName}`);
       }
@@ -112,10 +86,7 @@ const AddStudentForm = (props) => {
   };
 
   return (
-    <form
-      className={props.Update ? "edit--form" : "new--form"}
-      onSubmit={AddStudent}
-    >
+    <form className="new--form" onSubmit={AddStudent}>
       {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Student Name</label>
       <input
@@ -186,9 +157,7 @@ const AddStudentForm = (props) => {
         onChange={(e) => setStudentAddress(e.target.value)}
       />
 
-      <button className="submit--btn">
-        {props.Update ? "Update" : "Submit"}
-      </button>
+      <button className="submit--btn">Submit</button>
     </form>
   );
 };
