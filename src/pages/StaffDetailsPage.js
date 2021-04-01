@@ -4,7 +4,7 @@ import { deleteStaff, getStaffDetails } from "../actions/staffActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
-import { GrEdit } from "react-icons/all";
+import Detail from "../components/Detail";
 
 const StaffDetailsPage = () => {
   const [details, setDetails] = useState([]);
@@ -39,20 +39,7 @@ const StaffDetailsPage = () => {
       {/*dynamic data mapping*/}
       {details.map((detail, i) => {
         return (
-          <div
-            key={i}
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <p style={{ fontSize: "15px" }}>
-              {detail[0]}:{detail[1]}
-            </p>
-            <button className="edit--field-btn">
-              <GrEdit />
-            </button>
-          </div>
+          <Detail propertyName={detail[0]} propertyValue={detail[1]} key={i} />
         );
       })}
       <section className="control-buttons">
