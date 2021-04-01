@@ -28,11 +28,11 @@ const AddStaffForm = () => {
 
     if (formIsValid) {
       addStaff({
-        staffName,
-        staffRole,
-        staffSalary,
-        staffContactNumber,
-        staffAddress,
+        "Staff Name": staffName,
+        "Staff Role": staffRole,
+        "Staff Salary": staffSalary,
+        "Staff Contact Number": staffContactNumber,
+        "Staff Address": staffAddress,
         linkedUsername: "test",
       }).then((res) => {
         setMsg(res);

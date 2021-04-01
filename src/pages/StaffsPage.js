@@ -7,7 +7,7 @@ const StaffsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { staffs } = useContext(Context);
   const filteredStaffs = staffs.filter((staff) => {
-    return staff.staffName
+    return staff["Staff Name"]
       .toLowerCase()
       .includes(searchQuery.trim().toLowerCase());
   });
@@ -39,11 +39,11 @@ const StaffsPage = () => {
                   }}
                 >
                   <Link to={`/staff/details/${staff.id}`} className="link">
-                    {staff.staffName}
+                    {staff["Staff Name"]}
                   </Link>
                 </td>
-                <td>{staff.staffRole}</td>
-                <td>{staff.staffSalary}</td>
+                <td>{staff["Staff Role"]}</td>
+                <td>{staff["Staff Salary"]}</td>
               </tr>
             );
           })}
