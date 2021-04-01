@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles/UpdatePopup.css";
 
-const UpdatePopup = ({ personName, propertyName, propertyValue }) => {
+const UpdatePopup = ({ personName, propertyName, propertyValue, toggle }) => {
   const [val, setVal] = useState(propertyValue);
   return (
     <div className="update--popup">
@@ -14,7 +14,9 @@ const UpdatePopup = ({ personName, propertyName, propertyValue }) => {
           onChange={(e) => setVal(e.target.value)}
         />
         <button type="submit">Update</button>
-        <button type="button">Cancel</button>
+        <button type="button" onClick={toggle}>
+          Cancel
+        </button>
       </form>
     </div>
   );
