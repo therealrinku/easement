@@ -6,6 +6,7 @@ const Detail = ({ propertyName, propertyValue, showEditButtons }) => {
       style={{
         display: "flex",
         flexDirection: "row",
+        marginBottom: "-15px",
       }}
     >
       <p style={{ fontSize: "15px" }}>{propertyName + ":" + propertyValue}</p>
