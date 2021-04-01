@@ -4,9 +4,7 @@ export const updateStaff = (staffId, updatedData) => {
   return new Promise((resolve) => {
     db.collection("staffs")
       .doc(staffId)
-      .set({
-        ...updatedData,
-      })
+      .update(updatedData)
       .then(resolve("done"))
       .catch((err) => resolve(err.message));
   });

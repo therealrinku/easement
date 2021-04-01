@@ -4,9 +4,7 @@ export const updateStudent = (studentId, updatedData) => {
   return new Promise((resolve) => {
     db.collection("students")
       .doc(studentId)
-      .set({
-        ...updatedData,
-      })
+      .update(updatedData)
       .then(resolve("done"))
       .catch((err) => resolve(err.message));
   });
