@@ -9,7 +9,7 @@ import Detail from "../components/Detail";
 const StaffDetailsPage = () => {
   const [details, setDetails] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
-  const [showEditPopup, setShowEditPopup] = useState(false);
+  const [showEditButtons, setShowEditButtons] = useState(false);
   const params = useParams();
   const history = useHistory();
 
@@ -39,11 +39,18 @@ const StaffDetailsPage = () => {
       {/*dynamic data mapping*/}
       {details.map((detail, i) => {
         return (
-          <Detail propertyName={detail[0]} propertyValue={detail[1]} key={i} />
+          <Detail
+            propertyName={detail[0]}
+            propertyValue={detail[1]}
+            key={i}
+            showEditButtons={showEditButtons}
+          />
         );
       })}
       <section className="control-buttons">
-        <button onClick={() => toggleModal(setShowEditPopup)}>Edit</button>
+        <button onClick={() => setShowEditButtons((prev) => !prev)}>
+          Edit
+        </button>
         <button onClick={() => toggleModal(setShowDeletePopup)}>Delete</button>
       </section>
 
@@ -55,12 +62,6 @@ const StaffDetailsPage = () => {
             Delete={deleteStaffConfirm}
           />
           <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
-        </Fragment>
-      ) : null}
-
-      {showEditPopup ? (
-        <Fragment>
-          <Backdrop toggle={() => toggleModal(setShowEditPopup)} />
         </Fragment>
       ) : null}
     </Fragment>

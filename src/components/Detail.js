@@ -1,6 +1,6 @@
 import { GrEdit } from "react-icons/all";
 
-const Detail = ({ propertyName, propertyValue }) => {
+const Detail = ({ propertyName, propertyValue, showEditButtons }) => {
   return (
     <div
       style={{
@@ -9,9 +9,11 @@ const Detail = ({ propertyName, propertyValue }) => {
       }}
     >
       <p style={{ fontSize: "15px" }}>{propertyName + ":" + propertyValue}</p>
-      <button className="edit--field-btn">
-        <GrEdit />
-      </button>
+      {showEditButtons ? (
+        <button className="edit--field-btn">
+          <GrEdit />
+        </button>
+      ) : null}
     </div>
   );
 };
