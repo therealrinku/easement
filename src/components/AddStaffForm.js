@@ -3,14 +3,12 @@ import Context from "../context/Context";
 import { addStaff } from "../actions/staffActions";
 import Alert from "./Alert";
 
-const AddStaffForm = (props) => {
-  const [staffName, setStaffName] = useState(props.staffName || "");
-  const [staffRole, setStaffRole] = useState(props.staffRole || "");
-  const [staffSalary, setStaffSalary] = useState(props.staffSalary || "");
-  const [staffAddress, setStaffAddress] = useState(props.staffAddress || "");
-  const [staffContactNumber, setStaffContactNumber] = useState(
-    props.staffContactNumber || ""
-  );
+const AddStaffForm = () => {
+  const [staffName, setStaffName] = useState("");
+  const [staffRole, setStaffRole] = useState("");
+  const [staffSalary, setStaffSalary] = useState("");
+  const [staffAddress, setStaffAddress] = useState("");
+  const [staffContactNumber, setStaffContactNumber] = useState("");
   const [msg, setMsg] = useState("");
   const { staffs } = useContext(Context);
 
@@ -57,10 +55,7 @@ const AddStaffForm = (props) => {
   };
 
   return (
-    <form
-      className={props.Update ? "edit--form" : "new--form"}
-      onSubmit={AddStaff}
-    >
+    <form className="new--form" onSubmit={AddStaff}>
       {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Staff Name</label>
       <input
@@ -102,9 +97,7 @@ const AddStaffForm = (props) => {
         onChange={(e) => setStaffContactNumber(e.target.value)}
       />
 
-      <button className="submit--btn">
-        {props.Update ? "Update" : "Submit"}
-      </button>
+      <button className="submit--btn">Submit</button>
     </form>
   );
 };

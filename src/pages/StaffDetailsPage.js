@@ -4,7 +4,6 @@ import { deleteStaff, getStaffDetails } from "../actions/staffActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
-import AddStaffForm from "../components/AddStaffForm";
 
 const StaffDetailsPage = () => {
   const [details, setDetails] = useState({});
@@ -59,11 +58,6 @@ const StaffDetailsPage = () => {
 
       {showEditPopup ? (
         <Fragment>
-          <AddStaffForm
-            {...details}
-            toggle={() => toggleModal(setShowEditPopup)}
-            Update={true}
-          />
           <Backdrop toggle={() => toggleModal(setShowEditPopup)} />
         </Fragment>
       ) : null}
