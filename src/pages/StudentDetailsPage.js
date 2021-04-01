@@ -36,6 +36,7 @@ const StudentDetailsPage = () => {
     <Fragment>
       <h4>Student Details</h4>
       <img src="https://bit.ly/3m1Ny2x" className="avatar--image" />
+      {/*dynamic data mapping*/}
       {details.map((detail, i) => {
         return (
           <p key={i}>
