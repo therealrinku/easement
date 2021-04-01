@@ -45,6 +45,7 @@ const StudentDetailsPage = () => {
             propertyValue={detail[1]}
             key={i}
             showEditButtons={showEditButtons}
+            personId={params.studentId}
           />
         );
       })}

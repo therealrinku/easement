@@ -44,6 +44,7 @@ const StaffDetailsPage = () => {
             propertyValue={detail[1]}
             key={i}
             showEditButtons={showEditButtons}
+            personId={params.staffId}
           />
         );
       })}

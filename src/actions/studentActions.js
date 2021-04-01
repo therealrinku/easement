@@ -1,6 +1,7 @@
 import db from "../firebase/db";
 
 export const updateStudent = (studentId, updatedData) => {
+  console.log("e");
   return new Promise((resolve) => {
     db.collection("students")
       .doc(studentId)
