@@ -6,7 +6,7 @@ import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
 
 const StudentDetailsPage = () => {
-  const [details, setDetails] = useState({});
+  const [details, setDetails] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
   const params = useParams();
@@ -14,7 +14,7 @@ const StudentDetailsPage = () => {
 
   useEffect(() => {
     getStudentDetails(params.studentId).then((data) => {
-      setDetails(data);
+      setDetails(data ? Object.entries(data) : []);
     });
   }, [params.studentId]);
 
@@ -36,12 +36,13 @@ const StudentDetailsPage = () => {
     <Fragment>
       <h4>Student Details</h4>
       <img src="https://bit.ly/3m1Ny2x" className="avatar--image" />
-      <p>Name: {details.studentName}</p>
-      <p>Class: {details.studentClassName}</p>
-      <p>Roll no: {details.studentRollNo}</p>
-      <p>Address: {details.studentAddress}</p>
-      <p>Guardian Name: {details.studentGuardianName}</p>
-      <p>Contact Number: {details.studentPhoneNumber}</p>
+      {details.map((detail, i) => {
+        return (
+          <p key={i}>
+            {detail[0]}:{detail[1]}
+          </p>
+        );
+      })}
       <section className="control-buttons">
         <button onClick={() => toggleModal(setShowEditPopup)}>Edit</button>
         <button onClick={() => toggleModal(setShowDeletePopup)}>Delete</button>
