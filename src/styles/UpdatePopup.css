@@ -10,3 +10,33 @@
   padding: 10px;
   z-index: 2;
 }
+
+.update--popup form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.update--popup form input {
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.update--popup form button {
+  margin-bottom: 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.update--popup form button:hover {
+  opacity: 0.9;
+}
+
+.update--popup h4 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}

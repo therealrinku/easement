@@ -13,8 +13,10 @@ const UpdatePopup = ({ propertyName, propertyValue, toggle }) => {
           onChange={(e) => setVal(e.target.value)}
         />
         <br />
-        <button type="submit">Update</button>
-        <button type="button" onClick={toggle}>
+        <button type="submit" className="submit--btn">
+          Update
+        </button>
+        <button type="button" className="cancel--btn" onClick={toggle}>
           Cancel
         </button>
       </form>
