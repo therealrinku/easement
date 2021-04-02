@@ -18,6 +18,7 @@ const App = () => {
   const [students, setStudents] = useState([]);
   const [staffs, setStaffs] = useState([]);
   const [classes, setClasses] = useState([]);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     getData("test", "students", setStudents);
@@ -27,7 +28,9 @@ const App = () => {
 
   return (
     <div className="app">
-      <Context.Provider value={{ students, staffs, classes }}>
+      <Context.Provider
+        value={{ students, staffs, classes, message, setMessage }}
+      >
         <BrowserRouter>
           <Sidebar hideSidebar={!showSidebar} />
           <Topbar
