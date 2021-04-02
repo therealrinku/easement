@@ -5,6 +5,7 @@ const Context = createContext({
   students: [],
   classes: [],
   message: "",
+  setMessage: () => {},
 });
 
 export default Context;
