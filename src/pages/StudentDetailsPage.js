@@ -1,10 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { deleteStudent, getStudentDetails } from "../actions/studentActions";
+import { deleteStudent } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
 import Detail from "../components/Detail";
+import db from "../firebase/db";
 
 const StudentDetailsPage = () => {
   const [details, setDetails] = useState([]);
@@ -14,9 +15,18 @@ const StudentDetailsPage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    getStudentDetails(params.studentId).then((data) => {
-      setDetails(data ? Object.entries(data) : []);
-    });
+    db.collection("students")
+      .doc(params.studentId)
+      .onSnapshot((doc) => {
+        const data = doc.data() ? Object.entries(doc.data()) : [];
+        const filteredData = [];
+        for (let e in data) {
+          if (data[e][0] !== "linkedUsername") {
+            filteredData.push(data[e]);
+          }
+        }
+        setDetails(filteredData);
+      });
   }, [params.studentId]);
 
   const toggleModal = (modalFunc) => {

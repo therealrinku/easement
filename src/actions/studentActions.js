@@ -35,10 +35,6 @@ export const getStudentDetails = (studentId) => {
   return new Promise((resolve) => {
     db.collection("students")
       .doc(studentId)
-      .get()
-      .then((doc) => {
-        resolve(doc.data());
-      })
-      .catch((err) => resolve(err.message));
+      .onSnapshot((doc) => resolve(doc.data()));
   });
 };
