@@ -8,9 +8,9 @@ const StudentsPage = () => {
   const { students } = useContext(Context);
 
   const filteredStudents = students.filter((student) => {
-    return student["Student Name"]
-      .toLowerCase()
-      .includes(searchQuery.trim().toLowerCase());
+    return student.Name.toLowerCase().includes(
+      searchQuery.trim().toLowerCase()
+    );
   });
 
   return (
@@ -41,11 +41,11 @@ const StudentsPage = () => {
                   }}
                 >
                   <Link to={`/student/details/${student.id}`} className="link">
-                    {student["Student Name"]}
+                    {student.Name}
                   </Link>
                 </td>
-                <td>{student["Student Class"]}</td>
-                <td>{student["Student RollNo"]}</td>
+                <td>{student.Class}</td>
+                <td>{student.RollNo}</td>
               </tr>
             );
           })}
