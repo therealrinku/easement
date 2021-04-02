@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
-import Alert from "./Alert";
 import { BiCaretDown } from "react-icons/all";
-import { addStudent, updateStudent } from "../actions/studentActions";
+import { addStudent } from "../actions/studentActions";
 import Context from "../context/Context";
 import ClassesDropdown from "./ClassesDropdown";
 
@@ -14,7 +13,6 @@ const AddStudentForm = () => {
   const [studentPhoneNumber, setStudentPhoneNumber] = useState("");
   const [studentGuardianName, setStudentGuardianName] = useState("");
 
-  const [msg, setMsg] = useState("");
   const [showClassOptions, setShowClassOptions] = useState(false);
 
   //update class name and toggle dropdown
@@ -24,7 +22,7 @@ const AddStudentForm = () => {
   };
 
   //
-  const { students, classes } = useContext(Context);
+  const { students, classes, setMessage } = useContext(Context);
 
   const AddStudent = (e) => {
     e.preventDefault();
@@ -62,7 +60,7 @@ const AddStudentForm = () => {
           "Student Address": studentAddress,
           linkedUsername: "test",
         }).then((res) => {
-          setMsg(res);
+          setMessage(res);
           if (res.includes("created")) {
             //clearing state
             setStudentName("");
@@ -74,20 +72,21 @@ const AddStudentForm = () => {
           }
         });
       } else {
-        setMsg(`Roll no ${studentRollNo} already taken in ${studentClassName}`);
+        setMessage(
+          `Roll no ${studentRollNo} already taken in ${studentClassName}`
+        );
       }
     } else {
-      setMsg("Any input field cannot be empty.");
+      setMessage("Any input field cannot be empty.");
     }
 
     setTimeout(() => {
-      setMsg("");
+      setMessage("");
     }, 4000);
   };
 
   return (
     <form className="new--form" onSubmit={AddStudent}>
-      {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Student Name</label>
       <input
         type="text"
