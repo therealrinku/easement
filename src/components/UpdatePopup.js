@@ -4,14 +4,20 @@ import { updateStaff } from "../actions/staffActions";
 import Context from "../context/Context";
 import "../styles/UpdatePopup.css";
 
-const UpdatePopup = ({ personId, propertyName, propertyValue, toggle }) => {
+const UpdatePopup = ({
+  personId,
+  propertyName,
+  propertyValue,
+  toggle,
+  isStaff,
+}) => {
   const [val, setVal] = useState(propertyValue);
   const { setMessage } = useContext(Context);
 
   const updateConfirm = (e) => {
     e.preventDefault();
     if (val.trim().length > 0) {
-      if (propertyName.includes("Student")) {
+      if (!isStaff) {
         updateStudent(personId, { [propertyName]: val });
       } else {
         updateStaff(personId, { [propertyName]: val });

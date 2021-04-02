@@ -73,6 +73,7 @@ const StaffDetailsPage = () => {
                 key={i}
                 showEditButtons={showEditButtons}
                 personId={params.staffId}
+                isStaff={true}
               />
             );
           })}

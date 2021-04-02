@@ -4,7 +4,13 @@ import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
 import UpdatePopup from "./UpdatePopup";
 
-const Detail = ({ personId, propertyName, propertyValue, showEditButtons }) => {
+const Detail = ({
+  personId,
+  propertyName,
+  propertyValue,
+  showEditButtons,
+  isStaff,
+}) => {
   const [showUpdatePopup, setShowUpdatePopup] = useState(false);
 
   const toggleUpdatePopup = () => {
@@ -31,6 +37,7 @@ const Detail = ({ personId, propertyName, propertyValue, showEditButtons }) => {
         <Fragment>
           <Backdrop toggle={toggleUpdatePopup} />
           <UpdatePopup
+            isStaff={isStaff}
             propertyName={propertyName}
             propertyValue={propertyValue}
             toggle={toggleUpdatePopup}
