@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { updateStudent } from "../actions/studentActions";
 import { updateStaff } from "../actions/staffActions";
+import Context from "../context/Context";
 import "../styles/UpdatePopup.css";
 
 const UpdatePopup = ({ personId, propertyName, propertyValue, toggle }) => {
   const [val, setVal] = useState(propertyValue);
+  const { setMessage } = useContext(Context);
 
   const updateConfirm = (e) => {
     e.preventDefault();
@@ -15,7 +17,11 @@ const UpdatePopup = ({ personId, propertyName, propertyValue, toggle }) => {
         updateStaff(personId, { [propertyName]: val });
       }
       toggle();
+    } else {
+      setMessage("Input field cannot be empty.");
     }
+
+    setTimeout(() => setMessage(""), 3000);
   };
 
   return (
