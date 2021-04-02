@@ -24,9 +24,21 @@ const Detail = ({
         display: "flex",
         flexDirection: "row",
         marginBottom: "-15px",
+        alignItems: "center",
       }}
     >
-      <p style={{ fontSize: "15px" }}>{propertyName + ":" + propertyValue}</p>
+      <p style={{ fontSize: "14px" }}>{propertyName}</p>
+      <p
+        style={{
+          fontSize: "14px",
+          marginLeft: "5px",
+          background: "whitesmoke",
+          padding: "4px",
+          borderRadius: "5px",
+        }}
+      >
+        {propertyValue}
+      </p>
       {showEditButtons ? (
         <button className="edit--field-btn" onClick={toggleUpdatePopup}>
           <GrEdit />
