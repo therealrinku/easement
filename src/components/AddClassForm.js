@@ -1,12 +1,10 @@
 import { useContext, useState } from "react";
-import Alert from "./Alert";
 import { addClass } from "../actions/classActions";
 import Context from "../context/Context";
 
 const AddClassForm = () => {
-  const [msg, setMsg] = useState("");
   const [className, setClassName] = useState("");
-  const { classes } = useContext(Context);
+  const { classes, setMessage } = useContext(Context);
 
   const AddClass = (e) => {
     e.preventDefault();
@@ -15,27 +13,26 @@ const AddClassForm = () => {
       //checking if same class name exists
       if (classes.findIndex((cls) => cls === className) < 0) {
         addClass({ className, linkedUsername: "test" }).then((res) => {
-          setMsg(res);
+          setMessage(res);
           if (res.includes("created")) {
             //clearing state
             setClassName("");
           }
         });
       } else {
-        setMsg(`${className} already exists.`);
+        setMessage(`${className} already exists.`);
       }
     } else {
-      setMsg("Class Name cannot be empty.");
+      setMessage("Class Name cannot be empty.");
     }
 
     setTimeout(() => {
-      setMsg("");
+      setMessage("");
     }, 4000);
   };
 
   return (
     <form className="new--form" onSubmit={AddClass}>
-      {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Class Name</label>
       <input
         type="text"

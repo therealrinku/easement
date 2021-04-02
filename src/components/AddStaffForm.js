@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import Context from "../context/Context";
 import { addStaff } from "../actions/staffActions";
-import Alert from "./Alert";
 
 const AddStaffForm = () => {
   const [staffName, setStaffName] = useState("");
@@ -9,8 +8,7 @@ const AddStaffForm = () => {
   const [staffSalary, setStaffSalary] = useState("");
   const [staffAddress, setStaffAddress] = useState("");
   const [staffContactNumber, setStaffContactNumber] = useState("");
-  const [msg, setMsg] = useState("");
-  const { staffs } = useContext(Context);
+  const { staffs, setMessage } = useContext(Context);
 
   const AddStaff = (e) => {
     e.preventDefault();
@@ -35,7 +33,7 @@ const AddStaffForm = () => {
         "Staff Address": staffAddress,
         linkedUsername: "test",
       }).then((res) => {
-        setMsg(res);
+        setMessage(res);
         if (res.includes("created")) {
           //clearing state
           setStaffName("");
@@ -46,17 +44,16 @@ const AddStaffForm = () => {
         }
       });
     } else {
-      setMsg("Any input field cannot be empty.");
+      setMessage("Any input field cannot be empty.");
     }
 
     setTimeout(() => {
-      setMsg("");
+      setMessage("");
     }, 4000);
   };
 
   return (
     <form className="new--form" onSubmit={AddStaff}>
-      {msg ? <Alert msg={msg} /> : null}
       <label htmlFor="name">Staff Name</label>
       <input
         type="text"
