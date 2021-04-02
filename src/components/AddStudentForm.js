@@ -52,12 +52,12 @@ const AddStudentForm = () => {
       ) {
         //checking if updating or adding
         addStudent({
-          "Student Name": studentName,
-          "Student Class": studentClassName,
-          "Student RollNo": studentRollNo,
-          "Student Guardian Name": studentGuardianName,
-          "Student Phone Number": studentPhoneNumber,
-          "Student Address": studentAddress,
+          Name: studentName,
+          Class: studentClassName,
+          RollNo: studentRollNo,
+          "Guardian Name": studentGuardianName,
+          "Phone Number": studentPhoneNumber,
+          Address: studentAddress,
           linkedUsername: "test",
         }).then((res) => {
           setMessage(res);
