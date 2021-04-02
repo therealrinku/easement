@@ -21,6 +21,7 @@ const StudentDetailsPage = () => {
         const data = doc.data() ? Object.entries(doc.data()) : [];
         const filteredData = [];
         for (let e in data) {
+          //push every entries except linked username property
           if (data[e][0] !== "linkedUsername") {
             filteredData.push(data[e]);
           }
