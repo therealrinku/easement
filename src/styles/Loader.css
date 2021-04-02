@@ -1,6 +1,20 @@
 .loader {
-  border: solid 1px red;
+  border: solid 3px wheat;
+  border-top: solid 3px black;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 28px;
+  height: 28px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

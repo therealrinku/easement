@@ -6,11 +6,13 @@ import Backdrop from "../components/Backdrop";
 import overflowToggler from "../utils/OverflowToggler";
 import Detail from "../components/Detail";
 import db from "../firebase/db";
+import Loader from "../components/Loader";
 
 const StudentDetailsPage = () => {
   const [details, setDetails] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [showEditButtons, setShowEditButtons] = useState(false);
+  const [loading, setLoading] = useState(true);
   const params = useParams();
   const history = useHistory();
 
@@ -27,6 +29,7 @@ const StudentDetailsPage = () => {
           }
         }
         setDetails(filteredData);
+        //setLoading(false);
       });
   }, [params.studentId]);
 
@@ -46,37 +49,45 @@ const StudentDetailsPage = () => {
 
   return (
     <Fragment>
-      <h4>Student Details</h4>
-      <img src="https://bit.ly/3m1Ny2x" className="avatar--image" />
-      {/*dynamic data mapping*/}
-      {details.map((detail, i) => {
-        return (
-          <Detail
-            propertyName={detail[0]}
-            propertyValue={detail[1]}
-            key={i}
-            showEditButtons={showEditButtons}
-            personId={params.studentId}
-          />
-        );
-      })}
-      <section className="control-buttons">
-        <button onClick={() => setShowEditButtons((prev) => !prev)}>
-          Edit
-        </button>
-        <button onClick={() => toggleModal(setShowDeletePopup)}>Delete</button>
-      </section>
-
-      {showDeletePopup ? (
+      {loading ? (
+        <Loader />
+      ) : (
         <Fragment>
-          <DeleteConfirmPopup
-            toggle={() => toggleModal(setShowDeletePopup)}
-            name={details.studentName}
-            Delete={deleteStudentConfirm}
-          />
-          <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
+          <h4>Student Details</h4>
+          <img src="https://bit.ly/3m1Ny2x" className="avatar--image" />
+          {/*dynamic data mapping*/}
+          {details.map((detail, i) => {
+            return (
+              <Detail
+                propertyName={detail[0]}
+                propertyValue={detail[1]}
+                key={i}
+                showEditButtons={showEditButtons}
+                personId={params.studentId}
+              />
+            );
+          })}
+          <section className="control-buttons">
+            <button onClick={() => setShowEditButtons((prev) => !prev)}>
+              Edit
+            </button>
+            <button onClick={() => toggleModal(setShowDeletePopup)}>
+              Delete
+            </button>
+          </section>
+
+          {showDeletePopup ? (
+            <Fragment>
+              <DeleteConfirmPopup
+                toggle={() => toggleModal(setShowDeletePopup)}
+                name={details.studentName}
+                Delete={deleteStudentConfirm}
+              />
+              <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
+            </Fragment>
+          ) : null}
         </Fragment>
-      ) : null}
+      )}
     </Fragment>
   );
 };
