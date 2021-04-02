@@ -10,8 +10,9 @@ import StudentDetailsPage from "./pages/StudentDetailsPage";
 import AddPage from "./pages/AddPage";
 import getData from "./actions/getData";
 import Context from "./context/Context";
-import "./App.css";
 import StaffDetailsPage from "./pages/StaffDetailsPage";
+import Alert from "./components/Alert";
+import "./App.css";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -28,6 +29,7 @@ const App = () => {
 
   return (
     <div className="app">
+      {message ? <Alert msg={message} /> : null}
       <Context.Provider
         value={{ students, staffs, classes, message, setMessage }}
       >
