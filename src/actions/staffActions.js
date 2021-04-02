@@ -30,15 +30,3 @@ export const addStaff = (data) => {
       .catch((err) => resolve(err.message));
   });
 };
-
-export const getStaffDetails = (staffId) => {
-  return new Promise((resolve) => {
-    db.collection("staffs")
-      .doc(staffId)
-      .get()
-      .then((doc) => {
-        resolve(doc.data());
-      })
-      .catch((err) => resolve(err.message));
-  });
-};

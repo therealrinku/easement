@@ -30,11 +30,3 @@ export const addStudent = (data) => {
       .catch((err) => resolve(err.message));
   });
 };
-
-export const getStudentDetails = (studentId) => {
-  return new Promise((resolve) => {
-    db.collection("students")
-      .doc(studentId)
-      .onSnapshot((doc) => resolve(doc.data()));
-  });
-};
