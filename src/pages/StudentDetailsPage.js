@@ -29,7 +29,7 @@ const StudentDetailsPage = () => {
           }
         }
         setDetails(filteredData);
-        //setLoading(false);
+        setLoading(false);
       });
   }, [params.studentId]);
 
@@ -50,7 +50,17 @@ const StudentDetailsPage = () => {
   return (
     <Fragment>
       {loading ? (
-        <Loader />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "400px",
+          }}
+        >
+          <Loader />
+        </div>
       ) : (
         <Fragment>
           <h4>Student Details</h4>
