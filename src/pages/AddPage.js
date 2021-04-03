@@ -1,11 +1,16 @@
 import { useState, Fragment } from "react";
+import { useLocation } from "react-router-dom";
 import AddClassForm from "../components/AddClassForm";
 import AddStaffForm from "../components/AddStaffForm";
 import AddStudentForm from "../components/AddStudentForm";
 import "../styles/Form.css";
 
 const AddPage = () => {
-  const [radioValue, setRadioValue] = useState("student");
+  const location = useLocation();
+  const [radioValue, setRadioValue] = useState(
+    location.search === "?staff=true" ? "staff" : "student"
+  );
+
   return (
     <Fragment>
       <h4>Create New</h4>
@@ -14,6 +19,7 @@ const AddPage = () => {
         name="type"
         value="staff"
         onChange={(e) => setRadioValue(e.target.value)}
+        checked={radioValue === "staff"}
       />
       <span>Staff</span>
       <input
@@ -21,7 +27,7 @@ const AddPage = () => {
         name="type"
         value="student"
         onChange={(e) => setRadioValue(e.target.value)}
-        defaultChecked
+        checked={radioValue === "student"}
       />
       <span>Student</span>
       <input
@@ -29,6 +35,7 @@ const AddPage = () => {
         name="type"
         value="class"
         onChange={(e) => setRadioValue(e.target.value)}
+        checked={radioValue === "class"}
       />
       <span>Class</span>
 

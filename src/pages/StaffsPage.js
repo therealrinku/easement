@@ -54,7 +54,7 @@ const StaffsPage = () => {
         <div style={{ display: "flex", alignItems: "center" }}>
           <h4>No any staffs added yet!</h4>
           <Link
-            to="/new"
+            to="/new?staff=true"
             style={{
               color: "blue",
               textDecoration: "none",
