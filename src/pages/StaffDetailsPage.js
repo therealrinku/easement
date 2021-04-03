@@ -12,6 +12,7 @@ const StaffDetailsPage = () => {
   const [details, setDetails] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [showEditButtons, setShowEditButtons] = useState(false);
+  const [staffName, setStaffName] = useState("");
   const [loading, setLoading] = useState(true);
   const params = useParams();
   const history = useHistory();
@@ -20,6 +21,7 @@ const StaffDetailsPage = () => {
     db.collection("staffs")
       .doc(params.staffId)
       .onSnapshot((doc) => {
+        setStaffName(doc.data().Name);
         const data = doc.data() ? Object.entries(doc.data()) : [];
         const filteredData = [];
         for (let e in data) {
@@ -62,7 +64,7 @@ const StaffDetailsPage = () => {
         </div>
       ) : (
         <Fragment>
-          <h4>Staff Details</h4>
+          <h4>{staffName} Details</h4>
           <img src="https://bit.ly/3m1Ny2x" className="avatar--image" />
           {/*dynamic data mapping*/}
           {details.map((detail, i) => {
