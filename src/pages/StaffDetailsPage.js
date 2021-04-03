@@ -90,7 +90,6 @@ const StaffDetailsPage = () => {
             <Fragment>
               <DeleteConfirmPopup
                 toggle={() => toggleModal(setShowDeletePopup)}
-                name={details.staffName}
                 Delete={deleteStaffConfirm}
               />
               <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
