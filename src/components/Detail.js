@@ -43,7 +43,11 @@ const Detail = ({
         <button
           className="edit--field-btn"
           onClick={toggleUpdatePopup}
-          style={propertyName === "RollNo" ? { display: "none" } : null}
+          style={
+            propertyName === "RollNo" || propertyName === "Class"
+              ? { display: "none" }
+              : null
+          }
         >
           <GrEdit />
         </button>
