@@ -59,7 +59,7 @@ const StudentsPage = () => {
         </Fragment>
       ) : (
         <div style={{ display: "flex", alignItems: "center" }}>
-          <h4>No any students created yet!</h4>
+          <h4>No any students added yet!</h4>
           <Link
             to="/new"
             style={{

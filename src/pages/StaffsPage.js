@@ -12,41 +12,59 @@ const StaffsPage = () => {
 
   return (
     <Fragment>
-      <h4>Staffs</h4>
-      <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <table className="table">
-        <thead>
-          <tr>
-            <th>S.N~{filteredStaffs.length}</th>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Salary</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {filteredStaffs.map((staff, i) => {
-            return (
-              <tr key={i}>
-                <td>{i + 1}</td>
-                <td
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    border: "none",
-                  }}
-                >
-                  <Link to={`/staff/details/${staff.id}`} className="link">
-                    {staff.Name}
-                  </Link>
-                </td>
-                <td>{staff.Role}</td>
-                <td>{staff.Salary}</td>
+      {staffs.length > 0 ? (
+        <Fragment>
+          <h4>Staffs</h4>
+          <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <table className="table">
+            <thead>
+              <tr>
+                <th>S.N~{filteredStaffs.length}</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Salary</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+
+            <tbody>
+              {filteredStaffs.map((staff, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{i + 1}</td>
+                    <td
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        border: "none",
+                      }}
+                    >
+                      <Link to={`/staff/details/${staff.id}`} className="link">
+                        {staff.Name}
+                      </Link>
+                    </td>
+                    <td>{staff.Role}</td>
+                    <td>{staff.Salary}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </Fragment>
+      ) : (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h4>No any staffs added yet!</h4>
+          <Link
+            to="/new"
+            style={{
+              color: "blue",
+              textDecoration: "none",
+              marginLeft: "5px",
+            }}
+          >
+            Create Now
+          </Link>
+        </div>
+      )}
     </Fragment>
   );
 };
