@@ -43,38 +43,41 @@ const AddStudentForm = () => {
 
     if (formIsValid) {
       //checking if student roll no is already taken
-      if (
-        students.findIndex(
-          (student) =>
-            student.studentClassName === studentClassName &&
-            student.studentRollNo === studentRollNo
-        ) < 0
-      ) {
-        //checking if updating or adding
-        addStudent({
-          Name: studentName,
-          Class: studentClassName,
-          RollNo: studentRollNo,
-          "Guardian Name": studentGuardianName,
-          "Phone Number": studentPhoneNumber,
-          Address: studentAddress,
-          linkedUsername: "test",
-        }).then((res) => {
-          setMessage(res);
-          if (res.includes("created")) {
-            //clearing state
-            setStudentName("");
-            setStudentPhoneNumber("");
-            setStudentGuardianName("");
-            setStudentRollNo("");
-            setStudentClassName("");
-            setStudentAddress("");
-          }
-        });
+      if (studentRollNo > 0) {
+        if (
+          students.findIndex(
+            (student) =>
+              student.studentClassName === studentClassName &&
+              student.studentRollNo === studentRollNo
+          ) < 0
+        ) {
+          addStudent({
+            Name: studentName,
+            Class: studentClassName,
+            RollNo: studentRollNo,
+            "Guardian Name": studentGuardianName,
+            "Phone Number": studentPhoneNumber,
+            Address: studentAddress,
+            linkedUsername: "test",
+          }).then((res) => {
+            setMessage(res);
+            if (res.includes("created")) {
+              //clearing state
+              setStudentName("");
+              setStudentPhoneNumber("");
+              setStudentGuardianName("");
+              setStudentRollNo("");
+              setStudentClassName("");
+              setStudentAddress("");
+            }
+          });
+        } else {
+          setMessage(
+            `Roll no ${studentRollNo} already taken in ${studentClassName}`
+          );
+        }
       } else {
-        setMessage(
-          `Roll no ${studentRollNo} already taken in ${studentClassName}`
-        );
+        setMessage("Roll no cannot be less than 1.");
       }
     } else {
       setMessage("Any input field cannot be empty.");
