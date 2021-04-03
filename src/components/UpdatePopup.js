@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { updateStudent } from "../actions/studentActions";
 import { updateStaff } from "../actions/staffActions";
 import Context from "../context/Context";
+import { MdClear } from "react-icons/all";
 import "../styles/UpdatePopup.css";
 
 const UpdatePopup = ({
@@ -48,7 +49,7 @@ const UpdatePopup = ({
           Update
         </button>
         <button type="button" className="cancel--btn" onClick={toggle}>
-          Cancel
+          <MdClear />
         </button>
       </form>
     </div>

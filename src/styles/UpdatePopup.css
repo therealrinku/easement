@@ -29,7 +29,7 @@
   border: none;
   outline: none;
   border-radius: 5px;
-  padding: 4px;
+  padding: 5px;
 }
 
 .update--popup form button:hover {
@@ -39,4 +39,18 @@
 .update--popup h4 {
   font-size: 15px;
   margin-bottom: 10px;
+}
+
+.update--popup .cancel--btn {
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  font-size: 18px;
 }
