@@ -14,6 +14,7 @@ import StaffDetailsPage from "./pages/StaffDetailsPage";
 import Alert from "./components/Alert";
 import "./App.css";
 import ClassesPage from "./pages/ClassesPage";
+import ClassDetailsPage from "./pages/ClassDetailsPage";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -51,6 +52,11 @@ const App = () => {
             <Route path="/staffs" exact component={StaffsPage} />
             <Route path="/new" exact component={AddPage} />
             <Route path="/classes" exact component={ClassesPage} />
+            <Route
+              path="/class/:className"
+              exact
+              component={ClassDetailsPage}
+            />
             <Route
               path="/student/details/:studentId"
               component={StudentDetailsPage}
