@@ -111,3 +111,24 @@
   background: none;
   margin-left: 5px;
 }
+
+/*clasees page */
+.classes {
+  display: flex;
+  flex-direction: column;
+}
+
+.classes a {
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  padding: 12px;
+  color: black;
+  border-radius: 5px;
+  font-family: 14px;
+  text-decoration: none;
+}
+
+.classes a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
