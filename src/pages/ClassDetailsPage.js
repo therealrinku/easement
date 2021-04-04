@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { deleteStudent } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 import Backdrop from "../components/Backdrop";
@@ -32,6 +32,7 @@ const ClassDetailsPage = () => {
           data.push({ ...doc.data(), id: doc.id });
         });
         setStudents(data);
+        setLoading(false);
       });
   }, [params.className]);
 

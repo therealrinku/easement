@@ -24,7 +24,7 @@ const ClassesPage = () => {
       <div className="classes">
         {classes.map((cl) => {
           return (
-            <Link to={`/class/${cl.id}`}>
+            <Link to={`/class/${cl.className}`}>
               <p>{cl.className}</p>
               <IoMdArrowDropright />
             </Link>
