@@ -13,6 +13,7 @@ import Context from "./context/Context";
 import StaffDetailsPage from "./pages/StaffDetailsPage";
 import Alert from "./components/Alert";
 import "./App.css";
+import ClassesPage from "./pages/ClassesPage";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/results" exact component={ResultsPage} />
             <Route path="/staffs" exact component={StaffsPage} />
             <Route path="/new" exact component={AddPage} />
+            <Route path="/classes" exact component={ClassesPage} />
             <Route
               path="/student/details/:studentId"
               component={StudentDetailsPage}
