@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { IoMdArrowDropright } from "react-icons/all";
 import db from "../firebase/db";
 
 const ClassesPage = () => {
@@ -22,7 +23,12 @@ const ClassesPage = () => {
       <h4>Classes List</h4>
       <div className="classes">
         {classes.map((cl) => {
-          return <Link to={`/class/${cl.id}`}>{cl.className}</Link>;
+          return (
+            <Link to={`/class/${cl.id}`}>
+              <p>{cl.className}</p>
+              <IoMdArrowDropright />
+            </Link>
+          );
         })}
       </div>
     </Fragment>
