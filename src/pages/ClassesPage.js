@@ -24,9 +24,9 @@ const ClassesPage = () => {
         <Fragment>
           <h4>Classes List</h4>
           <div className="classes">
-            {classes.map((cl) => {
+            {classes.map((cl, i) => {
               return (
-                <Link to={`/class/${cl.className}`}>
+                <Link to={`/class/${cl.className}`} key={i}>
                   <p>{cl.className}</p>
                   <IoMdArrowDropright />
                 </Link>
