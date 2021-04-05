@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { deleteStudent } from "../actions/studentActions";
 import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
@@ -7,6 +7,8 @@ import overflowToggler from "../utils/OverflowToggler";
 import db from "../firebase/db";
 import Loader from "../components/Loader";
 import Filters from "../components/Filters";
+import { deleteClass } from "../actions/classActions";
+import Context from "../context/Context";
 
 const ClassDetailsPage = () => {
   const [students, setStudents] = useState([]);
@@ -16,12 +18,32 @@ const ClassDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const params = useParams();
   const history = useHistory();
+  const { setMessage } = useContext(Context);
 
   const filteredStudents = students.filter((student) => {
     return student.Name.toLowerCase().includes(
       searchQuery.trim().toLowerCase()
     );
   });
+
+  const toggleModal = (modalFunc) => {
+    overflowToggler();
+    modalFunc((prev) => !prev);
+  };
+
+  const classDeleteConfirm = () => {
+    deleteClass(params.className).then((res) => {
+      setMessage(res);
+      if (res.includes("deleted")) {
+        overflowToggler();
+        history.goBack();
+      }
+    });
+
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+  };
 
   useEffect(() => {
     db.collection("students")
@@ -35,20 +57,6 @@ const ClassDetailsPage = () => {
         setLoading(false);
       });
   }, [params.className]);
-
-  const toggleModal = (modalFunc) => {
-    overflowToggler();
-    modalFunc((prev) => !prev);
-  };
-
-  const deleteStudentConfirm = () => {
-    overflowToggler();
-    deleteStudent(params.studentId).then((res) => {
-      if (res === "done") {
-        history.goBack();
-      }
-    });
-  };
 
   return (
     <Fragment>
@@ -119,7 +127,7 @@ const ClassDetailsPage = () => {
             <Fragment>
               <DeleteConfirmPopup
                 toggle={() => toggleModal(setShowDeletePopup)}
-                Delete={deleteStudentConfirm}
+                Delete={classDeleteConfirm}
                 Name={params.className}
               />
               <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
