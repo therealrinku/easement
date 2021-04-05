@@ -1,8 +1,11 @@
+import "../styles/Breadcrumb.css";
+
 const Breadcrumb = () => {
   return (
     <div className="breadcrumb">
       <p>
-        Home {">"} Students {">"} Ariana
+        <a href="#">Home</a> {">"} <a href="#">Students</a> {">"}{" "}
+        <a hre="#">Ariana</a>
       </p>
     </div>
   );
