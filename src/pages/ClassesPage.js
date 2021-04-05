@@ -20,17 +20,35 @@ const ClassesPage = () => {
 
   return (
     <Fragment>
-      <h4>Classes List</h4>
-      <div className="classes">
-        {classes.map((cl) => {
-          return (
-            <Link to={`/class/${cl.className}`}>
-              <p>{cl.className}</p>
-              <IoMdArrowDropright />
-            </Link>
-          );
-        })}
-      </div>
+      {classes.length > 0 ? (
+        <Fragment>
+          <h4>Classes List</h4>
+          <div className="classes">
+            {classes.map((cl) => {
+              return (
+                <Link to={`/class/${cl.className}`}>
+                  <p>{cl.className}</p>
+                  <IoMdArrowDropright />
+                </Link>
+              );
+            })}
+          </div>
+        </Fragment>
+      ) : (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h4>No any class added yet!</h4>
+          <Link
+            to="/new?class=true"
+            style={{
+              color: "blue",
+              textDecoration: "none",
+              marginLeft: "5px",
+            }}
+          >
+            Create Now
+          </Link>
+        </div>
+      )}
     </Fragment>
   );
 };
