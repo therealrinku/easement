@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import StudentsPage from "./pages/StudentsPage";
@@ -16,6 +16,7 @@ import ClassesPage from "./pages/ClassesPage";
 import ClassDetailsPage from "./pages/ClassDetailsPage";
 import Breadcrumb from "./components/Breadcrumb";
 import "./App.css";
+import { Fragment } from "react";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -23,6 +24,7 @@ const App = () => {
   const [staffs, setStaffs] = useState([]);
   const [classes, setClasses] = useState([]);
   const [message, setMessage] = useState("");
+  const loc = useLocation();
 
   useEffect(() => {
     getData("test", "students", setStudents);
@@ -30,13 +32,15 @@ const App = () => {
     getData("test", "classes", setClasses);
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <div className="app">
       {message ? <Alert msg={message} /> : null}
       <Context.Provider
         value={{ students, staffs, classes, message, setMessage }}
       >
-        <BrowserRouter>
+        <Fragment>
           <Sidebar hideSidebar={!showSidebar} />
           <Topbar
             toggleSidebar={() => setShowSidebar((prev) => !prev)}
@@ -67,7 +71,7 @@ const App = () => {
               component={StaffDetailsPage}
             />
           </div>
-        </BrowserRouter>
+        </Fragment>
       </Context.Provider>
     </div>
   );
