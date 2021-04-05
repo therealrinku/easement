@@ -1,9 +1,11 @@
 import "../styles/DeletePopup.css";
 
-const DeleteConfirmPopup = ({ Delete, toggle }) => {
+const DeleteConfirmPopup = ({ Name, Delete, toggle }) => {
   return (
     <div className="delete--confirmation--popup">
-      <p>Do you sure want to delete?</p>
+      <p>
+        Do you sure want to delete <b>{Name}</b>?
+      </p>
 
       <section>
         <button onClick={Delete}>Delete</button>

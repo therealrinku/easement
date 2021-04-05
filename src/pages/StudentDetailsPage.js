@@ -21,7 +21,7 @@ const StudentDetailsPage = () => {
     db.collection("students")
       .doc(params.studentId)
       .onSnapshot((doc) => {
-        setStudentName(doc.data().Name);
+        setStudentName(doc.data()?.Name);
         const data = doc.data() ? Object.entries(doc.data()) : [];
         const filteredData = [];
         for (let e in data) {
@@ -93,6 +93,7 @@ const StudentDetailsPage = () => {
               <DeleteConfirmPopup
                 toggle={() => toggleModal(setShowDeletePopup)}
                 Delete={deleteStudentConfirm}
+                Name={studentName}
               />
               <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
             </Fragment>

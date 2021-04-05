@@ -120,6 +120,7 @@ const ClassDetailsPage = () => {
               <DeleteConfirmPopup
                 toggle={() => toggleModal(setShowDeletePopup)}
                 Delete={deleteStudentConfirm}
+                Name={params.className}
               />
               <Backdrop toggle={() => toggleModal(setShowDeletePopup)} />
             </Fragment>
