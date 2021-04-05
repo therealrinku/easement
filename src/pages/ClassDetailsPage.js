@@ -111,6 +111,10 @@ const ClassDetailsPage = () => {
             </button>
           </section>
 
+          <p style={{ fontSize: "12px", color: "red" }}>
+            Deleting a class will also delete all it's students.
+          </p>
+
           {showDeletePopup ? (
             <Fragment>
               <DeleteConfirmPopup
