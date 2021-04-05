@@ -13,7 +13,6 @@ import Context from "../context/Context";
 const ClassDetailsPage = () => {
   const [students, setStudents] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
-  const [studentName, setStudentName] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const params = useParams();
