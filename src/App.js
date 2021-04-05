@@ -12,9 +12,10 @@ import getData from "./actions/getData";
 import Context from "./context/Context";
 import StaffDetailsPage from "./pages/StaffDetailsPage";
 import Alert from "./components/Alert";
-import "./App.css";
 import ClassesPage from "./pages/ClassesPage";
 import ClassDetailsPage from "./pages/ClassDetailsPage";
+import Breadcrumb from "./components/Breadcrumb";
+import "./App.css";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -46,6 +47,7 @@ const App = () => {
             className="page"
             style={showSidebar ? { marginLeft: "17.5%" } : null}
           >
+            <Breadcrumb />
             <Route path="/students" exact component={StudentsPage} />
             <Route path="/fees" exact component={FeesPage} />
             <Route path="/results" exact component={ResultsPage} />
