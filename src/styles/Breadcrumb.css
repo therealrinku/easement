@@ -1,5 +1,14 @@
 .breadcrumb {
-  margin-top: -15px;
+  margin-top: -56px;
   font-size: 13px;
   position: absolute;
+  margin-left: -22px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
 }

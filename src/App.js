@@ -42,7 +42,6 @@ const App = () => {
             toggleSidebar={() => setShowSidebar((prev) => !prev)}
             sideBarIsClosed={!showSidebar}
           />
-
           <div
             className="page"
             style={showSidebar ? { marginLeft: "17.5%" } : null}
