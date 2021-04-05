@@ -66,7 +66,7 @@ const ClassDetailsPage = () => {
         </div>
       ) : (
         <Fragment>
-          <h4>Students</h4>
+          <h4>Students of {params.className}</h4>
           <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <table className="table">
             <thead>
