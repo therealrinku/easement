@@ -18,6 +18,7 @@ const Filters = ({ searchQuery, setSearchQuery, onlySearchBox }) => {
         />
       </form>
 
+      {/*
       <div style={onlySearchBox ? { display: "none" } : null}>
         <button onClick={() => setShowFilterOptions((prev) => !prev)}>
           <BiCaretDown />
@@ -52,6 +53,7 @@ const Filters = ({ searchQuery, setSearchQuery, onlySearchBox }) => {
           <button>Roll no</button>
         </section>
       </div>
+      */}
     </div>
   );
 };
