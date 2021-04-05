@@ -8,7 +8,11 @@ import "../styles/Form.css";
 const AddPage = () => {
   const location = useLocation();
   const [radioValue, setRadioValue] = useState(
-    location.search === "?staff=true" ? "staff" : "student"
+    location.search.includes("staff")
+      ? "staff"
+      : location.search.includes("class")
+      ? "class"
+      : "student"
   );
 
   return (
