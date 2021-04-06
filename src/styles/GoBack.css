@@ -1,0 +1,14 @@
+.go--back {
+  background: none;
+  display: flex;
+  align-items: center;
+  margin-top: -56px;
+  font-size: 13px;
+  position: absolute;
+  margin-left: -22px;
+  border: none;
+}
+
+.go--back p {
+  margin-left: 5px;
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { Route, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
@@ -14,9 +14,8 @@ import StaffDetailsPage from "./pages/StaffDetailsPage";
 import Alert from "./components/Alert";
 import ClassesPage from "./pages/ClassesPage";
 import ClassDetailsPage from "./pages/ClassDetailsPage";
-import Breadcrumb from "./components/Breadcrumb";
+import GoBack from "./components/GoBack";
 import "./App.css";
-import { Fragment } from "react";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -59,7 +58,7 @@ const App = () => {
             className="page"
             style={showSidebar ? { marginLeft: "17.5%" } : null}
           >
-            <Breadcrumb />
+            <GoBack />
             <Route path="/students" exact component={StudentsPage} />
             <Route path="/fees" exact component={FeesPage} />
             <Route path="/results" exact component={ResultsPage} />
