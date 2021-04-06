@@ -1,5 +1,5 @@
 import { useEffect, useState, Fragment } from "react";
-import { Route, useLocation } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import StudentsPage from "./pages/StudentsPage";
@@ -23,10 +23,6 @@ const App = () => {
   const [staffs, setStaffs] = useState([]);
   const [classes, setClasses] = useState([]);
   const [message, setMessage] = useState("");
-  const loc = useLocation();
-
-  //array for routes stack
-  const [stackedRoutes, setStackedRoutes] = useState([]);
 
   useEffect(() => {
     getData("test", "students", setStudents);
@@ -44,8 +40,6 @@ const App = () => {
           classes,
           message,
           setMessage,
-          stackedRoutes,
-          setStackedRoutes,
         }}
       >
         <Fragment>
