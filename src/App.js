@@ -27,7 +27,7 @@ const App = () => {
   const loc = useLocation();
 
   //array for routes stack
-  const [stackedRoutes, setStackedRoutes] = useState([loc.pathname]);
+  const [stackedRoutes, setStackedRoutes] = useState([]);
 
   useEffect(() => {
     getData("test", "students", setStudents);
