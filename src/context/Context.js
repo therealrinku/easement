@@ -6,6 +6,8 @@ const Context = createContext({
   classes: [],
   message: "",
   setMessage: () => {},
+  stackedRoutes: [],
+  setStackedRoutes: () => {},
 });
 
 export default Context;

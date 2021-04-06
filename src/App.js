@@ -26,19 +26,28 @@ const App = () => {
   const [message, setMessage] = useState("");
   const loc = useLocation();
 
+  //array for routes stack
+  const [stackedRoutes, setStackedRoutes] = useState([loc.pathname]);
+
   useEffect(() => {
     getData("test", "students", setStudents);
     getData("test", "staffs", setStaffs);
     getData("test", "classes", setClasses);
   }, []);
 
-  useEffect(() => {}, []);
-
   return (
     <div className="app">
       {message ? <Alert msg={message} /> : null}
       <Context.Provider
-        value={{ students, staffs, classes, message, setMessage }}
+        value={{
+          students,
+          staffs,
+          classes,
+          message,
+          setMessage,
+          stackedRoutes,
+          setStackedRoutes,
+        }}
       >
         <Fragment>
           <Sidebar hideSidebar={!showSidebar} />
