@@ -7,7 +7,7 @@ export const getStudents = async (username) => {
   const snap = await docsRef.get();
   const finalData = [];
   snap.docs.map((doc) => {
-    return finalData.push(doc.data());
+    return finalData.push({ ...doc.data(), id: doc.id });
   });
   return finalData;
 };
