@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
 import { connect } from "react-redux";
 import * as studentActions from "../redux/student/studentActions";
+import Loader from "../components/Loader";
 
 const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,7 +22,9 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
 
   return (
     <Fragment>
-      {students.length > 0 ? (
+      {loading ? (
+        <Loader />
+      ) : students.length > 0 ? (
         <Fragment>
           <h4>Students</h4>
           <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
