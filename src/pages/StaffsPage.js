@@ -1,18 +1,28 @@
-import { useContext, useState, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
-import Context from "../context/Context";
+import * as staffActions from "../redux/staff/staffActions";
+import { connect } from "react-redux";
+import Loader from "../components/Loader";
 
-const StaffsPage = () => {
+const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { staffs } = useContext(Context);
+
+  useEffect(() => {
+    if (!staffsLoaded) {
+      LOAD_STAFFS("test");
+    }
+  }, []);
+
   const filteredStaffs = staffs.filter((staff) => {
     return staff.Name.toLowerCase().includes(searchQuery.trim().toLowerCase());
   });
 
   return (
     <Fragment>
-      {staffs.length > 0 ? (
+      {loading ? (
+        <Loader />
+      ) : staffs.length > 0 ? (
         <Fragment>
           <h4>Staffs</h4>
           <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
@@ -69,4 +79,18 @@ const StaffsPage = () => {
   );
 };
 
-export default StaffsPage;
+const mapStateToProps = (state) => {
+  return {
+    staffs: state.staffs.staffs,
+    staffsLoaded: state.staffs.staffsLoaded,
+    loading: state.staffs.loading,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    LOAD_STAFFS: (username) => dispatch(staffActions.LOAD_STAFFS(username)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StaffsPage);
