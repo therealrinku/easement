@@ -1,15 +1,15 @@
 import db from "../firebase/db";
 
 export const getStaffs = (username) => {
-  return new Promise((resolve) => {
-    db.collection("staffs")
-      .where("linkedUsername", "==", username)
-      .get()
-      .then((data) => {
-        resolve(data);
-      })
-      .catch((err) => new Error(err.message));
+  const docsRef = db
+    .collection("students")
+    .where("linkedUsername", "==", username);
+  const snap = await docsRef.get();
+  const finalData = [];
+  snap.docs.map((doc) => {
+    return finalData.push({ ...doc.data(), id: doc.id });
   });
+  return finalData;
 };
 
 export const updateStaff = (staffId, updatedData) => {
