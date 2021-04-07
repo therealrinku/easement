@@ -11,7 +11,7 @@ const Loader = () => {
         height: "400px",
       }}
     >
-      <div className="loader"></div>;
+      <div className="loader"></div>
     </div>
   );
 };
