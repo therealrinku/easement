@@ -1,5 +1,17 @@
 import db from "../firebase/db";
 
+export const getClasses = (username) => {
+  return new Promise((resolve) => {
+    db.collection("classes")
+      .where("linkedUsername", "==", username)
+      .get()
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => new Error(err.message));
+  });
+};
+
 export const addClass = (data) => {
   return new Promise((resolve) => {
     db.collection("classes")
