@@ -1,11 +1,17 @@
-import { useContext, useState, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
-import Context from "../context/Context";
+import { connect } from "react-redux";
+import * as studentActions from "../redux/student/studentActions";
 
-const StudentsPage = () => {
+const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { students } = useContext(Context);
+
+  useEffect(() => {
+    if (!studentsLoaded) {
+      LOAD_STUDENTS("test");
+    }
+  }, []);
 
   const filteredStudents = students.filter((student) => {
     return student.Name.toLowerCase().includes(
@@ -76,4 +82,19 @@ const StudentsPage = () => {
   );
 };
 
-export default StudentsPage;
+const mapStateToProps = (state) => {
+  return {
+    students: state.students.students,
+    studentsLoaded: state.students.students_loaded,
+    loading: state.students.loading,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    LOAD_STUDENTS: (username) =>
+      dispatch(studentActions.LOAD_STUDENTS(username)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentsPage);
