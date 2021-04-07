@@ -2,7 +2,7 @@ import db from "../firebase/db";
 
 export const getStaffs = async (username) => {
   const docsRef = db
-    .collection("students")
+    .collection("staffs")
     .where("linkedUsername", "==", username);
   const snap = await docsRef.get();
   const finalData = [];
