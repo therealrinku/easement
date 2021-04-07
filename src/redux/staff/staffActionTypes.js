@@ -1,0 +1,10 @@
+const staffActionTypes = {
+  LOADING_STAFFS: "LOADING_STAFFS",
+  LOADED_STAFFS: "LOADED_STAFFS",
+  ADD_STAFF: "ADD_STAFF",
+  EDIT_STAFF: "EDIT_STAFF",
+  DELETE_STAFF: "DELETE_STAFF",
+  STAFF_ERROR: "STAFF_ERROR",
+};
+
+export default staffActionTypes;

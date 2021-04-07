@@ -1,5 +1,17 @@
 import db from "../firebase/db";
 
+export const getStaffs = (username) => {
+  return new Promise((resolve) => {
+    db.collection("staffs")
+      .where("linkedUsername", "==", username)
+      .get()
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => new Error(err.message));
+  });
+};
+
 export const updateStaff = (staffId, updatedData) => {
   return new Promise((resolve) => {
     db.collection("staffs")
