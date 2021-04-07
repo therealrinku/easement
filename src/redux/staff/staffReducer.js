@@ -1,13 +1,13 @@
 import staffActionTypes from "./staffActionTypes";
 
-const state = {
+const initialState = {
   staffs: [],
   loading: false,
   staffs_loaded: false,
   error: null,
 };
 
-const staffReducer = (state = state, action) => {
+const staffReducer = (state = initialState, action) => {
   switch (action.type) {
     case staffActionTypes.LOADING_STAFFS:
       return {

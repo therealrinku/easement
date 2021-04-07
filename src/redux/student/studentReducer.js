@@ -1,13 +1,13 @@
 import studentActionTypes from "./studentActionTypes";
 
-const state = {
+const initialState = {
   students: [],
   loading: false,
   students_loaded: false,
   error: null,
 };
 
-const studentReducer = (state = state, action) => {
+const studentReducer = (state = initialState, action) => {
   switch (action.type) {
     case studentActionTypes.LOADING_STUDENTS:
       return {

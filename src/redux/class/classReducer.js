@@ -1,13 +1,13 @@
 import classActionTypes from "./classActionTypes";
 
-const state = {
+const initialState = {
   classes: [],
   loading: false,
   classes_loaded: false,
   error: null,
 };
 
-const classReducer = (state = state, action) => {
+const classReducer = (state = initialState, action) => {
   switch (action.type) {
     case classActionTypes.LOADING_CLASSES:
       return {
