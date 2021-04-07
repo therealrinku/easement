@@ -3,6 +3,7 @@ import staffActionTypes from "./staffActionTypes";
 const state = {
   staffs: [],
   loading: false,
+  staffs_loaded: false,
   error: null,
 };
 
@@ -18,6 +19,7 @@ const staffReducer = (action, type) => {
       return {
         ...state,
         loading: false,
+        staffs_loaded: true,
         staffs: action.payload,
       };
 

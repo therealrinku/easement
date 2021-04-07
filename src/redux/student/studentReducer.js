@@ -3,6 +3,7 @@ import studentActionTypes from "./studentActionTypes";
 const state = {
   students: [],
   loading: false,
+  students_loaded: false,
   error: null,
 };
 
@@ -18,6 +19,7 @@ const studentReducer = (action, type) => {
       return {
         ...state,
         loading: false,
+        students_loaded: true,
         students: action.payload,
       };
 

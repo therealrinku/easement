@@ -3,6 +3,7 @@ import classActionTypes from "./classActionTypes";
 const state = {
   classes: [],
   loading: false,
+  classes_loaded: false,
   error: null,
 };
 
@@ -18,6 +19,7 @@ const classReducer = (action, type) => {
       return {
         ...state,
         loading: false,
+        classes_loaded: true,
         classes: action.payload,
       };
 
