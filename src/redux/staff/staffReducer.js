@@ -7,7 +7,7 @@ const state = {
   error: null,
 };
 
-const staffReducer = (action, type) => {
+const staffReducer = (state = state, action) => {
   switch (action.type) {
     case staffActionTypes.LOADING_STAFFS:
       return {

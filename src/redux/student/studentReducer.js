@@ -7,7 +7,7 @@ const state = {
   error: null,
 };
 
-const studentReducer = (action, type) => {
+const studentReducer = (state = state, action) => {
   switch (action.type) {
     case studentActionTypes.LOADING_STUDENTS:
       return {
