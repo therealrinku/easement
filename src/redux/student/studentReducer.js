@@ -47,3 +47,5 @@ const studentReducer = (action, type) => {
       return state;
   }
 };
+
+export default studentReducer;

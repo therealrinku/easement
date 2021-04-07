@@ -24,7 +24,7 @@ const staffReducer = (action, type) => {
     case staffActionTypes.ADD_STAFF:
       return {
         ...state,
-        students: state.students.concat(action.payload),
+        staffs: state.staffs.concat(action.payload),
       };
 
     case staffActionTypes.EDIT_STAFF:
