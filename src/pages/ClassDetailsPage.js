@@ -60,17 +60,7 @@ const ClassDetailsPage = () => {
   return (
     <Fragment>
       {loading ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "400px",
-          }}
-        >
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <Fragment>
           <h4>Students of {params.className}</h4>

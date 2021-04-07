@@ -52,17 +52,7 @@ const StudentDetailsPage = () => {
   return (
     <Fragment>
       {loading ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "400px",
-          }}
-        >
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <Fragment>
           <h4>{studentName} Details</h4>
