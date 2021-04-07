@@ -8,7 +8,7 @@ const Loader = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        height: "400px",
+        height: "350px",
       }}
     >
       <div className="loader"></div>
