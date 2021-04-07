@@ -1,6 +1,6 @@
 import db from "../firebase/db";
 
-export const getStaffs = (username) => {
+export const getStaffs = async (username) => {
   const docsRef = db
     .collection("students")
     .where("linkedUsername", "==", username);
