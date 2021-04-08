@@ -26,7 +26,7 @@ const studentReducer = (state = initialState, action) => {
     case studentActionTypes.ADD_STUDENT:
       return {
         ...state,
-        students: state.students.concat(action.payload),
+        students: [...state.students, action.payload],
       };
 
     case studentActionTypes.EDIT_STUDENT:
