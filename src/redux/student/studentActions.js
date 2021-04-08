@@ -1,9 +1,4 @@
-import {
-  addStudent,
-  deleteStudent,
-  getStudents,
-  updateStudent,
-} from "../../actions/studentActions";
+import { addStudent, deleteStudent, getStudents, updateStudent } from "../../actions/studentActions";
 import studentActionTypes from "./studentActionTypes";
 
 export const LOAD_STUDENTS = (username) => async (dispatch) => {
@@ -19,10 +14,7 @@ export const LOAD_STUDENTS = (username) => async (dispatch) => {
 export const ADD_STUDENT = (data) => async (dispatch) => {
   try {
     const id = await addStudent(data);
-    dispatch({
-      type: studentActionTypes.ADD_STUDENT,
-      payload: { ...data, id },
-    });
+    dispatch({ type: studentActionTypes.ADD_STUDENT, payload: { ...data, id } });
   } catch (err) {
     dispatch({ type: studentActionTypes.STUDENT_ERROR, payload: err.message });
   }
