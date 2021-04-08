@@ -37,6 +37,7 @@ const studentReducer = (state = initialState, action) => {
     case studentActionTypes.DELETE_STUDENT:
       return {
         ...state,
+        students: state.students.filter((st) => st.id !== action.payload),
       };
 
     case studentActionTypes.STUDENT_ERROR:

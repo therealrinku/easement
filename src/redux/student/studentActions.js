@@ -32,9 +32,8 @@ export const EDIT_STUDENT = (studentId, updatedData) => async (dispatch) => {
 
 export const DELETE_STUDENT = (studentId) => async (dispatch) => {
   try {
-    dispatch({ type: studentActionTypes.LOADING_STUDENTS });
-    const response = await deleteStudent(studentId);
-    dispatch({ type: studentActionTypes.EDIT_STUDENT, payload: response });
+    await deleteStudent(studentId);
+    dispatch({ type: studentActionTypes.DELETE_STUDENT, payload: studentId });
   } catch (err) {
     dispatch({ type: studentActionTypes.STUDENT_ERROR, payload: err.message });
   }

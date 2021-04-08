@@ -1,9 +1,7 @@
 import db from "../firebase/db";
 
 export const getStudents = async (username) => {
-  const docsRef = db
-    .collection("students")
-    .where("linkedUsername", "==", username);
+  const docsRef = db.collection("students").where("linkedUsername", "==", username);
   const snap = await docsRef.get();
   const finalData = [];
   snap.docs.map((doc) => {
@@ -22,14 +20,8 @@ export const updateStudent = (studentId, updatedData) => {
   });
 };
 
-export const deleteStudent = (studentId) => {
-  return new Promise((resolve) => {
-    db.collection("students")
-      .doc(studentId)
-      .delete()
-      .then(resolve("done"))
-      .catch((err) => resolve(err.message));
-  });
+export const deleteStudent = async (studentId) => {
+  await db.collection("students").doc(studentId).delete();
 };
 
 export const addStudent = async (data) => {
