@@ -33,12 +33,6 @@ export const deleteStudent = (studentId) => {
 };
 
 export const addStudent = async (data) => {
-  return new Promise((resolve) => {
-    db.collection("students")
-      .add({
-        ...data,
-      })
-      .then((doc) => resolve("Successfully created a new student."))
-      .catch((err) => resolve(err.message));
-  });
+  const docRef = await db.collection("students").add(data);
+  return docRef.id;
 };
