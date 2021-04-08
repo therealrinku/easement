@@ -7,8 +7,10 @@ import overflowToggler from "../utils/OverflowToggler";
 import Detail from "../components/Detail";
 import db from "../firebase/db";
 import Loader from "../components/Loader";
+import * as studentActions from "../redux/student/studentActions";
+import { connect } from "react-redux";
 
-const StudentDetailsPage = () => {
+const StudentDetailsPage = ({ DELETE_STUDENT }) => {
   const [details, setDetails] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [showEditButtons, setShowEditButtons] = useState(false);
@@ -42,11 +44,8 @@ const StudentDetailsPage = () => {
 
   const deleteStudentConfirm = () => {
     overflowToggler();
-    deleteStudent(params.studentId).then((res) => {
-      if (res === "done") {
-        history.goBack();
-      }
-    });
+    DELETE_STUDENT(params.studentId);
+    history.goBack();
   };
 
   return (
@@ -70,12 +69,8 @@ const StudentDetailsPage = () => {
             );
           })}
           <section className="control-buttons">
-            <button onClick={() => setShowEditButtons((prev) => !prev)}>
-              Edit
-            </button>
-            <button onClick={() => toggleModal(setShowDeletePopup)}>
-              Delete
-            </button>
+            <button onClick={() => setShowEditButtons((prev) => !prev)}>Edit</button>
+            <button onClick={() => toggleModal(setShowDeletePopup)}>Delete</button>
           </section>
 
           {showDeletePopup ? (
@@ -94,4 +89,10 @@ const StudentDetailsPage = () => {
   );
 };
 
-export default StudentDetailsPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    DELETE_STUDENT: (studentId) => dispatch(studentActions.DELETE_STUDENT(studentId)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(StudentDetailsPage);
