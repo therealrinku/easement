@@ -32,13 +32,13 @@ export const deleteStudent = (studentId) => {
   });
 };
 
-export const addStudent = (data) => {
+export const addStudent = async (data) => {
   return new Promise((resolve) => {
     db.collection("students")
       .add({
         ...data,
       })
-      .then(() => resolve("Successfully created a new student."))
+      .then((doc) => resolve("Successfully created a new student."))
       .catch((err) => resolve(err.message));
   });
 };

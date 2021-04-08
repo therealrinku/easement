@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
 import { BiCaretDown } from "react-icons/all";
-import { addStudent } from "../actions/studentActions";
 import Context from "../context/Context";
 import ClassesDropdown from "./ClassesDropdown";
 import * as studentActions from "../redux/student/studentActions";
+import { connect } from "react-redux";
 
-const AddStudentForm = () => {
+const AddStudentForm = ({ ADD_STUDENT }) => {
   //state for editing and adding student with checking if data is passed through props for update
   const [studentName, setStudentName] = useState("");
   const [studentClassName, setStudentClassName] = useState("");
@@ -52,7 +52,7 @@ const AddStudentForm = () => {
               student.studentRollNo === studentRollNo
           ) < 0
         ) {
-          addStudent({
+          ADD_STUDENT({
             Name: studentName,
             Class: studentClassName,
             RollNo: studentRollNo,
@@ -60,17 +60,6 @@ const AddStudentForm = () => {
             "Phone Number": studentPhoneNumber,
             Address: studentAddress,
             linkedUsername: "test",
-          }).then((res) => {
-            setMessage(res);
-            if (res.includes("created")) {
-              //clearing state
-              setStudentName("");
-              setStudentPhoneNumber("");
-              setStudentGuardianName("");
-              setStudentRollNo("");
-              setStudentClassName("");
-              setStudentAddress("");
-            }
           });
         } else {
           setMessage(
@@ -165,4 +154,10 @@ const AddStudentForm = () => {
   );
 };
 
-export default AddStudentForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ADD_STUDENT: (data) => dispatch(studentActions.ADD_STUDENT(data)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AddStudentForm);
