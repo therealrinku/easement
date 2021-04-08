@@ -1,4 +1,5 @@
 import {
+  addStudent,
   deleteStudent,
   getStudents,
   updateStudent,
@@ -10,6 +11,15 @@ export const LOAD_STUDENTS = (username) => async (dispatch) => {
     dispatch({ type: studentActionTypes.LOADING_STUDENTS });
     const students = await getStudents(username);
     dispatch({ type: studentActionTypes.LOADED_STUDENTS, payload: students });
+  } catch (err) {
+    dispatch({ type: studentActionTypes.STUDENT_ERROR, payload: err.message });
+  }
+};
+
+export const ADD_STUDENT = (username, data) => async (dispatch) => {
+  try {
+    const res = await addStudent(username);
+    dispatch({ type: studentActionTypes.ADD_STUDENT, payload: data });
   } catch (err) {
     dispatch({ type: studentActionTypes.STUDENT_ERROR, payload: err.message });
   }

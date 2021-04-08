@@ -3,6 +3,7 @@ import { BiCaretDown } from "react-icons/all";
 import { addStudent } from "../actions/studentActions";
 import Context from "../context/Context";
 import ClassesDropdown from "./ClassesDropdown";
+import * as studentActions from "../redux/student/studentActions";
 
 const AddStudentForm = () => {
   //state for editing and adding student with checking if data is passed through props for update
