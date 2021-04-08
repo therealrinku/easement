@@ -9,9 +9,7 @@ const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    if (!staffsLoaded) {
-      LOAD_STAFFS("test");
-    }
+    if (!staffsLoaded) LOAD_STAFFS("test");
   }, []);
 
   const filteredStaffs = staffs.filter((staff) => {
