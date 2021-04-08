@@ -16,9 +16,9 @@ export const LOAD_STUDENTS = (username) => async (dispatch) => {
   }
 };
 
-export const ADD_STUDENT = (username, data) => async (dispatch) => {
+export const ADD_STUDENT = (data) => async (dispatch) => {
   try {
-    const res = await addStudent(username);
+    const res = await addStudent(data);
     dispatch({ type: studentActionTypes.ADD_STUDENT, payload: data });
   } catch (err) {
     dispatch({ type: studentActionTypes.STUDENT_ERROR, payload: err.message });
