@@ -18,17 +18,13 @@ const Filters = ({ searchQuery, setSearchQuery, onlySearchBox }) => {
         />
       </form>
 
-      {/*
       <div style={onlySearchBox ? { display: "none" } : null}>
         <button onClick={() => setShowFilterOptions((prev) => !prev)}>
           <BiCaretDown />
           <span>Filter by</span>
         </button>
 
-        <section
-          className="options"
-          style={!showFilterOptions ? { display: "none" } : null}
-        >
+        <section className="options" style={!showFilterOptions ? { display: "none" } : null}>
           <button>Class 8</button>
           <button>Class 7</button>
           <button>Class 6</button>
@@ -44,16 +40,12 @@ const Filters = ({ searchQuery, setSearchQuery, onlySearchBox }) => {
           <span>Sort by</span>
         </button>
 
-        <section
-          className="options"
-          style={!showSortOptions ? { display: "none" } : null}
-        >
+        <section className="options" style={!showSortOptions ? { display: "none" } : null}>
           <button>Name</button>
           <button>Class</button>
           <button>Roll no</button>
         </section>
       </div>
-      */}
     </div>
   );
 };
