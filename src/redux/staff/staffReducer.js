@@ -43,7 +43,7 @@ const staffReducer = (state = initialState, action) => {
     case staffActionTypes.DELETE_STAFF:
       return {
         ...state,
-        staffs: state.staffs.filter((st) => st.id !== action.payload.id),
+        staffs: state.staffs.filter((st) => st.id !== action.payload.staffId),
       };
 
     case staffActionTypes.STAFF_ERROR:

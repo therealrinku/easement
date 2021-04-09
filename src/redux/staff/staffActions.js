@@ -31,8 +31,8 @@ export const EDIT_STAFF = (staffId, propName, propVal) => async (dispatch) => {
 
 export const DELETE_STAFF = (staffId) => async (dispatch) => {
   try {
-    const id = await deleteStaff(staffId);
-    dispatch({ type: staffActionTypes.DELETE_STAFF, payload: id });
+    await deleteStaff(staffId);
+    dispatch({ type: staffActionTypes.DELETE_STAFF, payload: staffId });
   } catch (err) {
     dispatch({ type: staffActionTypes.STAFF_ERROR, payload: err.message });
   }
