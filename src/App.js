@@ -27,8 +27,8 @@ const App = () => {
   }, [message]);
 
   return (
-    <Layout>
-      <Context.Provider value={{ classes, message, setMessage }}>
+    <Context.Provider value={{ classes, message, setMessage }}>
+      <Layout>
         <Fragment>
           <Route path="/students" exact component={StudentsPage} />
           <Route path="/fees" exact component={FeesPage} />
@@ -38,8 +38,8 @@ const App = () => {
           <Route path="/student/details/:studentId" component={StudentDetailsPage} />
           <Route path="/staff/details/:staffId" component={StaffDetailsPage} />
         </Fragment>
-      </Context.Provider>
-    </Layout>
+      </Layout>
+    </Context.Provider>
   );
 };
 

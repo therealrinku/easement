@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="app">
-      {message ? <Alert msg={message} /> : null}
+      {message ? <Alert message={message} /> : null}
       <Sidebar hideSidebar={!showSidebar} />
       <Topbar toggleSidebar={() => setShowSidebar((prev) => !prev)} sideBarIsClosed={!showSidebar} />
       <div className="page" style={showSidebar ? { marginLeft: "17.5%" } : null}>

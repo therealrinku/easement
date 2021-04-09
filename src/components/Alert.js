@@ -1,12 +1,12 @@
 import { FcCheckmark, FcCancel } from "react-icons/all";
 import "../styles/Alert.css";
 
-const Alert = ({ msg }) => {
+const Alert = ({ message }) => {
   return (
     <div className="alert">
       <section>
-        {msg.includes("created") ? <FcCheckmark /> : <FcCancel />}
-        <p>{msg}</p>
+        {message.success ? <FcCheckmark /> : <FcCancel />}
+        <p>{message.text}</p>
       </section>
     </div>
   );

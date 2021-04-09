@@ -9,7 +9,7 @@ const AddStaffForm = ({ ADD_STAFF }) => {
   const [staffSalary, setStaffSalary] = useState("");
   const [staffAddress, setStaffAddress] = useState("");
   const [staffContactNumber, setStaffContactNumber] = useState("");
-  const { staffs, setMessage } = useContext(Context);
+  const { setMessage } = useContext(Context);
 
   const AddStaff = (e) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ const AddStaffForm = ({ ADD_STAFF }) => {
       setStaffContactNumber("");
       setStaffAddress("");
     } else {
-      setMessage("Any input field cannot be empty.");
+      setMessage({ text: "Any input field cannot be empty." });
     }
   };
 

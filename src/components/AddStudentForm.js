@@ -66,13 +66,13 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
           setStudentClassName("");
           setStudentAddress("");
         } else {
-          setMessage(`Roll no ${studentRollNo} already taken in ${studentClassName}`);
+          setMessage({ text: `Roll no ${studentRollNo} already taken in ${studentClassName}` });
         }
       } else {
-        setMessage("Roll no cannot be less than 1.");
+        setMessage({ text: "Roll no cannot be less than 1." });
       }
     } else {
-      setMessage("Any input field cannot be empty.");
+      setMessage({ text: "Any input field cannot be empty." });
     }
   };
 

@@ -20,10 +20,10 @@ const AddClassForm = () => {
           }
         });
       } else {
-        setMessage(`${className} already exists.`);
+        setMessage({ text: `${className} already exists.` });
       }
     } else {
-      setMessage("Class Name cannot be empty.");
+      setMessage({ text: "Class Name cannot be empty." });
     }
   };
 
