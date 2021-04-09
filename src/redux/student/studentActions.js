@@ -24,7 +24,7 @@ export const EDIT_STUDENT = (studentId, updatedData) => async (dispatch) => {
   try {
     dispatch({ type: studentActionTypes.LOADING_STUDENTS });
     const response = await updateStudent(studentId, updatedData);
-    dispatch({ type: studentActionTypes.EDIT_STUDENT, payload: response });
+    dispatch({ type: studentActionTypes.EDIT_STUDENT, payload: { studentId, updatedData } });
   } catch (err) {
     dispatch({ type: studentActionTypes.STUDENT_ERROR, payload: err.message });
   }
