@@ -18,7 +18,7 @@ const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
 
   return (
     <Fragment>
-      {loading ? (
+      {loading || !staffsLoaded ? (
         <Loader />
       ) : staffs.length > 0 ? (
         <Fragment>

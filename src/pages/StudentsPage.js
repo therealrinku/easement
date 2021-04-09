@@ -15,14 +15,12 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
   }, []);
 
   const filteredStudents = students.filter((student) => {
-    return student.Name.toLowerCase().includes(
-      searchQuery.trim().toLowerCase()
-    );
+    return student.Name.toLowerCase().includes(searchQuery.trim().toLowerCase());
   });
 
   return (
     <Fragment>
-      {loading ? (
+      {loading || !studentsLoaded ? (
         <Loader />
       ) : students.length > 0 ? (
         <Fragment>
@@ -51,10 +49,7 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
                         border: "none",
                       }}
                     >
-                      <Link
-                        to={`/student/details/${student.id}`}
-                        className="link"
-                      >
+                      <Link to={`/student/details/${student.id}`} className="link">
                         {student.Name}
                       </Link>
                     </td>
@@ -95,8 +90,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    LOAD_STUDENTS: (username) =>
-      dispatch(studentActions.LOAD_STUDENTS(username)),
+    LOAD_STUDENTS: (username) => dispatch(studentActions.LOAD_STUDENTS(username)),
   };
 };
 
