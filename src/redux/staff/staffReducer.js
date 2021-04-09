@@ -3,7 +3,7 @@ import staffActionTypes from "./staffActionTypes";
 const initialState = {
   staffs: [],
   loading: false,
-  staffs_loaded: false,
+  staffsLoaded: false,
   error: null,
 };
 
@@ -19,7 +19,7 @@ const staffReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        staffs_loaded: true,
+        staffsLoaded: true,
         staffs: action.payload,
       };
 
