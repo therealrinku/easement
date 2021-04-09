@@ -1,13 +1,4 @@
-import {
-  FiUsers,
-  MdAttachMoney,
-  MdShowChart,
-  BsGear,
-  VscHome,
-  RiAdminLine,
-  RiAddCircleLine,
-  GrGroup,
-} from "react-icons/all";
+import { FiUsers, MdAttachMoney, MdShowChart, BsGear, VscHome, RiAdminLine, RiAddCircleLine } from "react-icons/all";
 import { NavLink } from "react-router-dom";
 import "../styles/Sidebar.css";
 
@@ -24,11 +15,6 @@ const Sidebar = ({ hideSidebar }) => {
       <NavLink to="/new" exact activeClassName="nav--active">
         <RiAddCircleLine />
         <p>New</p>
-      </NavLink>
-
-      <NavLink to="/classes" exact activeClassName="nav--active">
-        <GrGroup />
-        <p>Classes</p>
       </NavLink>
 
       <NavLink to="/staffs" exact activeClassName="nav--active">

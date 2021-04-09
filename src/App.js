@@ -9,8 +9,6 @@ import AddPage from "./pages/AddPage";
 import getData from "./actions/getData";
 import Context from "./context/Context";
 import StaffDetailsPage from "./pages/StaffDetailsPage";
-import ClassesPage from "./pages/ClassesPage";
-import ClassDetailsPage from "./pages/ClassDetailsPage";
 import Layout from "./components/Layout";
 import "./App.css";
 
@@ -31,8 +29,6 @@ const App = () => {
           <Route path="/results" exact component={ResultsPage} />
           <Route path="/staffs" exact component={StaffsPage} />
           <Route path="/new" exact component={AddPage} />
-          <Route path="/classes" exact component={ClassesPage} />
-          <Route path="/class/:className" exact component={ClassDetailsPage} />
           <Route path="/student/details/:studentId" component={StudentDetailsPage} />
           <Route path="/staff/details/:staffId" component={StaffDetailsPage} />
         </Fragment>
