@@ -43,10 +43,6 @@ const AddStaffForm = ({ ADD_STAFF }) => {
     } else {
       setMessage("Any input field cannot be empty.");
     }
-
-    setTimeout(() => {
-      setMessage("");
-    }, 4000);
   };
 
   return (

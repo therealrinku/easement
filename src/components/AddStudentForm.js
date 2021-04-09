@@ -74,10 +74,6 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
     } else {
       setMessage("Any input field cannot be empty.");
     }
-
-    setTimeout(() => {
-      setMessage("");
-    }, 4000);
   };
 
   return (

@@ -23,8 +23,6 @@ const UpdatePopup = ({ personId, propertyName, propertyValue, toggle, isStaff, U
     } else {
       setMessage("Input field cannot be empty.");
     }
-
-    setTimeout(() => setMessage(""), 3000);
   };
 
   return (

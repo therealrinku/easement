@@ -25,21 +25,12 @@ const AddClassForm = () => {
     } else {
       setMessage("Class Name cannot be empty.");
     }
-
-    setTimeout(() => {
-      setMessage("");
-    }, 4000);
   };
 
   return (
     <form className="new--form" onSubmit={AddClass}>
       <label htmlFor="name">Class Name</label>
-      <input
-        type="text"
-        id="name"
-        value={className}
-        onChange={(e) => setClassName(e.target.value)}
-      />
+      <input type="text" id="name" value={className} onChange={(e) => setClassName(e.target.value)} />
       <button className="submit--btn">Submit</button>
     </form>
   );

@@ -20,6 +20,12 @@ const App = () => {
     getData("test", "classes", setClasses);
   }, []);
 
+  //use effect to clear message after 3 sec
+  //which run only if message is not empty
+  useEffect(() => {
+    if (message) setTimeout(() => setMessage(null), 3000);
+  }, [message]);
+
   return (
     <Layout>
       <Context.Provider value={{ classes, message, setMessage }}>
