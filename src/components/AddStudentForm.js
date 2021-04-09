@@ -47,9 +47,7 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
       if (studentRollNo > 0) {
         if (
           students.findIndex(
-            (student) =>
-              student.studentClassName === studentClassName &&
-              student.studentRollNo === studentRollNo
+            (student) => student.studentClassName === studentClassName && student.studentRollNo === studentRollNo
           ) < 0
         ) {
           ADD_STUDENT({
@@ -61,10 +59,14 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
             Address: studentAddress,
             linkedUsername: "test",
           });
+          setStudentName("");
+          setStudentPhoneNumber("");
+          setStudentRollNo("");
+          setStudentGuardianName("");
+          setStudentClassName("");
+          setStudentAddress("");
         } else {
-          setMessage(
-            `Roll no ${studentRollNo} already taken in ${studentClassName}`
-          );
+          setMessage(`Roll no ${studentRollNo} already taken in ${studentClassName}`);
         }
       } else {
         setMessage("Roll no cannot be less than 1.");
@@ -81,12 +83,7 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
   return (
     <form className="new--form" onSubmit={AddStudent}>
       <label htmlFor="name">Student Name</label>
-      <input
-        type="text"
-        id="name"
-        value={studentName}
-        onChange={(e) => setStudentName(e.target.value)}
-      />
+      <input type="text" id="name" value={studentName} onChange={(e) => setStudentName(e.target.value)} />
 
       <label htmlFor="class">Class</label>
       <div className="classes--options">
@@ -103,27 +100,15 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
               : null
           }
         >
-          <p>
-            {studentClassName ? studentClassName : "Select Class from here"}
-          </p>
+          <p>{studentClassName ? studentClassName : "Select Class from here"}</p>
           <BiCaretDown />
         </button>
 
-        {showClassOptions ? (
-          <ClassesDropdown
-            classes={classes}
-            updateClassName={updateClassName}
-          />
-        ) : null}
+        {showClassOptions ? <ClassesDropdown classes={classes} updateClassName={updateClassName} /> : null}
       </div>
 
       <label htmlFor="rollno">Rollno</label>
-      <input
-        type="number"
-        id="rollno"
-        value={studentRollNo}
-        onChange={(e) => setStudentRollNo(e.target.value)}
-      />
+      <input type="number" id="rollno" value={studentRollNo} onChange={(e) => setStudentRollNo(e.target.value)} />
 
       <label htmlFor="guardian_name">Guardian Name</label>
       <input
@@ -142,12 +127,7 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
       />
 
       <label htmlFor="address">Address</label>
-      <input
-        type="text"
-        id="address"
-        value={studentAddress}
-        onChange={(e) => setStudentAddress(e.target.value)}
-      />
+      <input type="text" id="address" value={studentAddress} onChange={(e) => setStudentAddress(e.target.value)} />
 
       <button className="submit--btn">Submit</button>
     </form>
