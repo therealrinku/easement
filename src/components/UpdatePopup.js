@@ -1,17 +1,12 @@
 import { useState, useContext } from "react";
-import { updateStudent } from "../actions/studentActions";
 import { updateStaff } from "../actions/staffActions";
 import Context from "../context/Context";
 import { MdClear } from "react-icons/all";
+import * as studentActions from "../redux/student/studentActions";
+import { connect } from "react-redux";
 import "../styles/UpdatePopup.css";
 
-const UpdatePopup = ({
-  personId,
-  propertyName,
-  propertyValue,
-  toggle,
-  isStaff,
-}) => {
+const UpdatePopup = ({ personId, propertyName, propertyValue, toggle, isStaff, UPDATE_STUDENT }) => {
   const [val, setVal] = useState(propertyValue);
   const { setMessage } = useContext(Context);
 
@@ -19,7 +14,7 @@ const UpdatePopup = ({
     e.preventDefault();
     if (val.trim().length > 0) {
       if (!isStaff) {
-        updateStudent(personId, { [propertyName]: val });
+        UPDATE_STUDENT(personId, propertyName, val);
       } else {
         updateStaff(personId, { [propertyName]: val });
       }
@@ -36,11 +31,7 @@ const UpdatePopup = ({
       <h4>Edit {propertyName}</h4>
       <form onSubmit={updateConfirm}>
         <input
-          type={
-            propertyName.includes("Number") || propertyName.includes("RollNo")
-              ? "number"
-              : "text"
-          }
+          type={propertyName.includes("Number") || propertyName.includes("RollNo") ? "number" : "text"}
           value={val}
           onChange={(e) => setVal(e.target.value)}
         />
@@ -56,4 +47,10 @@ const UpdatePopup = ({
   );
 };
 
-export default UpdatePopup;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    UPDATE_STUDENT: (id, propName, propVal) => dispatch(studentActions.EDIT_STUDENT(id, propName, propVal)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(UpdatePopup);

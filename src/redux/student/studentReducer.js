@@ -32,7 +32,9 @@ const studentReducer = (state = initialState, action) => {
     case studentActionTypes.EDIT_STUDENT:
       const studentIndex = state.students.findIndex((st) => st.id === action.payload.studentId);
       const studentsCopy = [...state.students];
-      studentsCopy[studentIndex] = [...studentsCopy[studentIndex], action.payload.updatedData];
+      if (studentIndex >= 0) {
+        studentsCopy[studentIndex][action.payload.propName] = action.payload.propVal;
+      }
       return {
         ...state,
         students: studentsCopy,
