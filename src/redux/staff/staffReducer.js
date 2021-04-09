@@ -26,17 +26,24 @@ const staffReducer = (state = initialState, action) => {
     case staffActionTypes.ADD_STAFF:
       return {
         ...state,
-        staffs: state.staffs.concat(action.payload),
+        staffs: [...state.staffs, action.payload],
       };
 
     case staffActionTypes.EDIT_STAFF:
+      const staffIndex = state.staffs.findIndex((st) => st.id === action.payload.staffId);
+      const staffsCopy = [...state.staffs];
+      if (staffIndex >= 0) {
+        staffsCopy[staffIndex][action.payload.propName] = action.payload.propVal;
+      }
       return {
         ...state,
+        students: staffsCopy,
       };
 
     case staffActionTypes.DELETE_STAFF:
       return {
         ...state,
+        staffs: state.staffs.filter((st) => st.id !== action.payload.id),
       };
 
     case staffActionTypes.STAFF_ERROR:

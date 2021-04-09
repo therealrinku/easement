@@ -1,9 +1,7 @@
 import db from "../firebase/db";
 
 export const getStaffs = async (username) => {
-  const docsRef = db
-    .collection("staffs")
-    .where("linkedUsername", "==", username);
+  const docsRef = db.collection("staffs").where("linkedUsername", "==", username);
   const snap = await docsRef.get();
   const finalData = [];
   snap.docs.map((doc) => {
@@ -22,23 +20,11 @@ export const updateStaff = (staffId, updatedData) => {
   });
 };
 
-export const deleteStaff = (staffId) => {
-  return new Promise((resolve) => {
-    db.collection("staffs")
-      .doc(staffId)
-      .delete()
-      .then(resolve("done"))
-      .catch((err) => resolve(err.message));
-  });
+export const deleteStaff = async (staffId) => {
+  await db.collection("staffs").doc(staffId).delete();
 };
 
-export const addStaff = (data) => {
-  return new Promise((resolve) => {
-    db.collection("staffs")
-      .add({
-        ...data,
-      })
-      .then(() => resolve("Successfully created a new staff."))
-      .catch((err) => resolve(err.message));
-  });
+export const addStaff = async (data) => {
+  const docRef = await db.collection("staffs").add(data);
+  return docRef.id;
 };

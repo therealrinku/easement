@@ -3,10 +3,11 @@ import { updateStaff } from "../actions/staffActions";
 import Context from "../context/Context";
 import { MdClear } from "react-icons/all";
 import * as studentActions from "../redux/student/studentActions";
+import * as staffActions from "../redux/staff/staffActions";
 import { connect } from "react-redux";
 import "../styles/UpdatePopup.css";
 
-const UpdatePopup = ({ personId, propertyName, propertyValue, toggle, isStaff, UPDATE_STUDENT }) => {
+const UpdatePopup = ({ personId, propertyName, propertyValue, toggle, isStaff, UPDATE_STUDENT, UPDATE_STAFF }) => {
   const [val, setVal] = useState(propertyValue);
   const { setMessage } = useContext(Context);
 
@@ -16,7 +17,7 @@ const UpdatePopup = ({ personId, propertyName, propertyValue, toggle, isStaff, U
       if (!isStaff) {
         UPDATE_STUDENT(personId, propertyName, val);
       } else {
-        updateStaff(personId, { [propertyName]: val });
+        UPDATE_STAFF(personId, propertyName, val);
       }
       toggle();
     } else {
@@ -50,6 +51,7 @@ const UpdatePopup = ({ personId, propertyName, propertyValue, toggle, isStaff, U
 const mapDispatchToProps = (dispatch) => {
   return {
     UPDATE_STUDENT: (id, propName, propVal) => dispatch(studentActions.EDIT_STUDENT(id, propName, propVal)),
+    UPDATE_STAFF: (id, propName, propVal) => dispatch(staffActions.EDIT_STAFF(id, propName, propVal)),
   };
 };
 

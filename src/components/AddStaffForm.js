@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import Context from "../context/Context";
-import { addStaff } from "../actions/staffActions";
+import * as staffActions from "../redux/staff/staffActions";
+import { connect } from "react-redux";
 
-const AddStaffForm = () => {
+const AddStaffForm = ({ ADD_STAFF }) => {
   const [staffName, setStaffName] = useState("");
   const [staffRole, setStaffRole] = useState("");
   const [staffSalary, setStaffSalary] = useState("");
@@ -25,24 +26,20 @@ const AddStaffForm = () => {
     }
 
     if (formIsValid) {
-      addStaff({
+      ADD_STAFF({
         Name: staffName,
         Role: staffRole,
         Salary: staffSalary,
         "Contact Number": staffContactNumber,
         Address: staffAddress,
         linkedUsername: "test",
-      }).then((res) => {
-        setMessage(res);
-        if (res.includes("created")) {
-          //clearing state
-          setStaffName("");
-          setStaffRole("");
-          setStaffSalary("");
-          setStaffContactNumber("");
-          setStaffAddress("");
-        }
       });
+      //clearing state
+      setStaffName("");
+      setStaffRole("");
+      setStaffSalary("");
+      setStaffContactNumber("");
+      setStaffAddress("");
     } else {
       setMessage("Any input field cannot be empty.");
     }
@@ -55,36 +52,16 @@ const AddStaffForm = () => {
   return (
     <form className="new--form" onSubmit={AddStaff}>
       <label htmlFor="name">Staff Name</label>
-      <input
-        type="text"
-        id="name"
-        value={staffName}
-        onChange={(e) => setStaffName(e.target.value)}
-      />
+      <input type="text" id="name" value={staffName} onChange={(e) => setStaffName(e.target.value)} />
 
       <label htmlFor="role">Role</label>
-      <input
-        type="text"
-        id="role"
-        value={staffRole}
-        onChange={(e) => setStaffRole(e.target.value)}
-      />
+      <input type="text" id="role" value={staffRole} onChange={(e) => setStaffRole(e.target.value)} />
 
       <label htmlFor="salary">Salary</label>
-      <input
-        type="number"
-        id="salary"
-        value={staffSalary}
-        onChange={(e) => setStaffSalary(e.target.value)}
-      />
+      <input type="number" id="salary" value={staffSalary} onChange={(e) => setStaffSalary(e.target.value)} />
 
       <label htmlFor="address">Address</label>
-      <input
-        type="text"
-        id="address"
-        value={staffAddress}
-        onChange={(e) => setStaffAddress(e.target.value)}
-      />
+      <input type="text" id="address" value={staffAddress} onChange={(e) => setStaffAddress(e.target.value)} />
 
       <label htmlFor="contact">Contact Number</label>
       <input
@@ -99,4 +76,10 @@ const AddStaffForm = () => {
   );
 };
 
-export default AddStaffForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ADD_STAFF: (data) => dispatch(staffActions.ADD_STAFF(data)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AddStaffForm);

@@ -7,8 +7,10 @@ import overflowToggler from "../utils/OverflowToggler";
 import Detail from "../components/Detail";
 import db from "../firebase/db";
 import Loader from "../components/Loader";
+import { connect } from "react-redux";
+import * as staffActions from "../redux/staff/staffActions";
 
-const StaffDetailsPage = () => {
+const StaffDetailsPage = ({ DELETE_STAFF }) => {
   const [details, setDetails] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [showEditButtons, setShowEditButtons] = useState(false);
@@ -41,11 +43,8 @@ const StaffDetailsPage = () => {
   };
 
   const deleteStaffConfirm = () => {
-    deleteStaff(params.staffId).then((res) => {
-      if (res === "done") {
-        history.goBack();
-      }
-    });
+    DELETE_STAFF(params.staffId);
+    history.goBack();
   };
 
   return (
@@ -70,12 +69,8 @@ const StaffDetailsPage = () => {
             );
           })}
           <section className="control-buttons">
-            <button onClick={() => setShowEditButtons((prev) => !prev)}>
-              Edit
-            </button>
-            <button onClick={() => toggleModal(setShowDeletePopup)}>
-              Delete
-            </button>
+            <button onClick={() => setShowEditButtons((prev) => !prev)}>Edit</button>
+            <button onClick={() => toggleModal(setShowDeletePopup)}>Delete</button>
           </section>
 
           {showDeletePopup ? (
@@ -94,4 +89,10 @@ const StaffDetailsPage = () => {
   );
 };
 
-export default StaffDetailsPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    DELETE_STAFF: (staffId) => dispatch(staffActions.DELETE_STAFF(staffId)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(StaffDetailsPage);

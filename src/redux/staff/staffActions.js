@@ -1,8 +1,4 @@
-import {
-  deleteStaff,
-  getStaffs,
-  updateStaff,
-} from "../../actions/staffActions";
+import { addStaff, deleteStaff, getStaffs, updateStaff } from "../../actions/staffActions";
 import staffActionTypes from "./staffActionTypes";
 
 export const LOAD_STAFFS = (username) => async (dispatch) => {
@@ -15,10 +11,19 @@ export const LOAD_STAFFS = (username) => async (dispatch) => {
   }
 };
 
-export const EDIT_STAFF = (staffId, updatedData) => async (dispatch) => {
+export const ADD_STAFF = (data) => async (dispatch) => {
   try {
-    const response = await updateStaff(staffId, updatedData);
-    dispatch({ type: staffActionTypes.EDIT_STAFF, payload: response });
+    const id = await addStaff(data);
+    dispatch({ type: staffActionTypes.ADD_STAFF, payload: { ...data, id } });
+  } catch (err) {
+    dispatch({ type: staffActionTypes.STAFF_ERROR, payload: err.message });
+  }
+};
+
+export const EDIT_STAFF = (staffId, propName, propVal) => async (dispatch) => {
+  try {
+    updateStaff(staffId, { [propName]: propVal });
+    dispatch({ type: staffActionTypes.EDIT_STAFF, payload: { staffId, propName, propVal } });
   } catch (err) {
     dispatch({ type: staffActionTypes.STAFF_ERROR, payload: err.message });
   }
@@ -26,8 +31,8 @@ export const EDIT_STAFF = (staffId, updatedData) => async (dispatch) => {
 
 export const DELETE_STAFF = (staffId) => async (dispatch) => {
   try {
-    const response = await deleteStaff(staffId);
-    dispatch({ type: staffActionTypes.DELETE_STAFF, payload: response });
+    const id = await deleteStaff(staffId);
+    dispatch({ type: staffActionTypes.DELETE_STAFF, payload: id });
   } catch (err) {
     dispatch({ type: staffActionTypes.STAFF_ERROR, payload: err.message });
   }
