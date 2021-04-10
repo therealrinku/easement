@@ -1,0 +1,68 @@
+.accessibility {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.accessibility div {
+  position: relative;
+  width: 120px;
+  margin: 0 1.2px 0 10px;
+}
+
+.accessibility form {
+  display: flex;
+  align-items: center;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.accessibility form input {
+  border: none;
+  outline: none;
+  padding-left: 8px;
+}
+
+.accessibility button {
+  padding: 7px;
+  background: inherit;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+  display: flex;
+  font-size: 14px;
+  align-items: flex-start;
+}
+
+.accessibility button span {
+  margin-left: 5px;
+}
+
+.accessibility .options {
+  position: absolute;
+  background: white;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 3px;
+  border-radius: 5px;
+  padding: 01px;
+}
+
+.accessibility .options button {
+  border: none;
+  border-radius: 0px;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  padding: 12px 4px;
+}
+
+.accessibility .options button:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.accessibility .options button:last-child {
+  border: none;
+}

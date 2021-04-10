@@ -1,6 +1,6 @@
 import { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
-import Filters from "../components/Filters";
+import Accessibility from "../components/Accessibility";
 import * as staffActions from "../redux/staff/staffActions";
 import { connect } from "react-redux";
 import Loader from "../components/Loader";
@@ -23,7 +23,7 @@ const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
       ) : staffs.length > 0 ? (
         <Fragment>
           <h4>Staffs</h4>
-          <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <Accessibility searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <table className="table">
             <thead>
               <tr>

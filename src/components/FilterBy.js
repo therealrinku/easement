@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { BiCaretDown } from "react-icons/all";
-import "../styles/Filterby.css";
 
 const FilterBy = ({ onlySearchBox, setFilterOption }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   return (
-    <div style={onlySearchBox ? { display: "none" } : null} className="filterby">
+    <div>
       <button onClick={() => setShowFilterOptions((prev) => !prev)}>
         <BiCaretDown />
         <span>Search by</span>

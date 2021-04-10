@@ -1,6 +1,6 @@
 import { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
-import Filters from "../components/Filters";
+import Accessibility from "../components/Accessibility";
 import { connect } from "react-redux";
 import * as studentActions from "../redux/student/studentActions";
 import Loader from "../components/Loader";
@@ -25,7 +25,7 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
       ) : students.length > 0 ? (
         <Fragment>
           <h4>Students</h4>
-          <Filters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <Accessibility searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
           <table className="table">
             <thead>

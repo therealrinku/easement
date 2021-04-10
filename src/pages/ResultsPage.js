@@ -1,7 +1,6 @@
 import { Tooltip } from "@material-ui/core";
 import { Fragment } from "react";
 import { MdEdit } from "react-icons/all";
-import Filters from "../components/Filters";
 
 const ResultsPage = () => {
   const sortedStudents = [
@@ -12,7 +11,7 @@ const ResultsPage = () => {
   return (
     <Fragment>
       <h4>Results</h4>
-      <Filters />
+
       <table className="table">
         <thead>
           <th>S.N~{sortedStudents.length}</th>
