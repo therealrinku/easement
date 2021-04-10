@@ -1,12 +1,12 @@
 import { HiOutlineSearch } from "react-icons/all";
 
-const SearchBox = ({ searchQuery, setSearchQuery }) => {
+const SearchBox = ({ searchBy, searchQuery, setSearchQuery }) => {
   return (
     <form>
       <HiOutlineSearch />
       <input
         type="text"
-        placeholder="Search here"
+        placeholder={`Search by ${searchBy}`}
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />

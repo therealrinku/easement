@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 
 const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchBy, setSearchBy] = useState("Name");
 
   useEffect(() => {
     if (!studentsLoaded) {
@@ -15,7 +16,7 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
   }, []);
 
   const filteredStudents = students.filter((student) => {
-    return student.Name.toLowerCase().includes(searchQuery.trim().toLowerCase());
+    return student[searchBy].toLowerCase().includes(searchQuery.trim().toLowerCase());
   });
 
   return (
@@ -25,7 +26,12 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
       ) : students.length > 0 ? (
         <Fragment>
           <h4>Students</h4>
-          <Accessibility searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <Accessibility
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            searchBy={searchBy}
+            setSearchBy={setSearchBy}
+          />
 
           <table className="table">
             <thead>

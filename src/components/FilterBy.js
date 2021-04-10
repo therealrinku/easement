@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { BiCaretDown } from "react-icons/all";
 
-const FilterBy = ({ onlySearchBox, setFilterOption }) => {
+const FilterBy = ({ setSearchBy }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
+
+  const setSearchByAndToggle = (e) => {
+    setSearchBy(e.target.innerText);
+    setShowFilterOptions(false);
+  };
+
   return (
     <div>
       <button onClick={() => setShowFilterOptions((prev) => !prev)}>
@@ -11,9 +17,9 @@ const FilterBy = ({ onlySearchBox, setFilterOption }) => {
       </button>
 
       <section className="options" style={!showFilterOptions ? { display: "none" } : null}>
-        <button onClick={() => setFilterOption("Class")}>Class</button>
-        <button onClick={() => setFilterOption("Name")}>Name</button>
-        <button onClick={() => setFilterOption("RollNo")}> Rollno</button>
+        <button onClick={setSearchByAndToggle}>Class</button>
+        <button onClick={setSearchByAndToggle}>Name</button>
+        <button onClick={setSearchByAndToggle}> RollNo</button>
       </section>
     </div>
   );

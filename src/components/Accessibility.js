@@ -3,11 +3,11 @@ import SortBy from "./SortBy";
 import SearchBox from "./SearchBox";
 import "../styles/Accessibilty.css";
 
-const Accessibilty = ({ searchQuery, setSearchQuery }) => {
+const Accessibilty = ({ searchBy, setSearchBy, searchQuery, setSearchQuery }) => {
   return (
     <div className="accessibility">
-      <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <FilterBy />
+      <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} searchBy={searchBy} />
+      <FilterBy setSearchBy={setSearchBy} />
       <SortBy />
     </div>
   );
