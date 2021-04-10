@@ -23,7 +23,7 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
   };
 
   //
-  const { students, classes, setMessage } = useContext(Context);
+  const { classes, setMessage } = useContext(Context);
 
   const AddStudent = (e) => {
     e.preventDefault();
@@ -45,29 +45,21 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
     if (formIsValid) {
       //checking if student roll no is already taken
       if (studentRollNo > 0) {
-        if (
-          students.findIndex(
-            (student) => student.studentClassName === studentClassName && student.studentRollNo === studentRollNo
-          ) < 0
-        ) {
-          ADD_STUDENT({
-            Name: studentName,
-            Class: studentClassName,
-            RollNo: studentRollNo,
-            "Guardian Name": studentGuardianName,
-            "Phone Number": studentPhoneNumber,
-            Address: studentAddress,
-            linkedUsername: "test",
-          });
-          setStudentName("");
-          setStudentPhoneNumber("");
-          setStudentRollNo("");
-          setStudentGuardianName("");
-          setStudentClassName("");
-          setStudentAddress("");
-        } else {
-          setMessage({ text: `Roll no ${studentRollNo} already taken in ${studentClassName}` });
-        }
+        ADD_STUDENT({
+          Name: studentName,
+          Class: studentClassName,
+          RollNo: studentRollNo,
+          "Guardian Name": studentGuardianName,
+          "Phone Number": studentPhoneNumber,
+          Address: studentAddress,
+          linkedUsername: "test",
+        });
+        setStudentName("");
+        setStudentPhoneNumber("");
+        setStudentRollNo("");
+        setStudentGuardianName("");
+        setStudentClassName("");
+        setStudentAddress("");
       } else {
         setMessage({ text: "Roll no cannot be less than 1." });
       }
