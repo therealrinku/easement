@@ -31,6 +31,7 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
             setSearchQuery={setSearchQuery}
             searchBy={searchBy}
             setSearchBy={setSearchBy}
+            searchByOptions={["Class", "RollNo", "Name"]}
           />
 
           <table className="table">
