@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchBy, setSearchBy] = useState("Name");
+  const [sortBy, setSortBy] = useState("Name");
 
   useEffect(() => {
     if (!staffsLoaded) LOAD_STAFFS("test");
@@ -30,6 +31,9 @@ const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
             searchByOptions={["Name", "Role", "Salary"]}
             searchBy={searchBy}
             setSearchBy={setSearchBy}
+            sortByOptions={["Name", "Role", "Salary"]}
+            setSortBy={setSortBy}
+            sortBy={sortBy}
           />
           <table className="table">
             <thead>

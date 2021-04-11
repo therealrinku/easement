@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchBy, setSearchBy] = useState("Name");
+  const [sortBy, setSortBy] = useState("Name");
 
   useEffect(() => {
     if (!studentsLoaded) {
@@ -32,6 +33,9 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
             searchBy={searchBy}
             setSearchBy={setSearchBy}
             searchByOptions={["Class", "RollNo", "Name"]}
+            sortByOptions={["Name", "RollNo", "Class"]}
+            setSortBy={setSortBy}
+            sortBy={sortBy}
           />
 
           <table className="table">
