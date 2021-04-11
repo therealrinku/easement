@@ -1,54 +1,20 @@
 import db from "../firebase/db";
 
-export const getClasses = (username) => {
-  return new Promise((resolve) => {
-    db.collection("classes")
-      .where("linkedUsername", "==", username)
-      .get()
-      .then((data) => {
-        resolve(data);
-      })
-      .catch((err) => new Error(err.message));
+export const getClasses = async (username) => {
+  const docsRef = db.collection("classes").where("linkedUsername", "==", username);
+  const snap = await docsRef.get();
+  const finalData = [];
+  snap.docs.map((doc) => {
+    return finalData.push({ ...doc.data(), id: doc.id });
   });
+  return finalData;
 };
 
-export const addClass = (data) => {
-  return new Promise((resolve) => {
-    db.collection("classes")
-      .add({
-        ...data,
-      })
-      .then(() => resolve("Successfully created a new class."))
-      .catch((err) => resolve(err.message));
-  });
+export const deleteClass = async (classId) => {
+  await db.collection("classes").doc(classId).delete();
 };
 
-export const deleteClass = (className) => {
-  return new Promise((resolve) => {
-    //deleteing class
-    db.collection("classes")
-      .where("className", "==", className)
-      .get()
-      .then((snap) => {
-        snap.forEach((doc) => doc.ref.delete());
-      })
-      .catch((err) => {
-        resolve(err.message);
-      })
-      .then(() => {
-        //deteling students of that class
-        db.collection("students")
-          .where("Class", "==", className)
-          .get()
-          .then((snap) => {
-            snap.forEach((doc) => doc.ref.delete());
-          })
-          .then(() => {
-            resolve(`Successfully deleted the ${className}`);
-          })
-          .catch((err) => {
-            resolve(err.message);
-          });
-      });
-  });
+export const addClass = async (data) => {
+  const docRef = await db.collection("classes").add(data);
+  return docRef.id;
 };

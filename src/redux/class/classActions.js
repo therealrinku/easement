@@ -1,7 +1,7 @@
-import { deleteClass, getClasses } from "../../actions/classActions";
+import { addClass, deleteClass, getClasses } from "../../actions/classActions";
 import classActionTypes from "./classActionTypes";
 
-export const LOAD_STAFFS = (username) => async (dispatch) => {
+export const LOAD_CLASSES = (username) => async (dispatch) => {
   try {
     dispatch({ type: classActionTypes.LOADING_CLASSES });
     const classes = await getClasses(username);
@@ -11,10 +11,19 @@ export const LOAD_STAFFS = (username) => async (dispatch) => {
   }
 };
 
-export const DELETE_CLASS = (className) => async (dispatch) => {
+export const ADD_CLASS = (data) => async (dispatch) => {
   try {
-    const response = await deleteClass(className);
-    dispatch({ type: classActionTypes.DELETE_CLASS, payload: response });
+    await addClass(data);
+    dispatch({ type: classActionTypes.ADD_CLASS, payload: response });
+  } catch (err) {
+    dispatch({ type: classActionTypes.CLASS_ERROR, payload: err.message });
+  }
+};
+
+export const DELETE_CLASS = (classId) => async (dispatch) => {
+  try {
+    await deleteClass(classId);
+    dispatch({ type: classActionTypes.DELETE_CLASS, payload: classId });
   } catch (err) {
     dispatch({ type: classActionTypes.CLASS_ERROR, payload: err.message });
   }
