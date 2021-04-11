@@ -5,7 +5,7 @@ import ClassesDropdown from "./ClassesDropdown";
 import * as studentActions from "../redux/student/studentActions";
 import { connect } from "react-redux";
 
-const AddStudentForm = ({ ADD_STUDENT }) => {
+const AddStudentForm = ({ classes, ADD_STUDENT }) => {
   //state for editing and adding student with checking if data is passed through props for update
   const [studentName, setStudentName] = useState("");
   const [studentClassName, setStudentClassName] = useState("");
@@ -23,7 +23,7 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
   };
 
   //
-  const { classes, setMessage } = useContext(Context);
+  const { setMessage } = useContext(Context);
 
   const AddStudent = (e) => {
     e.preventDefault();
@@ -122,10 +122,16 @@ const AddStudentForm = ({ ADD_STUDENT }) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    classes: state.classes.classes,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     ADD_STUDENT: (data) => dispatch(studentActions.ADD_STUDENT(data)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(AddStudentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddStudentForm);

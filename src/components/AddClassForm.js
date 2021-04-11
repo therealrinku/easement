@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import { addClass } from "../actions/classActions";
+import { connect } from "react-redux";
 import Context from "../context/Context";
+import * as classActions from "../redux/class/classActions";
 
-const AddClassForm = () => {
+const AddClassForm = ({ classes, ADD_CLASS }) => {
   const [className, setClassName] = useState("");
-  const { classes, setMessage } = useContext(Context);
+  const { setMessage } = useContext(Context);
 
   const AddClass = (e) => {
     e.preventDefault();
@@ -12,13 +13,8 @@ const AddClassForm = () => {
     if (className.trim() !== "") {
       //checking if same class name exists
       if (classes.findIndex((cls) => cls.className === className) < 0) {
-        addClass({ className, linkedUsername: "test" }).then((res) => {
-          setMessage(res);
-          if (res.includes("created")) {
-            //clearing state
-            setClassName("");
-          }
-        });
+        ADD_CLASS({ className, linkedUsername: "test" });
+        setClassName("");
       } else {
         setMessage({ text: `${className} already exists.` });
       }
@@ -36,4 +32,16 @@ const AddClassForm = () => {
   );
 };
 
-export default AddClassForm;
+const mapStateToProps = (state) => {
+  return {
+    classes: state.classes.classes,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ADD_CLASS: (data) => dispatch(classActions.ADD_CLASS(data)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddClassForm);
