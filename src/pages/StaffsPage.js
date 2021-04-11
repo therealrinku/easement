@@ -7,13 +7,14 @@ import Loader from "../components/Loader";
 
 const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchBy, setSearchBy] = useState("Name");
 
   useEffect(() => {
     if (!staffsLoaded) LOAD_STAFFS("test");
   }, []);
 
   const filteredStaffs = staffs.filter((staff) => {
-    return staff.Name.toLowerCase().includes(searchQuery.trim().toLowerCase());
+    return staff[searchBy].toLowerCase().includes(searchQuery.trim().toLowerCase());
   });
 
   return (
@@ -23,7 +24,13 @@ const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
       ) : staffs.length > 0 ? (
         <Fragment>
           <h4>Staffs</h4>
-          <Accessibility searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <Accessibility
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            searchByOptions={["Name", "Role", "Salary"]}
+            searchBy={searchBy}
+            setSearchBy={setSearchBy}
+          />
           <table className="table">
             <thead>
               <tr>
