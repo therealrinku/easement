@@ -4,6 +4,7 @@ import Accessibility from "../components/Accessibility";
 import * as staffActions from "../redux/staff/staffActions";
 import { connect } from "react-redux";
 import Loader from "../components/Loader";
+import sorter from "../utils/Sorter";
 
 const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,6 +18,8 @@ const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
   const filteredStaffs = staffs.filter((staff) => {
     return staff[searchBy].toLowerCase().includes(searchQuery.trim().toLowerCase());
   });
+
+  const sortedStaffs = sorter(filteredStaffs, sortBy);
 
   return (
     <Fragment>
@@ -46,7 +49,7 @@ const StaffsPage = ({ staffs, staffsLoaded, loading, LOAD_STAFFS }) => {
             </thead>
 
             <tbody>
-              {filteredStaffs.map((staff, i) => {
+              {sortedStaffs.map((staff, i) => {
                 return (
                   <tr key={i}>
                     <td>{i + 1}</td>

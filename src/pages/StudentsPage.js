@@ -4,6 +4,7 @@ import Accessibility from "../components/Accessibility";
 import { connect } from "react-redux";
 import * as studentActions from "../redux/student/studentActions";
 import Loader from "../components/Loader";
+import sorter from "../utils/Sorter";
 
 const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,6 +20,7 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
   const filteredStudents = students.filter((student) => {
     return student[searchBy].toLowerCase().includes(searchQuery.trim().toLowerCase());
   });
+  const sortedStudents = sorter(filteredStudents, sortBy);
 
   return (
     <Fragment>
@@ -49,7 +51,7 @@ const StudentsPage = ({ students, studentsLoaded, loading, LOAD_STUDENTS }) => {
             </thead>
 
             <tbody>
-              {filteredStudents.map((student, i) => {
+              {sortedStudents.map((student, i) => {
                 return (
                   <tr key={i}>
                     <td>{i + 1}</td>
