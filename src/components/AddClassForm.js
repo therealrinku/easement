@@ -12,7 +12,7 @@ const AddClassForm = ({ classes, ADD_CLASS }) => {
 
     if (className.trim() !== "") {
       //checking if same class name exists
-      if (classes.findIndex((cls) => cls.className === className) < 0) {
+      if (classes.findIndex((cls) => cls.className.toLowerCase() === className.toLowerCase()) < 0) {
         ADD_CLASS({ className, linkedUsername: "test" });
         setClassName("");
       } else {
