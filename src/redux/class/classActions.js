@@ -13,8 +13,8 @@ export const LOAD_CLASSES = (username) => async (dispatch) => {
 
 export const ADD_CLASS = (data) => async (dispatch) => {
   try {
-    await addClass(data);
-    dispatch({ type: classActionTypes.ADD_CLASS, payload: response });
+    const id = await addClass(data);
+    dispatch({ type: classActionTypes.ADD_CLASS, payload: { ...data, id } });
   } catch (err) {
     dispatch({ type: classActionTypes.CLASS_ERROR, payload: err.message });
   }

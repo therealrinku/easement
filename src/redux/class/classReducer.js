@@ -26,7 +26,7 @@ const classReducer = (state = initialState, action) => {
     case classActionTypes.ADD_CLASS:
       return {
         ...state,
-        classes: state.classes.concat(action.payload),
+        classes: [...state.classes, action.payload],
       };
 
     case classActionTypes.DELETE_CLASS:
