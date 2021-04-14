@@ -7,9 +7,11 @@ const sorter = (mainArray, sortingType) => {
     case "RollNo":
       return mainArray.sort((a, b) => a.RollNo.localeCompare(b.RollNo));
     case "Salary":
-      return mainArray.sort((a, b) => a.Salary > b.Salary);
+      return mainArray.sort((a, b) => b.Salary.localeCompare(a.Salary));
     case "Role":
       return mainArray.sort((a, b) => a.Role.localeCompare(b.Role));
+    default:
+      return mainArray;
   }
 };
 
