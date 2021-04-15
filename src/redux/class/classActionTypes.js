@@ -4,6 +4,7 @@ const classActionTypes = {
   ADD_CLASS: "ADD_CLASS",
   DELETE_CLASS: "DELETE_CLASS",
   CLASS_ERROR: "CLASS_ERROR",
+  PROCESSING: "PROCESSING",
 };
 
 export default classActionTypes;

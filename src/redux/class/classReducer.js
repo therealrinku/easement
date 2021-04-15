@@ -3,8 +3,9 @@ import classActionTypes from "./classActionTypes";
 const initialState = {
   classes: [],
   loading: false,
+  processing: false,
   classesLoaded: false,
-  error: null,
+  message: null,
 };
 
 const classReducer = (state = initialState, action) => {
@@ -13,6 +14,12 @@ const classReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+      };
+
+    case classActionTypes.PROCESSING:
+      return {
+        ...state,
+        processing: true,
       };
 
     case classActionTypes.LOADED_CLASSES:
@@ -26,17 +33,21 @@ const classReducer = (state = initialState, action) => {
     case classActionTypes.ADD_CLASS:
       return {
         ...state,
+        processing: false,
         classes: [...state.classes, action.payload],
+        message: "Successfully added a new class.",
       };
 
     case classActionTypes.DELETE_CLASS:
       return {
+        processing: false,
         ...state,
       };
 
     case classActionTypes.CLASS_ERROR:
       return {
         ...state,
+        processing: false,
         error: action.payload,
       };
 

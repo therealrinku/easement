@@ -3,8 +3,9 @@ import staffActionTypes from "./staffActionTypes";
 const initialState = {
   staffs: [],
   loading: false,
+  processing: false,
   staffsLoaded: false,
-  error: null,
+  message: null,
 };
 
 const staffReducer = (state = initialState, action) => {
@@ -13,6 +14,12 @@ const staffReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+      };
+
+    case staffActionTypes.PROCESSING:
+      return {
+        ...state,
+        processing: true,
       };
 
     case staffActionTypes.LOADED_STAFFS:
@@ -26,7 +33,9 @@ const staffReducer = (state = initialState, action) => {
     case staffActionTypes.ADD_STAFF:
       return {
         ...state,
+        processing: false,
         staffs: [...state.staffs, action.payload],
+        message: "Successfully added a new staff.",
       };
 
     case staffActionTypes.EDIT_STAFF:
@@ -38,18 +47,23 @@ const staffReducer = (state = initialState, action) => {
       return {
         ...state,
         students: staffsCopy,
+        processing: false,
+        message: "Successfully edited a staff.",
       };
 
     case staffActionTypes.DELETE_STAFF:
       return {
         ...state,
+        processing: false,
         staffs: state.staffs.filter((st) => st.id !== action.payload),
+        message: "Successfully deleted a staff.",
       };
 
     case staffActionTypes.STAFF_ERROR:
       return {
         ...state,
-        error: action.payload,
+        processing: false,
+        message: action.payload,
       };
 
     default:

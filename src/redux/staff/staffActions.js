@@ -13,6 +13,7 @@ export const LOAD_STAFFS = (username) => async (dispatch) => {
 
 export const ADD_STAFF = (data) => async (dispatch) => {
   try {
+    dispatch({ type: staffActionTypes.PROCESSING });
     const id = await addStaff(data);
     dispatch({ type: staffActionTypes.ADD_STAFF, payload: { ...data, id } });
   } catch (err) {
@@ -22,6 +23,7 @@ export const ADD_STAFF = (data) => async (dispatch) => {
 
 export const EDIT_STAFF = (staffId, propName, propVal) => async (dispatch) => {
   try {
+    dispatch({ type: staffActionTypes.PROCESSING });
     updateStaff(staffId, { [propName]: propVal });
     dispatch({ type: staffActionTypes.EDIT_STAFF, payload: { staffId, propName, propVal } });
   } catch (err) {
@@ -31,6 +33,7 @@ export const EDIT_STAFF = (staffId, propName, propVal) => async (dispatch) => {
 
 export const DELETE_STAFF = (staffId) => async (dispatch) => {
   try {
+    dispatch({ type: staffActionTypes.PROCESSING });
     await deleteStaff(staffId);
     dispatch({ type: staffActionTypes.DELETE_STAFF, payload: staffId });
   } catch (err) {
