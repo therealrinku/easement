@@ -3,7 +3,7 @@ import Context from "../context/Context";
 import * as staffActions from "../redux/staff/staffActions";
 import { connect } from "react-redux";
 
-const AddStaffForm = ({ ADD_STAFF }) => {
+const AddStaffForm = ({ ADD_STAFF, processing }) => {
   const [staffName, setStaffName] = useState("");
   const [staffRole, setStaffRole] = useState("");
   const [staffSalary, setStaffSalary] = useState("");
@@ -67,9 +67,17 @@ const AddStaffForm = ({ ADD_STAFF }) => {
         onChange={(e) => setStaffContactNumber(e.target.value)}
       />
 
-      <button className="submit--btn">Submit</button>
+      <button disabled={processing} className="submit--btn">
+        Submit
+      </button>
     </form>
   );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    processing: state.staffs.processing,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -78,4 +86,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(AddStaffForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddStaffForm);

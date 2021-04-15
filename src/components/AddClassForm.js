@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Context from "../context/Context";
 import * as classActions from "../redux/class/classActions";
 
-const AddClassForm = ({ classes, ADD_CLASS }) => {
+const AddClassForm = ({ classes, ADD_CLASS, processing }) => {
   const [className, setClassName] = useState("");
   const { setMessage } = useContext(Context);
 
@@ -27,7 +27,9 @@ const AddClassForm = ({ classes, ADD_CLASS }) => {
     <form className="new--form" onSubmit={AddClass}>
       <label htmlFor="name">Class Name</label>
       <input type="text" id="name" value={className} onChange={(e) => setClassName(e.target.value)} />
-      <button className="submit--btn">Submit</button>
+      <button disabled={processing} className="submit--btn">
+        Submit
+      </button>
     </form>
   );
 };
@@ -35,6 +37,7 @@ const AddClassForm = ({ classes, ADD_CLASS }) => {
 const mapStateToProps = (state) => {
   return {
     classes: state.classes.classes,
+    processing: state.classes.processing,
   };
 };
 

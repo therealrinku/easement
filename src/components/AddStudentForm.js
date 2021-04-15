@@ -5,7 +5,7 @@ import ClassesDropdown from "./ClassesDropdown";
 import * as studentActions from "../redux/student/studentActions";
 import { connect } from "react-redux";
 
-const AddStudentForm = ({ classes, ADD_STUDENT }) => {
+const AddStudentForm = ({ classes, ADD_STUDENT, processing }) => {
   //state for editing and adding student with checking if data is passed through props for update
   const [studentName, setStudentName] = useState("");
   const [studentClassName, setStudentClassName] = useState("");
@@ -117,13 +117,16 @@ const AddStudentForm = ({ classes, ADD_STUDENT }) => {
       <label htmlFor="address">Address</label>
       <input type="text" id="address" value={studentAddress} onChange={(e) => setStudentAddress(e.target.value)} />
 
-      <button className="submit--btn">Submit</button>
+      <button disabled={processing} className="submit--btn">
+        Submit
+      </button>
     </form>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
+    processing: state.students.processing,
     classes: state.classes.classes,
   };
 };
