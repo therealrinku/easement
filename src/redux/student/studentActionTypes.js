@@ -5,6 +5,7 @@ const studentActionTypes = {
   EDIT_STUDENT: "EDIT_STUDENT",
   DELETE_STUDENT: "DELETE_STUDENT",
   STUDENT_ERROR: "STUDENT_ERROR",
+  PROCESSING: "PROCESSING",
 };
 
 export default studentActionTypes;
