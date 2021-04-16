@@ -16,7 +16,7 @@ const studentReducer = (state = initialState, action) => {
         loading: true,
       };
 
-    case studentActionTypes.PROCESSING:
+    case studentActionTypes.PROCESSING_STUDENT:
       return {
         ...state,
         processing: true,

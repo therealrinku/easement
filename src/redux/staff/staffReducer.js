@@ -16,7 +16,7 @@ const staffReducer = (state = initialState, action) => {
         loading: true,
       };
 
-    case staffActionTypes.PROCESSING:
+    case staffActionTypes.PROCESSING_STAFF:
       return {
         ...state,
         processing: true,

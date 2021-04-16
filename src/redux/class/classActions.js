@@ -13,7 +13,7 @@ export const LOAD_CLASSES = (username) => async (dispatch) => {
 
 export const ADD_CLASS = (data) => async (dispatch) => {
   try {
-    dispatch({ type: classActionTypes.PROCESSING });
+    dispatch({ type: classActionTypes.PROCESSING_CLASS });
     const id = await addClass(data);
     dispatch({ type: classActionTypes.ADD_CLASS, payload: { ...data, id } });
   } catch (err) {
@@ -23,7 +23,7 @@ export const ADD_CLASS = (data) => async (dispatch) => {
 
 export const DELETE_CLASS = (classId) => async (dispatch) => {
   try {
-    dispatch({ type: classActionTypes.PROCESSING });
+    dispatch({ type: classActionTypes.PROCESSING_CLASS });
     await deleteClass(classId);
     dispatch({ type: classActionTypes.DELETE_CLASS, payload: classId });
   } catch (err) {

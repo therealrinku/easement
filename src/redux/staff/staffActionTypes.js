@@ -5,7 +5,7 @@ const staffActionTypes = {
   EDIT_STAFF: "EDIT_STAFF",
   DELETE_STAFF: "DELETE_STAFF",
   STAFF_ERROR: "STAFF_ERROR",
-  PROCESSING: "PROCESSING",
+  PROCESSING_STAFF: "PROCESSING_STAFF",
 };
 
 export default staffActionTypes;

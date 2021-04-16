@@ -13,7 +13,7 @@ export const LOAD_STUDENTS = (username) => async (dispatch) => {
 
 export const ADD_STUDENT = (data) => async (dispatch) => {
   try {
-    dispatch({ type: studentActionTypes.PROCESSING });
+    dispatch({ type: studentActionTypes.PROCESSING_STUDENT });
     const id = await addStudent(data);
     dispatch({ type: studentActionTypes.ADD_STUDENT, payload: { ...data, id } });
   } catch (err) {
@@ -23,7 +23,7 @@ export const ADD_STUDENT = (data) => async (dispatch) => {
 
 export const EDIT_STUDENT = (studentId, propName, propVal) => async (dispatch) => {
   try {
-    dispatch({ type: studentActionTypes.PROCESSING });
+    dispatch({ type: studentActionTypes.PROCESSING_STUDENT });
     await updateStudent(studentId, { [propName]: propVal });
     dispatch({ type: studentActionTypes.EDIT_STUDENT, payload: { studentId, propName, propVal } });
   } catch (err) {
@@ -33,7 +33,7 @@ export const EDIT_STUDENT = (studentId, propName, propVal) => async (dispatch) =
 
 export const DELETE_STUDENT = (studentId) => async (dispatch) => {
   try {
-    dispatch({ type: studentActionTypes.PROCESSING });
+    dispatch({ type: studentActionTypes.PROCESSING_STUDENT });
     await deleteStudent(studentId);
     dispatch({ type: studentActionTypes.DELETE_STUDENT, payload: studentId });
   } catch (err) {
